@@ -121,7 +121,7 @@ yarn dev
 
 **推荐一键部署：👇**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Damnnnn2023/fre123_nav&project-name=fre123_nav&repository-name=fre123_nav&demo-title=fre123_nav&demo-description=fre123_nav&demo-url=https%3A%2F%2Ffre123.com&demo-image=https%3A%2F%2Fgeminiprochat.com%2Ficon.svg)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/fre123-com/fre123-nav&project-name=fre123-nav&repository-name=fre123-nav&demo-title=fre123-nav&demo-description=fre123-nav&demo-url=https%3A%2F%2Ffre123.com&demo-image=https%3A%2F%2Fgeminiprochat.com%2Ficon.svg)
 
 ## QA
 
