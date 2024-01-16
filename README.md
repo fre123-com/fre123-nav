@@ -68,6 +68,10 @@ yarn dev
 - 关注公众号：[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg)
 - 回复 `加群` 即可加入我们的交流群
 
-该项目由 `FRE123` 团队维护，如果您在使用该项目时遇到任何问题，请随时提交 `issue` 或联系我们。技术交流群🤖：
+该项目由 `FRE123` 团队维护，如果您在使用该项目时遇到任何问题，请随时提交 `issue` 或联系我们。
 
-![wechat_group](./files/images/group.jpg)
+技术交流群🤖：
+
+<p align="center">
+  <img src=".files/images/group.jpg" width="100" height="60%">
+</p>
