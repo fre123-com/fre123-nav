@@ -10,10 +10,10 @@
 | base.app_name | string | 网站名称 | 无 | fre123 |
 | base.web_host | string | 网站地址 | 无 | https://www.fre123.com|
 | base.logo | string | 网站LOGO | 无 | https://img.fre123.com/i/2023/11/25/65619e8022505.png|
-| seo | object | 网站seo相关信息 | 无 | https://www.fre123.com|
-| seo.title | string | seo 标题 | 无 | https://www.fre123.com|
-| seo.description | string | seo 描述 | 无 | https://www.fre123.com|
-| seo.keywords | string | seo 关键词 | 无 | https://www.fre123.com|
+| seo | object | 网站seo相关信息 | 无 | -|
+| seo.title | string | seo 标题 | 无 |FRE123|
+| seo.description | string | seo 描述 | 无 | FRE123 专注于为您提供各种免费优质资源，包括影视资源、动漫番剧、软件工具等。无论您在寻找哪种资源，我们都将尽力为您提供，为您的学习或工作助力|
+| seo.keywords | string | seo 关键词 | 无 | FRE123|
 | seo.icon | string | seo 图标 | 无 | https://www.fre123.com|
 | header.search | object | 头部搜索模块，详见下方 `header.search` 配置 | 无 | |
 | header.right | object | 头部右侧模块,详见下方 `header.right` 配置 | 无 | |
