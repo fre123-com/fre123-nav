@@ -8,6 +8,6 @@
 	</div>
 </template>
 <script setup lang="ts">
-import navList from '../stores/nav.json'
+import navList from '../config/nav.json'
 </script>
 <style></style>

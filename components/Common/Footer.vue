@@ -4,15 +4,14 @@
 			<!-- Left -->
 			<div class="text-[14px] h-[30px]">
 				<span
-					>2023
+					>Powered by
 					<a
 						href="https://www.fre123.com"
 						target="_blank"
 						class="decoration-transparent text-[#a4715c]"
 						>FRE123</a
 					>
-					· All rights reserved</span
-				>
+				</span>
 			</div>
 			<!-- Left -->
 

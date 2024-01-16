@@ -92,19 +92,6 @@
 				</a>
 			</StyleTooltip>
 		</div>
-		<!-- <div
-			v-if="groupData.tab_list[currTab].details.filter((i) => i.is_show).length > showNumber"
-			class="flex flex-col"
-		>
-			<div
-				class="flex items-center justify-center cursor-pointer bg-blue-50 bg-opacity-0 hover:bg-opacity-30 transition-all rounded-md"
-				@click="showNumber = groupData.tab_list[currTab].details.filter((i) => i.is_show).length"
-			>
-				<Icon class="" size="20" name="uil:angle-down"></Icon
-				><label class="text-xs cursor-pointer" for="">展开</label>
-			</div>
-			<p class="h-[4px] w-full flex"></p>
-		</div> -->
 	</div>
 </template>
 
