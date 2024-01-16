@@ -79,7 +79,7 @@
 | tab.upper_right_corner       | `String` | 右侧广告位                            | 无     | fre123                 |
 | tab.upper_right_corner.title | `String` | 广告名称                              | 无     | fre123                 |
 | tab.upper_right_corner.url   | `String` | 广告地址                              | 无     | https://www.fre123.com |
-| details                      | array    | 导航列表配置，详见下方 `details.item` | 无     | -                      |
+| details                      | `Array`  | 导航列表配置，详见下方 `details.item` | 无     | -                      |
 
 ###### `details.item`
 
