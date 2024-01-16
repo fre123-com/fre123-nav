@@ -42,9 +42,10 @@ yarn dev
 具体配置见：[数据配置](./.files/docs/config.md)，推荐基于 `[Vercel](https://vercel.com/new/clone?repository-url=https://github.com/fre123-com/fre123-nav&project-name=fre123-nav&repository-name=fre123-nav&demo-title=fre123-nav&demo-description=fre123-nav&demo-url=https%3A%2F%2Ffre123.com)` 一键部署：👇
 
 - [Fork](https://github.com/fre123-com/fre123-nav/fork) 本项目
-- 编辑根目录下 `config` 目录下的相关文件，配置自己的数据：
-  - 详细配置教程：一键搭建自定义导航网站，简洁优雅，你值得拥有
-  - [FRE123 数据配置](./.files/docs/config.md)
+- 编辑根目录下 `config` 目录下的相关文件，进行 [FRE123 数据配置](./.files/docs/config.md)
+- 基于 Vercel 一键部署
+
+详细配置教程：一键搭建自定义导航网站，简洁优雅，你值得拥有。还不懂？直接加[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg)沟通
 
 ## QA
 
