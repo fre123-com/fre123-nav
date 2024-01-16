@@ -8,9 +8,10 @@
 在线体验：
 
 - FRE123 导航：[https://www.fre123.com](https://www.fre123.com)
-- 技术周刊精选：[https://www.fre123.com/weekly](https://www.fre123.com/weekly)
-- 全网热点资讯：[https://www.fre123.com/news](https://www.fre123.com/news)
-- 技术热点资讯：[https://www.fre123.com/tech](https://www.fre123.com/tech)
+- FRE123 信息流：开源地址 👉 https://github.com/fre123-com/fre123-info-flow
+  - 技术周刊精选：[https://www.fre123.com/weekly](https://www.fre123.com/weekly)
+  - 全网热点资讯：[https://www.fre123.com/news](https://www.fre123.com/news)
+  - 技术热点资讯：[https://www.fre123.com/tech](https://www.fre123.com/tech)
 
 ## 特性
 
