@@ -73,5 +73,5 @@ yarn dev
 技术交流群🤖：
 
 <p align="center">
-  <img src=".files/images/group.jpg" width="100" height="60%">
+  <img src=".files/images/group.jpg" width="100" height="90%">
 </p>
