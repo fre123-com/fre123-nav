@@ -64,8 +64,8 @@
 				"icon_size": 20,
 				"icon_color": "#00b140",
 				"icon_hover_color": "#008733",
-				"text": "有兴趣加我进群聊聊",
-				"img": "https://img.fre123.com/i/2023/12/03/656c990d9fbb8.jpeg",
+				"text": "联系Laosji",
+				"img": "https://raw.githubusercontent.com/laosji/img/main/img/WeChatQR.png",
 				"url": ""
 			},
 			{
@@ -73,16 +73,16 @@
 				"icon_size": 20,
 				"icon_color": "#0088cc",
 				"icon_hover_color": "#085b85",
-				"text": "关注老胡TG信息流频道",
+				"text": "关注",
 				"img": "",
-				"url": "https://t.me/howie_weekly"
+				"url": "/"
 			},
 			{
 				"icon_class": "fas fa-comment-dots",
 				"icon_size": 20,
 				"icon_color": "#0088cc",
 				"icon_hover_color": "#085b85",
-				"text": "FRE123 期待您的建议反馈",
+				"text": "找Laosji",
 				"img": "",
 				"url": "https://txc.qq.com/products/617721"
 			}
@@ -100,17 +100,17 @@
 				{
 					"icon_class": "fab fa-telegram-plane",
 					"icon_size": 20,
-					"url": "https://t.me/howie_weekly"
+					"url": "/"
 				},
 				{
 					"icon_class": "fas fa-blog",
 					"icon_size": 20,
-					"url": "https://www.fre123.com/weekly"
+					"url": "https://news.laosji.net/weekly"
 				},
 				{
 					"icon_class": "fas fa-qrcode",
 					"icon_size": 20,
-					"url": "https://cdn.jsdelivr.net/gh/howie6879/weekly/src/statics/wechat.jpeg"
+					"url": "https://raw.githubusercontent.com/laosji/img/main/img/WeChatQR.png"
 				}
 			]
 		}
