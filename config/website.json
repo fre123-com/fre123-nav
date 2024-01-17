@@ -38,19 +38,19 @@
 			"is_show": true,
 			"group": {
 				"name": "热点榜单",
-				"url": "https://www.fre123.com/news",
+				"url": "https://news.laosji.net",
 				"children": [
 					{
 						"name": "新闻热榜",
-						"url": "https://www.fre123.com/news"
+						"url": "https://news.laosji.net/news"
 					},
 					{
 						"name": "技术热榜",
-						"url": "https://www.fre123.com/tech"
+						"url": "https://news.laosji.net/tech"
 					},
 					{
 						"name": "精选周刊",
-						"url": "https://www.fre123.com/weekly"
+						"url": "https://news.laosji.net/weekly"
 					}
 				]
 			}
