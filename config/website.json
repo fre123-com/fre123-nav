@@ -1,8 +1,8 @@
 {
 	"base": {
-		"app_name": "FRE123",
-		"web_host": "https://www.fre123.com",
-		"logo": "https://img.fre123.com/i/2023/11/25/65619e8022505.png"
+		"app_name": "Laosji导航",
+		"web_host": "https://ok.laosji.net",
+		"logo": "https://raw.githubusercontent.com/laosji/img/main/img/logo.ai.png"
 	},
 	"seo": {
 		"title": "FRE123 免费资源共享平台",
