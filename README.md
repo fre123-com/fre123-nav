@@ -45,7 +45,7 @@ yarn dev
 - 编辑 Fork 后项目根目录下 `config` 下相关配置文件，进行 [FRE123 数据配置](./.files/docs/config.md)
 - 基于 Vercel 一键部署
 
-详细配置教程：[开源! 普通人如何快速免费搭建个性化导航网站](https://mp.weixin.qq.com/s/NEqY1Qb4dyJDhdtlYxjmaA)。还不懂？直接加[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg) 沟通资讯。
+详细配置教程：[开源! 普通人如何快速免费搭建个性化导航网站](https://mp.weixin.qq.com/s/NEqY1Qb4dyJDhdtlYxjmaA)。还不懂？直接加[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg) 沟通咨询。
 
 ## QA
 
