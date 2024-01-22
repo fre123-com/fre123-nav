@@ -28,7 +28,7 @@
 | list             | `item[]`  | 搜索引擎配置     | 无     | -                                                     |
 | item.name        | `String`  | 名称             | 无     | 百度                                                  |
 | item.url         | `String`  | 搜索引擎跳转地址 | 无     | https://www.baidu.com/s?wd=                           |
-| item.icon        | `String`  | 图标             | 无     | https://img.fre123.com/i/2023/11/26/656303de24efc.png |
+| item.icon        | `String`  | 图标             | 无     | https://raw.githubusercontent.com/laosji/img/main/img/logo.ai.png |
 | item.placeholder | `String`  | 输入框提示信息   | 无     | 百度一下，你就知道                                    |
 
 ##### `header.right`
@@ -38,10 +38,10 @@
 | is_show        | `Boolean`     | 是否展示       | 无     | true                        |
 | group          | `Object`      | 分组           | 无     | -                           |
 | group.name     | `String`      | 名称           | 无     | 热点榜单                    |
-| group.url      | `String`      | 跳转地址       | 无     | https://www.fre123.com/news |
+| group.url      | `String`      | 跳转地址       | 无     | https://news.laosji.net  |
 | group.children | `groupItem[]` | 子菜单         | 无     | -                           |
 | groupItem.name | `String`      | 子菜单名称     | 无     | 新闻热榜                    |
-| groupItem.url  | `String`      | 子菜单跳转地址 | 无     | https://www.fre123.com/news |
+| groupItem.url  | `String`      | 子菜单跳转地址 | 无     | https://news.laosji.net |
 
 ##### `pendant`
 
@@ -74,10 +74,10 @@
 | 配置项                       | 类型     | 说明                                  | 默认值 | 参数示例               |
 | ---------------------------- | -------- | ------------------------------------- | ------ | ---------------------- |
 | group_name                   | `String` | 分组名称                              | 无     | 如新闻资讯             |
-| tab_list                     | `tab[]`  | 子分类配置                            | 无     | fre123                 |
+| tab_list                     | `tab[]`  | 子分类配置                            | 无     | laosji                 |
 | tab.tab_name                 | `String` | 子分类名称                            | 无     | 新闻热点               |
-| tab.upper_right_corner       | `String` | 右侧广告位                            | 无     | fre123                 |
-| tab.upper_right_corner.title | `String` | 广告名称                              | 无     | fre123                 |
+| tab.upper_right_corner       | `String` | 右侧广告位                            | 无     | laosji                 |
+| tab.upper_right_corner.title | `String` | 广告名称                              | 无     | laosji                 |
 | tab.upper_right_corner.url   | `String` | 广告地址                              | 无     | https://news.laosji.net |
 | details                      | `Array`  | 导航列表配置，详见下方 `details.item` | 无     | -                      |
 
@@ -87,6 +87,6 @@
 | ----------- | --------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | title       | `String`  | 标题     | 无     | laosji.net                                                                                                                                      |
 | url         | `String`  | 跳转地址 | 无     | https://ok.laosji.net                                                                                                                       |
-| icon        | `String`  | 图标     | 无     | https://img.fre123.com/i/2023/11/25/65619e8022505.png                                                                                       |
+| icon        | `String`  | 图标     | 无     | https://raw.githubusercontent.com/laosji/img/main/img/logo.ai.png                                                                                       |
 | description | `String`  | 描述     | 无     | laosji 专注于为您提供各种免费优质资源，包括影视资源、动漫番剧、软件工具等。无论您在寻找哪种资源，我们都将尽力为您提供，为您的学习或工作助力 |
 | is_show     | `Boolean` | 是否展示 | 无     | true                                                                                                                                        |
