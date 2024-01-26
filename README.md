@@ -21,7 +21,7 @@
 
 - 简洁易用：界面简洁易用，支持一键部署
 - 拓展方便：导航数据完全由用户自定义控制
-- 技术支持：任何问题加[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg)沟通，群友群策群力帮你解决
+- 技术支持：底部关注公众号加交流群
 
 ## 部署 
 
@@ -45,7 +45,7 @@ yarn dev
 - 编辑 Fork 后项目根目录下 `config` 下相关配置文件，进行 [FRE123 数据配置](./.files/docs/config.md)
 - 基于 Vercel 一键部署
 
-详细配置教程：一键搭建自定义导航网站，简洁优雅，你值得拥有。还不懂？直接加[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg)沟通资讯。
+详细配置教程：[开源! 普通人如何快速免费搭建个性化导航网站](https://mp.weixin.qq.com/s/NEqY1Qb4dyJDhdtlYxjmaA)。还不懂？直接加[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg) 沟通咨询。
 
 ## QA
 
@@ -55,7 +55,7 @@ yarn dev
 
 > 我可以提交我搭建的导航网站吗？
 
-可以，欢迎任何人分享自己搭建的导航网站，具体见：Fre123 导航网站提交指南，有任何问题欢迎加我微信沟通。
+可以，欢迎任何人分享自己搭建的导航网站，具体见：[Fre123 导航网站提交指南](https://www.fre123.com/pub_nav)，有任何问题欢迎加我微信沟通。
 
 > 有资源共享群么？
 
@@ -69,3 +69,9 @@ yarn dev
 - 回复 `加群` 即可加入我们的交流群
 
 该项目由 `FRE123` 团队维护，如果您在使用该项目时遇到任何问题，请随时提交 `issue` 或联系我们。
+
+技术交流群🤖：
+
+<p align="center">
+  <img src=".files/images/w_group.jpg" width="50%">
+</p>
