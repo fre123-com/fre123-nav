@@ -22,7 +22,7 @@ export default defineNuxtConfig({
 					rel: 'icon',
 					// size: '32x32',
 					type: 'image/x-icon',
-					href: 'https://img.fre123.com/i/2023/11/25/65619e791f166.ico',
+					href: 'https://likunqi.top/file/f999e0c15e28896944ae7.png',
 				},
 			],
 			meta: [

@@ -4,7 +4,7 @@
 			<!-- Left -->
 			<div class="text-[14px] h-[30px]">
 				<span
-					>Powered by
+					>Powered by 老胡
 					<a
 						href="https://www.fre123.com"
 						target="_blank"

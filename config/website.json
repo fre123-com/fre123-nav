@@ -1,19 +1,25 @@
 {
 	"base": {
-		"app_name": "FRE123",
+		"app_name": "试运行....",
 		"web_host": "https://www.fre123.com",
-		"logo": "https://img.fre123.com/i/2023/11/25/65619e8022505.png"
+		"logo": "https://likunqi.top/file/4355e29ec7df32578b9fb.png"
 	},
 	"seo": {
-		"title": "FRE123 免费资源共享平台",
-		"description": "FRE123 专注于为您提供各种免费优质资源，包括影视资源、动漫番剧、软件工具等。无论您在寻找哪种资源，我们都将尽力为您提供，为您的学习或工作助力",
-		"keywords": "FRE123, 免费资源, 优质资源, 资源聚合, 在线资源, 影视资源, 动漫番剧, 软件工具, 网盘资源",
-		"icon": "https://img.fre123.com/i/2023/11/25/65619e791f166.ico"
+		"title": "12306FREE快速资源导航",
+		"description": "12306FREE 专注于为您提供各种免费优质资源，包括影视资源、动漫番剧、软件工具等。无论您在寻找哪种资源，我们都将尽力为您提供，为您的学习或工作助力",
+		"keywords": "12306FREE, 免费资源, 优质资源, 资源聚合, 在线资源, 影视资源, 动漫番剧, 软件工具, 网盘资源",
+		"icon": "https://likunqi.top/file/f999e0c15e28896944ae7.png"
 	},
 	"header": {
 		"search": {
 			"is_show": true,
 			"list": [
+        {
+          "name": "devv",
+          "url": "https://devv.ai/zh/search/",
+          "icon": "https://likunqi.top/file/00c59c5731eb30d9684f4.png",
+          "placeholder": "最懂程序员的新一代 AI 搜索引擎"
+        },
 				{
 					"name": "百度",
 					"url": "https://www.baidu.com/s?wd=",
@@ -24,35 +30,45 @@
 					"name": "谷歌",
 					"url": "https://www.google.com/search?q=",
 					"icon": "https://img.fre123.com/i/2023/11/26/6563038539819.png",
-					"placeholder": "请输入您要搜索的内容..."
+					"placeholder": "google 请输入您要搜索的内容..."
 				},
 				{
 					"name": "必应",
 					"url": "https://cn.bing.com/search?q=",
 					"icon": "https://img.fre123.com/i/2023/11/26/65630386088eb.png",
-					"placeholder": "请输入您要搜索的内容..."
-				}
-			]
+					"placeholder": "bing 请输入您要搜索的内容..."
+				},
+        {
+          "name": "github",
+          "url": "https://github.com/search?q=",
+          "icon": "https://likunqi.top/file/7e2eaac58a90e0c58b9a3.png",
+          "placeholder": "github 请输入您要搜索的内容..."
+        },
+        {
+          "name": "探索兔",
+          "url": "https://www.ttyunsou.com/search/",
+          "icon": "data:image/png;base64,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",
+          "placeholder": "探索兔-发现好的工具"
+        },
+        {
+          "name": "Greasy Fork",
+          "url": "https://greasyfork.org/zh-CN/scripts?q=",
+          "icon": "https://greasyfork.org/vite/assets/blacklogo96-sWE0jP07.png",
+          "placeholder": "这里是一个提供用户脚本的网站"
+        }
+      ]
 		},
 		"right": {
 			"is_show": true,
 			"group": {
-				"name": "热点榜单",
-				"url": "https://www.fre123.com/news",
+				"name": "秘密花园",
+				"url": "https://likunqi.bio.link/",
 				"children": [
 					{
-						"name": "新闻热榜",
-						"url": "https://www.fre123.com/news"
-					},
-					{
-						"name": "技术热榜",
-						"url": "https://www.fre123.com/tech"
-					},
-					{
-						"name": "精选周刊",
-						"url": "https://www.fre123.com/weekly"
+						"name": "",
+						"url": ""
 					}
-				]
+        ]
 			}
 		}
 	},
@@ -64,27 +80,9 @@
 				"icon_size": 20,
 				"icon_color": "#00b140",
 				"icon_hover_color": "#008733",
-				"text": "有兴趣加我进群聊聊",
-				"img": "https://img.fre123.com/i/2023/12/03/656c990d9fbb8.jpeg",
-				"url": ""
-			},
-			{
-				"icon_class": "fab fa-telegram-plane",
-				"icon_size": 20,
-				"icon_color": "#0088cc",
-				"icon_hover_color": "#085b85",
-				"text": "关注老胡TG信息流频道",
-				"img": "",
-				"url": "https://t.me/howie_weekly"
-			},
-			{
-				"icon_class": "fas fa-comment-dots",
-				"icon_size": 20,
-				"icon_color": "#0088cc",
-				"icon_hover_color": "#085b85",
-				"text": "FRE123 期待您的建议反馈",
-				"img": "",
-				"url": "https://txc.qq.com/products/617721"
+				"text": "关注公众号获取更多资讯",
+				"img": "https://likunqi.top/file/5344c38dbb38b44859897.jpg",
+				"url": "https://likunqi.top/file/5344c38dbb38b44859897.jpg"
 			}
 		]
 	},
@@ -92,26 +90,7 @@
 		"right": {
 			"is_show": true,
 			"list": [
-				{
-					"icon_class": "fas fa-comment-dots",
-					"icon_size": 20,
-					"url": "https://github.com/fre123-com"
-				},
-				{
-					"icon_class": "fab fa-telegram-plane",
-					"icon_size": 20,
-					"url": "https://t.me/howie_weekly"
-				},
-				{
-					"icon_class": "fas fa-blog",
-					"icon_size": 20,
-					"url": "https://www.fre123.com/weekly"
-				},
-				{
-					"icon_class": "fas fa-qrcode",
-					"icon_size": 20,
-					"url": "https://cdn.jsdelivr.net/gh/howie6879/weekly/src/statics/wechat.jpeg"
-				}
+
 			]
 		}
 	}
