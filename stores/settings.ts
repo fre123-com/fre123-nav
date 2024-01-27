@@ -2,10 +2,10 @@ const useSettingStore = defineStore(
 	'customize_setting',
 	() => {
 		const curEngine = ref({
-			name: '百度',
-			url: 'https://www.baidu.com/s?wd=',
-			icon: 'https://img.fre123.com/i/2023/11/26/656303de24efc.png',
-			placeholder: '百度一下，你就知道',
+      "name": "devv",
+      "url": "https://devv.ai/zh/search/",
+      "icon": "https://likunqi.top/file/00c59c5731eb30d9684f4.png",
+      "placeholder": "最懂程序员的新一代 AI 搜索引擎"
 		})
 
 		// 切换搜索引擎
