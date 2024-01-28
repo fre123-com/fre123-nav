@@ -6,7 +6,7 @@
 				<span
 					>Powered by 老胡
 					<a
-						href="https://www.fre123.com"
+						href="https://www.12306free.com/"
 						target="_blank"
 						class="decoration-transparent text-[#a4715c]"
 						>FRE123</a

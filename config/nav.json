@@ -4,16 +4,34 @@
 		"style": 1,
 		"style_des": "标准风格",
 		"tab_list": [
+      {
+        "tab_name": "快捷导航",
+        "upper_right_corner": {
+          "title": "",
+          "url": "https://12306free.bio.link/"
+        },
+        "details": [
+          {
+            "title": "快捷导航",
+            "ori_url": "https://12306free.bio.link",
+            "url": "https://12306free.bio.link",
+            "icon": "https://likunqi.top/file/7e53587414af5837492ca.png",
+            "description": "Ctrl+D 收藏书签不迷路",
+            "suffix": false,
+            "is_show": true
+          }
+        ]
+      },
 			{
 				"tab_name": "AI区",
 				"upper_right_corner": {
-					"title": "快速导航>>",
-					"url": "https://likunqi.bio.link/"
+					"title": "",
+					"url": ""
 				},
 				"details": [
 					{
 						"title": "ChatGpt指南",
-						"ori_url": "https://s.weibo.com/top/summary",
+						"ori_url": "https://too.st/7Of",
 						"url": "https://too.st/7Of",
 						"icon": "https://likunqi.top/file/04eac11dcb542fe6390d5.png",
 						"description": "chatgpt入门指南",
@@ -240,7 +258,55 @@
 						"description": "最新腐剧在线观看",
 						"suffix": true,
 						"is_show": false
-					}
+					},
+          {
+            "title": "HDmoli",
+            "url": "https://molicp.com/",
+            "icon": "https://img.fre123.com/i/2023/11/25/6561ae6e55df8.png",
+            "description": "HDMOLI 提供免费、高品质、同时支持电脑和移动设备的影视剧在线观看网站",
+            "suffix": true,
+            "is_show": true
+          },
+          {
+            "title": "LIBVIO",
+            "url": "https://www.libvio.me/",
+            "icon": "https://img.fre123.com/i/2024/01/06/659829e49995c.png",
+            "description": "海外影视资源为主的老牌在线影视资源网站",
+            "suffix": true,
+            "is_show": true
+          },
+          {
+            "title": "JoJo 影视",
+            "url": "https://jiohub.top/",
+            "icon": "https://img.fre123.com/i/2023/11/25/6561af1988649.png",
+            "description": "努力打造为最好的海外热门影视剧在线观看站点",
+            "suffix": true,
+            "is_show": true
+          },
+          {
+            "title": "低端影视",
+            "url": "https://ddys.pro/",
+            "icon": "https://img.fre123.com/i/2023/11/25/6561aeddd0eb6.png",
+            "description": "超清在线视频站",
+            "suffix": true,
+            "is_show": true
+          },
+          {
+            "title": "NO 视频",
+            "url": "https://www.novipnoad.net/",
+            "icon": "https://img.fre123.com/i/2024/01/06/65983049921a2.png",
+            "description": "主打海外影视剧资源，不负追剧好时光。",
+            "suffix": true,
+            "is_show": true
+          },
+          {
+            "title": "在线之家",
+            "url": "https://www.zxzjhd.com/",
+            "icon": "https://img.fre123.com/i/2024/01/06/659830c0e152c.png",
+            "description": "在线观看最新美剧|最新韩剧|天天美剧|人人美剧",
+            "suffix": true,
+            "is_show": true
+          }
 				]
 			},
 			{
@@ -276,60 +342,6 @@
 						"url": "https://www.cikeee.cc/",
 						"icon": "https://img.fre123.com/i/2023/11/25/6561af2dbbb1c.png",
 						"description": "每天一部电影，电影爱好者的心灵港湾，在这里，发现电影，享受电影，分享电影",
-						"suffix": true,
-						"is_show": true
-					}
-				]
-			},
-			{
-				"tab_name": "美日韩剧",
-				"upper_right_corner": {},
-				"details": [
-					{
-						"title": "HDmoli",
-						"url": "https://molicp.com/",
-						"icon": "https://img.fre123.com/i/2023/11/25/6561ae6e55df8.png",
-						"description": "HDMOLI 提供免费、高品质、同时支持电脑和移动设备的影视剧在线观看网站",
-						"suffix": true,
-						"is_show": true
-					},
-					{
-						"title": "LIBVIO",
-						"url": "https://www.libvio.me/",
-						"icon": "https://img.fre123.com/i/2024/01/06/659829e49995c.png",
-						"description": "海外影视资源为主的老牌在线影视资源网站",
-						"suffix": true,
-						"is_show": true
-					},
-					{
-						"title": "JoJo 影视",
-						"url": "https://jiohub.top/",
-						"icon": "https://img.fre123.com/i/2023/11/25/6561af1988649.png",
-						"description": "努力打造为最好的海外热门影视剧在线观看站点",
-						"suffix": true,
-						"is_show": true
-					},
-					{
-						"title": "低端影视",
-						"url": "https://ddys.pro/",
-						"icon": "https://img.fre123.com/i/2023/11/25/6561aeddd0eb6.png",
-						"description": "超清在线视频站",
-						"suffix": true,
-						"is_show": true
-					},
-					{
-						"title": "NO 视频",
-						"url": "https://www.novipnoad.net/",
-						"icon": "https://img.fre123.com/i/2024/01/06/65983049921a2.png",
-						"description": "主打海外影视剧资源，不负追剧好时光。",
-						"suffix": true,
-						"is_show": true
-					},
-					{
-						"title": "在线之家",
-						"url": "https://www.zxzjhd.com/",
-						"icon": "https://img.fre123.com/i/2024/01/06/659830c0e152c.png",
-						"description": "在线观看最新美剧|最新韩剧|天天美剧|人人美剧",
 						"suffix": true,
 						"is_show": true
 					}
