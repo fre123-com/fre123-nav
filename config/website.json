@@ -59,7 +59,7 @@
       ]
 		},
 		"right": {
-			"is_show": true,
+			"is_show": false,
 			"group": {
 				"name": "秘密花园",
 				"url": "https://12306free.bio.link/",

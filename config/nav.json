@@ -5,7 +5,7 @@
 		"style_des": "标准风格",
 		"tab_list": [
       {
-        "tab_name": "快捷导航",
+        "tab_name": "导航",
         "upper_right_corner": {
           "title": "",
           "url": "https://12306free.bio.link/"
@@ -42,7 +42,7 @@
 			},
 
       {
-        "tab_name": "夸克网盘",
+        "tab_name": "夸克盘",
         "upper_right_corner": {
           "title": "",
           "url": ""
