@@ -4,7 +4,7 @@
 		:id="`${classNamePrefixGroup}${groupData.group_name}`"
 		class="index-nav-group bg-white pt-[10px] mb-[20px] px-4 rounded-lg"
 	>
-		<div class="flex flex-row pl-[5px] pt-[8px] leading-[28px]">
+		<div class="flex flex-row pl-[5px] pt-[8px] leading-[28px] overflow-x-scroll no-scrollbar">
 			<h4 class="text-gray-500 text-md md:text-lg flex">
 				<span class="text-[16px] md:text-[18px] text-[#555555] pr-2 font-semibold truncate">{{
 					groupData.group_name
