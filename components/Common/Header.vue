@@ -2,14 +2,14 @@
 	<div class="w-full bg-white sticky top-0 z-[110]">
 		<div
 			id="fre123-header"
-			class="header-transition m-auto flex border-b-2 border-b-gray-50 md:px-[20px] py-[15px]"
+			class="header-transition m-auto flex border-b-2 border-b-gray-50 md:px-[20px] py-[10px]"
 		>
 			<div class="flex md:basis-1/3 relative">
-				<a :href="baseInfo['host']" target="_blank">
+				<a :href="baseInfo['web_host']" target="_blank">
 					<img class="header-logo header-transition ml-[20px]" :src="baseInfo['logo']" alt="" />
 				</a>
 				<a
-					:href="baseInfo['host']"
+					:href="baseInfo['web_host']"
 					target="_blank"
 					class="header-text header-transition ml-[10px] leading-[80px] md:text-[22px] text-[#333]"
 				>
@@ -80,11 +80,14 @@ withDefaults(
 // 控制头部变化
 const headerAnimation = (action: string) => {
 	const headerDom = document.getElementById('fre123-header')
+	const searchDom = document.getElementById('resource-menu')
 	if (headerDom) {
 		if (action == 'smaller') {
 			headerDom.classList.add('custom-size')
+			searchDom?.classList.add('hidden')
 		} else {
 			headerDom.classList.remove('custom-size')
+			searchDom?.classList.remove('hidden')
 		}
 	}
 }
