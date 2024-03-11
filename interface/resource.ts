@@ -1,5 +1,6 @@
 export interface IResourceType {
 	name: string
+	key?: string
 	path: string
 	is_show: boolean
 	allow_combine: boolean

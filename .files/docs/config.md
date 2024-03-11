@@ -90,3 +90,19 @@
 | icon        | `String`  | 图标     | 无     | https://img.fre123.com/i/2023/11/25/65619e8022505.png                                                                                       |
 | description | `String`  | 描述     | 无     | FRE123 专注于为您提供各种免费优质资源，包括影视资源、动漫番剧、软件工具等。无论您在寻找哪种资源，我们都将尽力为您提供，为您的学习或工作助力 |
 | is_show     | `Boolean` | 是否展示 | 无     | true                                                                                                                                        |
+
+### 搜索框配置
+
+#### `resource.json`
+
+> `resource.json` 配置文件采用 key-value 的形式，以左侧搜索类型作为 key(如影视、番剧)，具体配置项为 value。配置项具体参数定义如下：
+
+| 配置项    | 类型      | 说明                   | 默认值 | 参数示例                                    |
+| --------- | --------- | ---------------------- | ------ | ------------------------------------------- |
+| name      | `String`  | 分类名称               | 无     | 番剧                                        |
+| is_show   | `Boolean` | 是否展示               | 无     | false                                       |
+| list      | `Item[]`  | 具体分类下的搜索配置项 | 无     |                                             |
+| Item.name | `String`  | 名称                   | 无     | 谷歌                                        |
+| Item.url  | `String`  | 访问地址格式           | 无     | https://google.com/search?igu=1&q={keyword} |
+| Item.icon | `String`  | 图标                   | 无     |                                             |
+| Item.show | `Boolean` | 是否展示               | 无     | false                                       |

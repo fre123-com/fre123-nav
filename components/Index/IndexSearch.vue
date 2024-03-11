@@ -76,16 +76,21 @@ const resourceTypeList = searchStore.getResourceTypeList()
 
 const showResourceList = ref(false)
 const selectedResourceType = ref(searchStore.selectedResourceType)
-console.log('selectedResourceType is ', selectedResourceType.value)
 const selectedResource = ref<IResource>()
 
 const currResourceType = ref<IResourceType>()
-const getResourceType = (type: string) => {
+const getResourceType = async (type: string) => {
 	currResourceType.value = resourceTypeList.find((element) => {
 		return element.key == type
 	})
+	if (!currResourceType.value) {
+		currResourceType.value = resourceTypeList[0]
+		selectedResourceType.value = currResourceType.value?.key as string
+		searchStore.setSelectedResource(selectedResourceType.value)
+	}
 }
-getResourceType(selectedResourceType.value)
+await getResourceType(selectedResourceType.value)
+console.log('selectedResourceType is ', currResourceType.value)
 
 const currTab = ref(0)
 
