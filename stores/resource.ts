@@ -1,11 +1,11 @@
-import { RESOURCE_CONFIG, RESOURCE_TYPE_SEARCH } from '~/constants/resource'
+import resourceConfig from '~/config/resource.json'
 
 const useResourceStore = defineStore(
 	'fre123_search',
 	() => {
 		const searchOrder = ref<Record<string, string[]>>({})
 
-		const selectedResourceType = ref(RESOURCE_TYPE_SEARCH)
+		const selectedResourceType = ref('search')
 		const selectedResource = ref()
 
 		const getSearchOrder = () => {
@@ -33,7 +33,7 @@ const useResourceStore = defineStore(
 			withOptions: boolean = false,
 			isOriginal: boolean = false,
 		) => {
-			let resourceList = RESOURCE_CONFIG[resourceType].list ?? []
+			let resourceList = resourceConfig[resourceType].list ?? []
 			// 无效资源类型，返回 404
 			if (!resourceList) {
 				navigateTo('/404')
@@ -51,7 +51,7 @@ const useResourceStore = defineStore(
 		// 获取资源类型列表
 		const getResourceTypeList = () => {
 			let list: any[] = []
-			for (const [k, item] of Object.entries(RESOURCE_CONFIG)) {
+			for (const [k, item] of Object.entries(resourceConfig)) {
 				if (item.is_show) {
 					list.push({
 						key: k,
