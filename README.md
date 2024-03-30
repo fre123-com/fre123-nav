@@ -23,7 +23,7 @@
 - 拓展方便：导航数据完全由用户自定义控制
 - 技术支持：底部关注公众号加交流群
 
-## 部署 
+## 部署
 
 本项目使用 `node v18.16.0` 版本环境 `yarn`作为包管理工具
 
@@ -35,7 +35,7 @@ cd fre123-nav
 yarn install
 
 # 数据配置，具体见下方，配置成功后启动服务
-# 启动成功，访问 http://localhost:3000 
+# 启动成功，访问 http://localhost:3000
 yarn dev
 ```
 
@@ -70,7 +70,7 @@ yarn dev
 
 该项目由 `FRE123` 团队维护，如果您在使用该项目时遇到任何问题，请随时提交 `issue` 或联系我们。
 
-技术交流群🤖：
+技术交流群 🤖：
 
 <p align="center">
   <img src=".files/images/w_group.jpg" width="50%">
