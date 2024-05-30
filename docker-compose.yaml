@@ -1,0 +1,11 @@
+version: "3.5"
+
+services:
+  my-navigation-web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: my-navigation-web
+    ports:
+      - "8105:3000"
+    restart: always
