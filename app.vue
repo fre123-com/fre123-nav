@@ -1,10 +1,11 @@
 <template>
-	<NuxtLayout>
+	<Friendship_link>
 		<NuxtPage />
-	</NuxtLayout>
+	</Friendship_link>
 </template>
 
 <script setup lang="ts">
+import Friendship_link from './pages/friendship_link.vue';
 import { getConfigItem, CONFIG_KEY_SEO } from './stores/config'
 
 const seoInfo = getConfigItem(CONFIG_KEY_SEO)

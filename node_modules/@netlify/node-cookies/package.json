@@ -1,0 +1,61 @@
+{
+  "name": "@netlify/node-cookies",
+  "version": "0.1.0",
+  "description": "A Node.js implementation of Deno's cookies interface",
+  "type": "module",
+  "main": "./dist/main.js",
+  "exports": "./dist/main.js",
+  "files": [
+    "dist/**/*.js",
+    "!dist/**/*.test.js",
+    "dist/**/*.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "husky install node_modules/@netlify/eslint-config-node/.husky/",
+    "prepublishOnly": "npm ci && npm test",
+    "prepack": "npm run build",
+    "test": "run-s build format test:dev",
+    "format": "run-s build format:check-fix:*",
+    "format:check-fix:lint": "run-e format:check:lint format:fix:lint",
+    "format:check:lint": "cross-env-shell eslint $npm_package_config_eslint",
+    "format:fix:lint": "cross-env-shell eslint --fix $npm_package_config_eslint",
+    "format:ci": "run-s build format:check:*",
+    "format:check-fix:prettier": "run-e format:check:prettier format:fix:prettier",
+    "format:check:prettier": "cross-env-shell prettier --check $npm_package_config_prettier",
+    "format:fix:prettier": "cross-env-shell prettier --write $npm_package_config_prettier",
+    "test:dev": "run-s test:dev:*",
+    "test:ci": "run-s test:ci:*",
+    "test:dev:vitest": "vitest run",
+    "test:dev:vitest:watch": "vitest watch",
+    "test:ci:vitest": "vitest run"
+  },
+  "config": {
+    "eslint": "--ignore-path .gitignore --cache --format=codeframe --max-warnings=0 \"*.{js,ts,md,html}\"",
+    "prettier": "--ignore-path .gitignore --loglevel=warn \"{src,scripts,.github}/**/*.{js,ts,md,yml,json,html}\" \"*.{js,ts,yml,json,html}\" \".*.{js,ts,yml,json,html}\" \"!**/package-lock.json\" \"!package-lock.json\""
+  },
+  "ava": {
+    "verbose": true
+  },
+  "keywords": [],
+  "license": "MIT",
+  "repository": "netlify/node-cookies",
+  "bugs": {
+    "url": "https://github.com/netlify/node-cookies/issues"
+  },
+  "author": "Netlify Inc.",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
+    "@netlify/eslint-config-node": "^7.0.1",
+    "husky": "^8.0.0",
+    "typescript": "^4.5.4",
+    "vitest": "^0.30.1"
+  },
+  "engines": {
+    "node": "^14.16.0 || >=16.0.0"
+  }
+}

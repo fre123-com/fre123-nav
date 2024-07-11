@@ -1,0 +1,58 @@
+{
+  "name": "unenv",
+  "version": "1.9.0",
+  "description": "",
+  "repository": "unjs/unenv",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./runtime/mock/proxy-cjs": "./runtime/mock/proxy.cjs",
+    "./runtime/mock/proxy-cjs/*": "./runtime/mock/proxy.cjs",
+    "./runtime/*": {
+      "types": "./runtime/*.d.ts",
+      "require": "./runtime/*.cjs",
+      "import": "./runtime/*.mjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "runtime"
+  ],
+  "dependencies": {
+    "consola": "^3.2.3",
+    "defu": "^6.1.3",
+    "mime": "^3.0.0",
+    "node-fetch-native": "^1.6.1",
+    "pathe": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "changelogen": "^0.5.5",
+    "eslint": "^8.56.0",
+    "eslint-config-unjs": "^0.2.1",
+    "jiti": "^1.21.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
+    "unbuild": "^2.0.0",
+    "wrangler": "^3.22.3"
+  },
+  "packageManager": "pnpm@8.14.0",
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint --ext .ts . && prettier -c src test",
+    "lint:fix": "eslint --fix --ext .ts . && prettier -w src test",
+    "release": "pnpm test && changelogen --release && pnpm publish && git push --follow-tags",
+    "test": "pnpm lint && pnpm typecheck",
+    "test:deno": "NODE_NO_WARNINGS=1 pnpm jiti test/deno.ts",
+    "test:cf": "pnpm jiti test/cloudflare.ts",
+    "test:vc": "pnpm jiti test/vercel.ts",
+    "typecheck": "tsc --noEmit"
+  }
+}

@@ -1,0 +1,1 @@
+export { default } from "file:///D:/fre123work/fre123-nav/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"

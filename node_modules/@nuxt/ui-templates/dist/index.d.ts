@@ -1,0 +1,6 @@
+export { template as error404 } from './templates/error-404'
+export { template as error500 } from './templates/error-500'
+export { template as errorDev } from './templates/error-dev'
+export { template as loading } from './templates/loading'
+export { template as spaLoadingIcon } from './templates/spa-loading-icon'
+export { template as welcome } from './templates/welcome'

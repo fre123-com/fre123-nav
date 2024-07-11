@@ -1,0 +1,63 @@
+{
+  "name": "magic-string-ast",
+  "version": "0.3.0",
+  "packageManager": "pnpm@8.6.10",
+  "description": "Extend Babel AST for magic-string.",
+  "license": "MIT",
+  "homepage": "https://github.com/sxzz/magic-string-ast#readme",
+  "bugs": {
+    "url": "https://github.com/sxzz/magic-string-ast/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxzz/magic-string-ast.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": {
+        "require": "./dist/index.d.ts",
+        "import": "./dist/index.d.mts"
+      },
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "magic-string": "^0.30.2"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.22.5",
+    "@sxzz/eslint-config": "^3.2.3",
+    "@sxzz/prettier-config": "^1.0.4",
+    "@types/node": "^20.4.5",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.45.0",
+    "fast-glob": "^3.3.1",
+    "prettier": "^3.0.0",
+    "tsup": "^7.1.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
+  },
+  "engines": {
+    "node": ">=16.14.0"
+  },
+  "prettier": "@sxzz/prettier-config",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "pnpm run lint --fix",
+    "build": "tsup && tsx scripts/postbuild.mts",
+    "test": "vitest",
+    "release": "bumpp && pnpm publish"
+  }
+}
