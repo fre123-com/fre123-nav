@@ -1,7 +1,7 @@
 <template>
-	<Friendship_link>
+	<NuxtLayout>
 		<NuxtPage />
-	</Friendship_link>
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">

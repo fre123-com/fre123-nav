@@ -122,6 +122,10 @@
 <script setup lang="ts">
 const imgCss = ref('')
 
+definePageMeta({
+  layout: false  // 这行代码告诉 Nuxt 不使用布局
+})
+
 // 输入框聚焦判断css变化板块
 const keyword = ref()
 const waysAll = ref(false)
