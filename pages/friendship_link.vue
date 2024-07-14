@@ -60,11 +60,10 @@
             <div>暂无资源</div>
           </div>
           <div class="kinds-box-bottom" v-if="item.name!=='全部'&&showLink[item.name].length!==0">
-            <div class="box-bottom-box" v-for="link in showLink[item.name]" @click="goLink(link.url)"><img :src="link.url" />{{ link.name}}</div>
+            <div class="box-bottom-box" v-for="link in showLink[item.name]" @click="goLink(link.url)"><img :src="link.logo_url" />{{ link.name}}</div>
           </div>
         </div>
       </div>
-
     </main>
 
     <div class="move-people"></div>
@@ -456,7 +455,9 @@ main {
 }
 
 .box-bottom-box img{
-  width: 25px;
+  width: 20px;
+  height: auto;
+  margin: 0 3px;
 }
 
 .box-bottom-box:hover {
