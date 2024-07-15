@@ -1,0 +1,80 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "paths": {
+      "#imports": [
+        "./types/nitro-imports"
+      ],
+      "#paths": [
+        "../node_modules/nuxt/dist/core/runtime/nitro/paths"
+      ],
+      "~": [
+        "./.."
+      ],
+      "~/*": [
+        "../*"
+      ],
+      "@": [
+        "../src"
+      ],
+      "~~": [
+        "./.."
+      ],
+      "~~/*": [
+        "../*"
+      ],
+      "@@": [
+        "./.."
+      ],
+      "@@/*": [
+        "../*"
+      ],
+      "assets": [
+        "../assets"
+      ],
+      "assets/*": [
+        "../assets/*"
+      ],
+      "public": [
+        "../public"
+      ],
+      "public/*": [
+        "../public/*"
+      ],
+      "pinia": [
+        "../node_modules/pinia/dist/pinia"
+      ],
+      "#icon-collections": [
+        "./icon-collections"
+      ]
+    }
+  },
+  "include": [
+    "./types/nitro-nuxt.d.ts",
+    "../node_modules/@nuxtjs/tailwindcss/runtime/server",
+    "../node_modules/@pinia/nuxt/runtime/server",
+    "../node_modules/@vueuse/nuxt/runtime/server",
+    "../node_modules/nuxt-icon/runtime/server",
+    "../node_modules/@pinia-plugin-persistedstate/nuxt/runtime/server",
+    "../node_modules/@nuxt/devtools/runtime/server",
+    "../node_modules/@nuxt/telemetry/runtime/server",
+    "./types/nitro.d.ts",
+    "../**/*",
+    "../server/**/*"
+  ],
+  "exclude": [
+    "../node_modules",
+    "../node_modules/nuxt/node_modules",
+    "../dist"
+  ]
+}

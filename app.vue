@@ -1,4 +1,5 @@
 <template>
+	<SurpriseShow />
 	<NuxtLayout>
 		<NuxtPage />
 	</NuxtLayout>
