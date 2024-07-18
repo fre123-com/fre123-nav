@@ -1,7 +1,7 @@
 <template>
 	<div v-if="currentAdPosition1 || currentAdPosition2">
-		<SurpriseBody v-if="currentAdPosition1" :adData="currentAdPosition1" position="1" />
-		<SurpriseBody v-if="currentAdPosition2" :adData="currentAdPosition2" position="2" />
+    <SurpriseBoxCenter v-if="currentAdPosition1" :adData="currentAdPosition1" position="1"/>
+    <SurpriseBoxBottomRight v-if="currentAdPosition2" :adData="currentAdPosition2" position="2"/>
 	</div>
 </template>
 

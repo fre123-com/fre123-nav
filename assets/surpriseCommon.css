@@ -1,0 +1,104 @@
+/* 公共广告框样式 */
+.ad-box {
+  font-size: 20px;
+  position: fixed;
+  padding: 10px;
+  width: 300px;
+  /* 宽度固定 */
+  height: auto;
+  background-color: #fff8e1;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  overflow: hidden;
+  /* 确保内容不会超出边界 */
+  z-index: 1000;
+}
+
+
+
+.ad-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  /* 与文本保持一定间距 */
+  border-radius: 5px;
+  /* 轻微圆角 */
+}
+
+.ad-content {
+  max-width: 100%;
+  /* 确保图片和内容在广告框内 */
+  display: inline-block;
+  /* 使内容在行内显示 */
+  flex-grow: 1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ad-content h1 {
+  color: #ff4757;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.ad-link {
+  color: rgb(148, 49, 49);
+  text-decoration: none;
+  display: block;
+  /* 使链接独占整行 */
+}
+
+.ad-link:hover {
+  color: rgb(210, 62, 74);
+}
+
+.ad-text {
+  color: rgb(148, 49, 49);
+  margin-top: 10px;
+}
+
+.close-button-wrapper {
+  position: absolute;
+  /* 使子按钮绝对定位相对于此元素 */
+  top: 0px;
+  right: 0px;
+  width: 25px;
+  height: 25px;
+}
+
+/* 关闭按钮的基本样式 */
+.close-button {
+  font-size: 25px;
+  color: #ff4757;
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  /* 平滑过渡 */
+}
+
+/* 鼠标悬停时的样式 */
+.close-button:hover {
+  transform: rotate(360deg);
+  /* 鼠标悬停时旋转360度 */
+  transform-origin: center;
+}
+
+/* 定义 Vue transition 的 CSS 类 */
+.ad-transition-enter-active,
+.ad-transition-leave-active {
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.ad-transition-enter-from,
+.ad-transition-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}

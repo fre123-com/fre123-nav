@@ -29,3 +29,15 @@ export const positionMap = {
 	1: '居中弹窗',
 	2: '右下角',
 }
+
+/**
+ * 设置24小时后的时间
+ * @param adData - 广告数据对象，包含广告的详细信息和状态
+ */
+export const close24h = (adData: ISurpriseItem | null) => {
+	if (!adData) return
+	const ad = adData
+	const closeTime = new Date()
+	closeTime.setHours(closeTime.getHours() + 24) // 设置24小时后的时间
+	localStorage.setItem(`${ad.ads_id}_closeTime`, closeTime.toISOString())
+}
