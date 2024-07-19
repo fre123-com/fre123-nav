@@ -60,7 +60,7 @@
             <div>暂无资源</div>
           </div>
           <div class="kinds-box-bottom" v-if="item.name!=='全部'&&showLink[item.name].length!==0">
-            <div class="box-bottom-box" v-for="link in showLink[item.name]" @click="goLink(link.url)"><img :src="link.logo_url" />{{ link.name}}</div>
+            <a class="box-bottom-box" v-for="link in showLink[item.name]" :href="link.url" target="_blank"><img :src="link.logo_url" />{{ link.name}}</a>
           </div>
         </div>
       </div>
@@ -75,9 +75,7 @@
         <div class="footer-top">
           <span><strong>友情链接：</strong></span>
           <ul>
-            <li><a>云迹寻宝</a></li>
-            <li><a>知了搜</a></li>
-            <li><a>FRE123 免费资源导航</a></li>
+            <li v-for="item in linkData?.data.rows.slice(0,3)"><a :href="item.url" target="_blank">{{item.name}}</a></li>
             <li><a href=""><span>查看更多>>></span></a></li>
           </ul>
         </div>
@@ -91,40 +89,47 @@
 </template>
 
 <script setup lang="ts">
+import type { ILink } from '~/interface/link';
+
 const imgCss = ref('')
 
 definePageMeta({
   layout: false  // 这行代码告诉 Nuxt 不使用布局
 })
 
+// 搜索的类型筛选
 const typeData = ref([{ name: '全部' }])
-const linkData = ref<any>([])
-const showLink = ref<any>({})
+// 本地数据抓取
+const linkData = ref<ILink|null>()
+// 大类为单位的数据重构
+const showLink = ref<any|null>({})
 
 // 通过本地获取数据
 const getData=()=>{
   const data = localStorage.getItem('friend_data');
   if(data){
     try{
-      linkData.value = JSON.parse(data).data;
+      linkData.value = JSON.parse(data);
       // types字段赋值
-  for (let i = 0; i < linkData.value.types.length; i++) {
-        if (linkData.value.types[i].count !== 0) {
-          typeData.value = typeData.value.concat(linkData.value.types[i])
-          showLink.value[linkData.value.types[i].name]=[]
+      if(linkData.value){
+      linkData.value.data.types.forEach((e) => {
+        if (e.count !== 0) {
+          typeData.value = typeData.value.concat(e)
+          showLink.value[e.name]=[]
         }
-      }
+      });
       // 获取键名进行类别判断赋值
       let keys = Object.keys(showLink.value);
-      // 
-      for(let i=0;i<linkData.value.rows.length;i++){
+      for(let i=0;i<linkData.value.data.rows.length;i++){
         for(let j =0;j<keys.length;j++){
-          if(linkData.value.rows[i].type===keys[j]&&linkData.value.rows[i].status===true){
-            showLink.value[keys[j]].push(linkData.value.rows[i])
+          if(linkData.value.data.rows[i].type===keys[j]&&linkData.value.data.rows[i].status===true){
+            showLink.value[keys[j]].push(linkData.value.data.rows[i])
           }
         }
       }
-      console.log("showLink:",showLink.value);
+    }
+    console.log("showLink:",showLink.value);
+    
     }catch{
       console.log("JSON数据解析错误");
     }
@@ -171,8 +176,7 @@ onMounted(async () => {
   //   })
 })
 
-// 输入框聚焦判断css变化板块
-const keyword = ref()
+// 输入框聚焦判断css变化板块，以及常用交互
 const waysAll = ref(false)
 const inputColor = ref(false)
 const inputClick = ref(false)
@@ -188,18 +192,12 @@ const inputCss = computed(() => {
   }
 })
 
-// 链接跳转
-const goLink =async(link: string | URL | undefined)=>{
-  window.open(link, "_blank");
-}
-
 </script>
 
 <style lang="scss" scoped>
 li {
   list-style: none;
 }
-
 
 .body {
   position: relative;
@@ -270,14 +268,13 @@ header {
 
 .header-search-ways {
   position: absolute;
-  margin-left: 30px
+  margin-left: 20px
 }
 
 .waysAll {
   cursor: pointer;
   font-size: 16px;
-  padding-right: 10px;
-  margin-right: 10px;
+  padding-right: 20px;
   border-right: 2px solid #DDDFE2;
 }
 
@@ -290,8 +287,7 @@ header {
   box-shadow: 1px 0px 5px 3px rgba(150, 150, 150, 0.12);
   border-radius: 10px;
   margin: 15px 0;
-  margin-left: 0;
-  padding-left: 0;
+  width: 70px;
 }
 
 .header-search-ways ul li {
@@ -391,6 +387,11 @@ header {
   align-items: center;
   cursor: pointer;
   padding: 15px;
+  border-radius: 10px;
+}
+
+.ads-icon ul li:hover{
+  background-color: #CBD5E1;
 }
 
 .ads-icon ul img {
