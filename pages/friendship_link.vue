@@ -66,8 +66,8 @@
       </div>
     </main>
 
-    <div class="move-people"></div>
-    <div class="body-fre123"></div>
+    <!-- <div class="move-people"></div>
+    <div class="body-fre123"></div> -->
 
     <!-- 页面底部 -->
     <footer>
@@ -101,7 +101,7 @@ definePageMeta({
 const typeData = ref([{ name: '全部' }])
 // 本地数据抓取
 const linkData = ref<ILink|null>()
-// 大类为单位的数据重构
+// 以大类为单位的数据重构
 const showLink = ref<any|null>({})
 
 // 通过本地获取数据
@@ -113,7 +113,7 @@ const getData=()=>{
       // types字段赋值
       if(linkData.value){
       linkData.value.data.types.forEach((e) => {
-        if (e.count !== 0) {
+        if (e.count !== 0 && e.status) {
           typeData.value = typeData.value.concat(e)
           showLink.value[e.name]=[]
         }
@@ -215,7 +215,7 @@ li {
   background-repeat: no-repeat;
   background-position: center;
   z-index: -99;
-  opacity: 0.03;
+  opacity: 0.01;
   height: 100%;
   width: 100%;
 }

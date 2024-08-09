@@ -6,7 +6,8 @@ export interface ILink {
       types:Array<{
           name:string,
           created_at: string,
-          count:number
+          count:number,
+          status:false
       }>
       rows: Array<{
               id:number
