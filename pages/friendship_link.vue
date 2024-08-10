@@ -11,7 +11,7 @@
           <div @click="waysAll = !waysAll" class="header-search-ways">
             <span class="waysAll">{{ wayType }}</span>
             <ul v-if="waysAll">
-              <li v-for="item in typeData" @click="wayType = item.name">{{ item.name }}</li>
+              <li v-for="item in headerTypeSelect" @click="wayType = item">{{ item }}</li>
             </ul>
           </div>
           <input @focusin="inputClick = true" @focusout="inputClick = false" :class="inputCss" />
@@ -54,13 +54,13 @@
     <!-- 页面主要内容 -->
     <main>
       <div class="main-content">
-        <div class="main-kinds-box" v-for="(item,index) in  typeData" :key="index">
-          <div class="kinds-box-top" v-if="item.name!=='全部'"><strong>{{ item.name }}资源</strong></div>
-          <div class="no-link-data" v-if="item.name!=='全部'&&showLink[item.name].length===0">
+        <div class="main-kinds-box" v-for="(item,index) in  showLink" :key="index">
+          <div class="kinds-box-top"><strong>{{ item.name }}资源</strong></div>
+          <!-- <div class="no-link-data">
             <div>暂无资源</div>
-          </div>
-          <div class="kinds-box-bottom" v-if="item.name!=='全部'&&showLink[item.name].length!==0">
-            <a class="box-bottom-box" v-for="link in showLink[item.name]" :href="link.url" target="_blank"><img :src="link.logo_url" />{{ link.name}}</a>
+          </div> -->
+          <div class="kinds-box-bottom">
+            <a class="box-bottom-box" v-for="link in item.rows" :href="link.url" target="_blank"><img :src="link.logo_url" />{{ link.name}}</a>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@
         <div class="footer-top">
           <span><strong>友情链接：</strong></span>
           <ul>
-            <li v-for="item in linkData?.data.rows.slice(0,3)"><a :href="item.url" target="_blank">{{item.name}}</a></li>
+            <li><a href="" target="_blank"></a></li>
             <li><a href=""><span>查看更多>>></span></a></li>
           </ul>
         </div>
@@ -89,7 +89,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ILink } from '~/interface/link';
+import type { IFriendShipItemData } from '~/interface/link';
 
 const imgCss = ref('')
 
@@ -97,39 +97,27 @@ definePageMeta({
   layout: false  // 这行代码告诉 Nuxt 不使用布局
 })
 
-// 搜索的类型筛选
-const typeData = ref([{ name: '全部' }])
+// 头部搜索的类型筛选
+const headerTypeSelect = ref<any>(['全部'])
 // 本地数据抓取
-const linkData = ref<ILink|null>()
+const linkData = ref<IFriendShipItemData[]>([])
 // 以大类为单位的数据重构
-const showLink = ref<any|null>({})
+const showLink = ref<any>()
 
 // 通过本地获取数据
 const getData=()=>{
-  const data = localStorage.getItem('friend_data');
-  if(data){
+  const jsonData = localStorage.getItem('friend_data');
+  if(jsonData){
     try{
-      linkData.value = JSON.parse(data);
+      const data = JSON.parse(jsonData);
       // types字段赋值
-      if(linkData.value){
-      linkData.value.data.types.forEach((e) => {
-        if (e.count !== 0 && e.status) {
-          typeData.value = typeData.value.concat(e)
-          showLink.value[e.name]=[]
-        }
+      data.data.forEach((e: { name: any; }) => {
+      headerTypeSelect.value.push(e.name)
       });
-      // 获取键名进行类别判断赋值
-      let keys = Object.keys(showLink.value);
-      for(let i=0;i<linkData.value.data.rows.length;i++){
-        for(let j =0;j<keys.length;j++){
-          if(linkData.value.data.rows[i].type===keys[j]&&linkData.value.data.rows[i].status===true){
-            showLink.value[keys[j]].push(linkData.value.data.rows[i])
-          }
-        }
-      }
-    }
-    console.log("showLink:",showLink.value);
-    
+      // 数据获取
+      linkData.value = data.data
+    // 筛选有数据的类别数组
+    showLink.value = linkData.value.filter((obj: { rows: string | any[]; }) => obj.rows.length!==0)
     }catch{
       console.log("JSON数据解析错误");
     }
@@ -140,40 +128,6 @@ const getData=()=>{
 
 onMounted(async () => { 
   getData();
-  // 通过fetch获取数据
-  // await fetch('https://raw.githubusercontent.com/linsk27/amz123jsonData/main/friendship_link')
-  //   .then(response => {
-  //     return response.json();
-  //   })
-  //   .then(data => {
-
-  //     linkData.value = data.data
-
-  //     for (let i = 0; i < linkData.value.types.length; i++) {
-  //       if (linkData.value.types[i].count !== 0) {
-  //         typeData.value = typeData.value.concat(linkData.value.types[i])
-  //         showLink.value[linkData.value.types[i].name]=[]
-  //       }
-  //     }
-
-  //     // 获取键名进行类别判断赋值
-  //     let keys = Object.keys(showLink.value);
-  //     for(let i=0;i<linkData.value.rows.length;i++){
-  //       for(let j =0;j<keys.length;j++){
-  //         if(linkData.value.rows[i].type===keys[j]){
-  //           showLink.value[keys[j]].push(linkData.value.rows[i])
-  //         }
-  //       }
-  //     } 
-  //     console.log("showLink:",showLink.value);
-      
-  //   })
-  //   .catch(error => {
-  //     console.log("get error:", error);
-  //   })
-  //   .finally(() => {
-  //     console.log("fetch over");
-  //   })
 })
 
 // 输入框聚焦判断css变化板块，以及常用交互
@@ -225,21 +179,24 @@ header {
   background-color: #FFFFFF;
   display: fixed;
   width: 100%;
+  box-shadow: 0 2px 20px rgba(14, 28, 97, .06);
+  position: sticky;
 }
 
 .header-box {
+  padding-left: 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #DDDFE2;
-  box-shadow: 1px 0px 10px 3px rgba(163, 159, 159, 0.12);
+  z-index: 9999;
 }
 
 .header-icon {
   display: flex;
   align-items: center;
-  font-size: 30px;
-  margin-left: 30px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2rem;
 }
 
 .header-icon-rotate-right {
@@ -403,6 +360,7 @@ header {
 // 友链内容
 main {
   flex: 1;
+  padding: 0;
 }
 
 .main-content {
@@ -434,14 +392,14 @@ main {
   padding: 10px
 }
 
-.no-link-data{
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 800;
-  color: #5b718b;
-}
+// .no-link-data{
+//   height: 60px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-weight: 800;
+//   color: #5b718b;
+// }
 
 .box-bottom-box {
   display: flex;
@@ -548,6 +506,8 @@ footer {
   .header-box {
     flex-direction: column;
     padding-bottom: 22px;
+    margin-right: 40px;
+    align-items: center;
   }
 
   .header-search input {

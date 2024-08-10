@@ -1,0 +1,178 @@
+{
+  "data": [
+    {
+      "type_id": "1",
+      "created_at": "2024-07-31 12:04:57",
+      "name": "视频",
+      "status": true,
+      "rows": [
+        {
+          "row_id": "301",
+          "updated_at": "2024-08-08 12:12:30",
+          "created_at": "2024-07-31 12:12:16",
+          "order": 0,
+          "name": "韩剧网",
+          "status": true,
+          "url": "https://www.hanjutu.com/",
+          "logo_url": "https://img.kuaiyong.com/pkfile/202112/18115018sdyp.png",
+          "description": "自闭了，",
+          "type": "视频"
+        },
+        {
+          "row_id": "0751129d-3090-4bef-9e75-9513500c8f3e",
+          "updated_at": "2024-08-08 10:01:21",
+          "created_at": "2024-08-04 17:19:08",
+          "order": 3,
+          "name": "西瓜视频",
+          "status": false,
+          "url": "https://www.ixigua.com/",
+          "logo_url": "https://pic3.zhimg.com/50/v2-d4cb789ae2216dc1c9ea156c3a72833d_720w.jpg?source=54b3c3a5",
+          "description": "http://localhost:3000/#/website/friendship_link深大",
+          "type": "视频"
+        },
+        {
+          "row_id": "ff9fab1a-b5f4-48b5-9b68-93204e4ba8fc",
+          "updated_at": "2024-08-07 20:50:39",
+          "created_at": "2024-08-07 17:34:16",
+          "order": 1,
+          "name": "爱奇艺",
+          "status": true,
+          "url": "https://www.iqiyi.com/",
+          "logo_url": "https://public-cdn.mokahr.com/iqiyi/0ad345c6-133d-4a4a-8b8f-a10ada23ba38.png",
+          "description": "自闭了，",
+          "type": "视频"
+        },
+        {
+          "row_id": "da83f9bf-66ae-49d3-85be-10c21a7f8348",
+          "created_at": "2024-08-07 20:53:51",
+          "updated_at": "2024-08-07 20:53:51",
+          "order": 2,
+          "name": "芒果TV",
+          "url": "https://www.mgtv.com/",
+          "logo_url": "https://ts1.cn.mm.bing.net/th/id/R-C.193b0bbd274165ccbe93efb6c666563a?rik=CDyOjio1dPGw4A&riu=http%3a%2f%2fi1.hunantv.com%2fp1%2f20140922%2f1715272367.png&ehk=roIUms%2ffP4obrnbTMnysLVLWplHfO3IiLYF5fdl8RJQ%3d&risl=&pid=ImgRaw&r=0",
+          "description": "sdasd t43t4 233r234 123 ",
+          "type": "视频"
+        }
+      ],
+      "count": 4
+    },
+    {
+      "type_id": "4",
+      "created_at": "2024-07-21 17:05:01",
+      "name": "游戏",
+      "status": false,
+      "rows": [
+        {
+          "row_id": "b4b3f911-df0d-4b7c-88f1-649dc679756f",
+          "updated_at": "2024-08-07 20:50:39",
+          "created_at": "2024-08-06 18:27:02",
+          "order": 1,
+          "name": "明日方舟",
+          "status": true,
+          "url": "https://ak.hypergryph.com/",
+          "logo_url": "https://img.gmz88.com/uploadimg/ico/2018/0710/1531207541719926.jpg",
+          "description": "自闭了",
+          "type": "游戏"
+        },
+        {
+          "row_id": "6372b85c-1277-4872-9d22-826660af7453",
+          "updated_at": "2024-08-07 20:50:39",
+          "created_at": "2024-08-06 20:50:04",
+          "order": 0,
+          "name": "王者荣耀",
+          "status": true,
+          "url": "https://pvp.qq.com/",
+          "logo_url": "https://img.ixintu.com/upload/jpg/20210523/f083ac25b8d57debcda7653a524c0026_257819_800_800.jpg!con",
+          "description": "打算给他换个让他 ",
+          "type": "游戏"
+        }
+      ],
+      "count": 2
+    },
+    {
+      "type_id": "f806a2a4-1956-4780-838f-38dd371f7a55",
+      "created_at": "2024-08-06 20:43:39",
+      "name": "小说",
+      "status": true,
+      "rows": [
+        {
+          "row_id": "7b058ca0-bc15-4ffb-8739-d215d4f8783e",
+          "updated_at": "2024-08-07 18:57:15",
+          "created_at": "2024-08-06 20:45:35",
+          "order": 0,
+          "name": "七猫小说",
+          "status": true,
+          "url": "https://www.qimao.com/",
+          "logo_url": "https://img.onlinedown.net/download/202011/140037-5fb4b8857a558.jpg",
+          "description": "灌灌灌灌灌灌灌灌灌灌灌灌",
+          "type": "小说"
+        },
+        {
+          "row_id": "e4f6c88e-cae8-45de-82d2-5f4963ff5a9a",
+          "created_at": "2024-08-08 12:10:39",
+          "updated_at": "2024-08-08 12:10:39",
+          "order": 4,
+          "name": "番茄小说22",
+          "status": true,
+          "url": "https://fanqienovel.com/",
+          "logo_url": "https://tse1-mm.cn.bing.net/th/id/OIP-C.0CxyzNsEwDrd2S06hoqbOAHaHa?rs=1&pid=ImgDetMain",
+          "description": "未受到广泛风格梵蒂冈山地车下呃呃呃呃",
+          "type": "小说"
+        }
+      ],
+      "count": 2
+    },
+    {
+      "type_id": "2",
+      "created_at": "2024-07-31 11:36:52",
+      "name": "浏览器",
+      "status": false,
+      "rows": [
+        {
+          "row_id": "101",
+          "updated_at": "2024-08-07 18:57:15",
+          "created_at": "2024-07-31 11:39:27",
+          "order": 0,
+          "name": "fre123",
+          "status": false,
+          "url": "https://www.fre321.com/",
+          "logo_url": "https://img.fre123.com/i/2023/11/25/65619e8022505.png",
+          "description": "自闭了,哈哈哈，",
+          "type": "浏览器"
+        }
+      ],
+      "count": 1
+    },
+    {
+      "type_id": "7e830974-c5a7-404d-a145-e767eb4a915f",
+      "created_at": "2024-08-05 13:40:23",
+      "name": "网盘",
+      "status": true,
+      "rows": [
+        {
+          "row_id": "3070be19-fa15-4936-bd6b-3937cb38c4f3",
+          "updated_at": "2024-08-07 18:57:15",
+          "created_at": "2024-08-05 16:34:52",
+          "order": 0,
+          "name": "百度网盘",
+          "status": true,
+          "url": "https://pan.baidu.com/",
+          "logo_url": "https://www.xmisoft.com/upfile/2021/03/1615370827874.jpg",
+          "description": "萨达萨达是 ",
+          "type": "网盘"
+        }
+      ],
+      "count": 1
+    },
+    {
+      "type_id": "6953ed3a-2dd3-4ace-ab96-f2178fa92ff3",
+      "created_at": "2024-08-07 21:48:42",
+      "name": "音乐",
+      "status": true,
+      "rows": [],
+      "count": 0
+    }
+  ],
+  "info": "ok",
+  "status": 0
+}
