@@ -184,7 +184,7 @@ header {
 }
 
 .header-box {
-  padding-left: 2.5rem;
+  padding:0 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -221,6 +221,7 @@ header {
   position: relative;
   display: flex;
   align-items: center;
+  margin-left: 140px;
 }
 
 .header-search-ways {
@@ -265,6 +266,7 @@ header {
   border: 1px solid #e3e5e9;
   width: 600px;
   height: 45px;
+  // margin-left: 100px;
   box-shadow: 1px 1px 10px 2px rgba(88, 85, 85, 0.12);
   transition: all 0.1s ease-in 0.1s
 }
@@ -286,7 +288,6 @@ header {
 .header-ads {
   cursor: pointer;
   display: flex;
-  margin-right: 50px
 }
 
 .header-ads-smallBox img {
@@ -497,16 +498,13 @@ footer {
 }
 
 @media(max-width: 1100px) {
-  .header-search input {
-    width: 350px;
+  .header-icon{
+    margin-left: 100px;
   }
-}
-
-@media(max-width: 1000px) {
   .header-box {
     flex-direction: column;
     padding-bottom: 22px;
-    margin-right: 40px;
+    margin-right: 150px;
     align-items: center;
   }
 
