@@ -1,10 +1,3 @@
-<!--
- * @Description: 
- * @Author: 叶剑鑫 yejianxin2022@dingtalk.com
- * @Date: 2024-08-21 14:30:58
- * @LastEditors: 叶剑鑫 yejianxin2022@dingtalk.com
- * @LastEditTime: 2024-08-22 15:13:23
--->
 <template>
   <CommentWrapper>
     <!-- 板块选择 -->

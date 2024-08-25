@@ -515,9 +515,9 @@
   resolved "https://registry.npmmirror.com/@ctrl/tinycolor/-/tinycolor-3.6.1.tgz"
   integrity sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==
 
-"@element-plus/icons-vue@^1.1.4":
+"@element-plus/icons-vue@1.1.4":
   version "1.1.4"
-  resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-1.1.4.tgz"
+  resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-1.1.4.tgz#5d2788ea356f1458068e6d400e724ca5f3d29aca"
   integrity sha512-Iz/nHqdp1sFPmdzRwHkEQQA3lKvoObk8azgABZ81QUOpW9s/lUyQVUSh0tNtEPZXQlKwlSh7SPgoVxzrE0uuVQ==
 
 "@element-plus/icons-vue@^2.3.1":
@@ -1335,9 +1335,9 @@
   resolved "https://registry.npmmirror.com/@vue/shared/-/shared-3.4.21.tgz"
   integrity sha512-PuJe7vDIi6VYSinuEbUIQgMIRZGgM8e4R+G+/dQTk0X1NEdvgvvgv7m+rfmDH1gZzyA1OjjoWskvHlfRNfQf3g==
 
-"@vueuse/core@^8.0.1":
+"@vueuse/core@8.9.4":
   version "8.9.4"
-  resolved "https://registry.npmmirror.com/@vueuse/core/-/core-8.9.4.tgz"
+  resolved "https://registry.npmmirror.com/@vueuse/core/-/core-8.9.4.tgz#c7db40f19390b3c9f4ff9294a30461497f62ec19"
   integrity sha512-B/Mdj9TK1peFyWaPof+Zf/mP9XuGAngaJZBwPaXBvU3aCTZlx3ltlrFFFyMV4iGBwsjSCeUCgZrtkEj9dS2Y3Q==
   dependencies:
     "@types/web-bluetooth" "^0.0.14"
@@ -1578,9 +1578,9 @@ autoprefixer@^10.4.7:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
-axios@^0.27.2:
+axios@0.27.2:
   version "0.27.2"
-  resolved "https://registry.npmmirror.com/axios/-/axios-0.27.2.tgz"
+  resolved "https://registry.npmmirror.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
   integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
   dependencies:
     follow-redirects "^1.14.9"
@@ -2204,9 +2204,9 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-crypto-js@^4.2.0:
+crypto-js@4.2.0:
   version "4.2.0"
-  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-4.2.0.tgz"
+  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-4.2.0.tgz#4d931639ecdfd12ff80e8186dba6af2c2e856631"
   integrity sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==
 
 css-select@^4.2.1:
@@ -2256,11 +2256,6 @@ cz-conventional-changelog@3.3.0:
     word-wrap "^1.0.3"
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
-
-cz-git@^1.3.2:
-  version "1.9.1"
-  resolved "https://registry.npmmirror.com/cz-git/-/cz-git-1.9.1.tgz"
-  integrity sha512-GK3EI5R7GApS8u+g9QPvy/50z0NiG7ijc1NASxZaDnQn0ARzr73MjZb3Lt4cZQvKJBd8GrfvOWqHgwMQQ/OlaA==
 
 dargs@^7.0.0:
   version "7.0.0"
@@ -2497,16 +2492,16 @@ electron-to-chromium@^1.4.668:
   resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.722.tgz"
   integrity sha512-5nLE0TWFFpZ80Crhtp4pIp8LXCztjYX41yUcV6b+bKR2PqzjskTMOOlBi1VjBHlvHwS+4gar7kNKOrsbsewEZQ==
 
-element-plus-table-dragable@^1.0.0:
+element-plus-table-dragable@1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmmirror.com/element-plus-table-dragable/-/element-plus-table-dragable-1.0.0.tgz"
+  resolved "https://registry.npmmirror.com/element-plus-table-dragable/-/element-plus-table-dragable-1.0.0.tgz#2a97fa2d80509484ed5d78f813e564b913497d12"
   integrity sha512-NKa95z3wkKv8l4iydQksJh+uGYtbI3ixiUio6tZzmY9XyJZDtgzWHx6kpqRzCWoba7EUoaIhA+Se/QKWKeOhTA==
   dependencies:
     sortablejs "^1.15.0"
 
-element-plus@^2.2.6:
+element-plus@2.6.3:
   version "2.6.3"
-  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.6.3.tgz"
+  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.6.3.tgz#15e82e7dc0646c5d1e01b508d0e577d764829b1c"
   integrity sha512-U4L/mr+1r+EmAUYUHrs0V/8hHMdBGP07rPymSC72LZCN4jK1UwygQYICegTQ5us4mxeqBvW6wfoEfo003fwCqw==
   dependencies:
     "@ctrl/tinycolor" "^3.4.1"
@@ -3637,11 +3632,6 @@ jiti@^1.18.2, jiti@^1.20.0:
   resolved "https://registry.npmmirror.com/jiti/-/jiti-1.21.0.tgz"
   integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
 
-js-md5@^0.7.3:
-  version "0.7.3"
-  resolved "https://registry.npmmirror.com/js-md5/-/js-md5-0.7.3.tgz"
-  integrity sha512-ZC41vPSTLKGwIRjqDh8DfXoCrdQIyBgspJVPXHBGu4nZlAEvG3nf+jO9avM9RmLiGakg7vz974ms99nEV0tmTQ==
-
 js-sha3@0.8.0:
   version "0.8.0"
   resolved "https://registry.npmmirror.com/js-sha3/-/js-sha3-0.8.0.tgz"
@@ -4156,9 +4146,9 @@ modify-values@^1.0.0:
   resolved "https://registry.npmmirror.com/modify-values/-/modify-values-1.0.1.tgz"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-monent@^0.0.2-security:
+monent@0.0.2-security:
   version "0.0.2-security"
-  resolved "https://registry.npmmirror.com/monent/-/monent-0.0.2-security.tgz"
+  resolved "https://registry.npmmirror.com/monent/-/monent-0.0.2-security.tgz#6e597f6f1b9d10bcc307d4ee57348ba0b009017d"
   integrity sha512-qghr6SG18OAHdr2emuACuhMJWUi1Yax10+V0N1Fr3ISC921hOtw6g7fuDxdgJszzSGTMFyKiUgBRafpKRrsjkQ==
 
 mrmime@^2.0.0:
@@ -4271,9 +4261,9 @@ npm-run-path@^4.0.1:
   dependencies:
     path-key "^3.0.0"
 
-nprogress@^0.2.0:
+nprogress@0.2.0:
   version "0.2.0"
-  resolved "https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz"
+  resolved "https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
   integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 nth-check@^2.0.1:
@@ -4551,23 +4541,18 @@ pify@^3.0.0:
   resolved "https://registry.npmmirror.com/pify/-/pify-3.0.0.tgz"
   integrity sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==
 
-pinia-plugin-persistedstate@^1.6.1:
+pinia-plugin-persistedstate@1.6.3:
   version "1.6.3"
-  resolved "https://registry.npmmirror.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-1.6.3.tgz"
+  resolved "https://registry.npmmirror.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-1.6.3.tgz#6cd691f96814603c70ec5bb756f9f4d037b1aec8"
   integrity sha512-vwxUca3DZKW6+wnGsgu6hA0ESVKoLovF8vH1jMOPBhaH4VpCSTgn5AsprTxXyg3uMk047m0B+NggeMTcCC8H6w==
 
-pinia@^2.0.12:
+pinia@2.1.7:
   version "2.1.7"
-  resolved "https://registry.npmmirror.com/pinia/-/pinia-2.1.7.tgz"
+  resolved "https://registry.npmmirror.com/pinia/-/pinia-2.1.7.tgz#4cf5420d9324ca00b7b4984d3fbf693222115bbc"
   integrity sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==
   dependencies:
     "@vue/devtools-api" "^6.5.0"
     vue-demi ">=0.14.5"
-
-pinyin-pro@^3.19.6:
-  version "3.23.0"
-  resolved "https://registry.npmmirror.com/pinyin-pro/-/pinyin-pro-3.23.0.tgz"
-  integrity sha512-YDwKw31PPxsr1RQzDMmHuv4Z3exaTHrVQNdVgolyhoIrsRuM3QhsoAtzYPXIaVxb5MyWCSIiEbkwvXMfy1imNA==
 
 pkg-types@^1.0.3:
   version "1.0.3"
@@ -4757,9 +4742,9 @@ q@^1.5.1:
   resolved "https://registry.npmmirror.com/q/-/q-1.5.1.tgz"
   integrity sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==
 
-qs@^6.10.3:
+qs@6.12.0:
   version "6.12.0"
-  resolved "https://registry.npmmirror.com/qs/-/qs-6.12.0.tgz"
+  resolved "https://registry.npmmirror.com/qs/-/qs-6.12.0.tgz#edd40c3b823995946a8a0b1f208669c7a200db77"
   integrity sha512-trVZiI6RMOkO476zLGaBIzszOdFPnCCXHPG9kn0yuS1uz6xdVxPfZdB3vUig9pxPFDM9BRAgz/YUIVQ1/vuiUg==
   dependencies:
     side-channel "^1.0.6"
@@ -5125,7 +5110,7 @@ slice-ansi@^5.0.0:
     ansi-styles "^6.0.0"
     is-fullwidth-code-point "^4.0.0"
 
-sortablejs@^1.15.0:
+sortablejs@1.15.2, sortablejs@^1.15.0:
   version "1.15.2"
   resolved "https://registry.npmmirror.com/sortablejs/-/sortablejs-1.15.2.tgz"
   integrity sha512-FJF5jgdfvoKn1MAKSdGs33bIqLi3LmsgVTliuX6iITj834F+JRQZN90Z93yql8h0K2t0RwDPBmxwlbZfDcxNZA==
@@ -5409,11 +5394,6 @@ trim-newlines@^3.0.0:
   resolved "https://registry.npmmirror.com/trim-newlines/-/trim-newlines-3.0.1.tgz"
   integrity sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==
 
-ts-md5@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.npmmirror.com/ts-md5/-/ts-md5-1.3.1.tgz"
-  integrity sha512-DiwiXfwvcTeZ5wCE0z+2A9EseZsztaiZtGrtSaY5JOD7ekPnR/GoIVD5gXZAlK9Na9Kvpo9Waz5rW64WKAWApg==
-
 ts-node@^10.8.1:
   version "10.9.2"
   resolved "https://registry.npmmirror.com/ts-node/-/ts-node-10.9.2.tgz"
@@ -5530,9 +5510,9 @@ unload@2.2.0:
     "@babel/runtime" "^7.6.2"
     detect-node "^2.0.4"
 
-unocss@^0.58.8:
+unocss@0.58.8:
   version "0.58.8"
-  resolved "https://registry.npmmirror.com/unocss/-/unocss-0.58.8.tgz"
+  resolved "https://registry.npmmirror.com/unocss/-/unocss-0.58.8.tgz#ec85cc7da2af8ad98584ca2d8779c4ec56ecdd6b"
   integrity sha512-oMWCEgwvxJcF1BZxxkbTyTd83xtArsza3DModUrJrPndnpOVVz9fZ5g6wcrDbVpv6+cvRrgMCeKMlWKt9WIIsA==
   dependencies:
     "@unocss/astro" "0.58.8"
@@ -5872,9 +5852,9 @@ vue-eslint-parser@^8.0.1:
     lodash "^4.17.21"
     semver "^7.3.5"
 
-vue-query@^1.26.0:
+vue-query@1.26.0:
   version "1.26.0"
-  resolved "https://registry.npmmirror.com/vue-query/-/vue-query-1.26.0.tgz"
+  resolved "https://registry.npmmirror.com/vue-query/-/vue-query-1.26.0.tgz#5625b346a2124de73bdc4d7694a9fe3f47068dc0"
   integrity sha512-78JbnLX/3tDll5kDr6PUasRWn05BeWm7yJNeUezA9INrn3AgTCLbsEctnlw6/wM6HiRqFj9F+mf+ruZusyiVOg==
   dependencies:
     "@vue/devtools-api" "^6.1.4"
@@ -5882,9 +5862,9 @@ vue-query@^1.26.0:
     react-query "^3.39.0"
     vue-demi "0.10.1"
 
-vue-router@^4.0.12:
+vue-router@4.3.0:
   version "4.3.0"
-  resolved "https://registry.npmmirror.com/vue-router/-/vue-router-4.3.0.tgz"
+  resolved "https://registry.npmmirror.com/vue-router/-/vue-router-4.3.0.tgz#d5913f27bf68a0a178ee798c3c88be471811a235"
   integrity sha512-dqUcs8tUeG+ssgWhcPbjHvazML16Oga5w34uCUmsk7i0BcnskoLGwjpa15fqMr2Fa5JgVBrdL2MEgqz6XZ/6IQ==
   dependencies:
     "@vue/devtools-api" "^6.5.1"
@@ -5897,16 +5877,16 @@ vue-tsc@^0.29.8:
     "@volar/shared" "0.29.8"
     vscode-vue-languageservice "0.29.8"
 
-vue3-seamless-scroll@^1.2.0:
+vue3-seamless-scroll@1.2.0:
   version "1.2.0"
-  resolved "https://registry.npmmirror.com/vue3-seamless-scroll/-/vue3-seamless-scroll-1.2.0.tgz"
+  resolved "https://registry.npmmirror.com/vue3-seamless-scroll/-/vue3-seamless-scroll-1.2.0.tgz#8685c597d1d143b1e5c119b600422baa6252b6b6"
   integrity sha512-2cKeIN5XjnYI08R0RVbvgpc1kgxp2zmE8CNeRVXvPk9lWox8m6bvYDCXrjl7q1qXXFh0KccBbJ7iFa1n5tu0RQ==
   dependencies:
     throttle-debounce "^3.0.1"
 
-vue@^3.2.25:
+vue@3.4.21:
   version "3.4.21"
-  resolved "https://registry.npmmirror.com/vue/-/vue-3.4.21.tgz"
+  resolved "https://registry.npmmirror.com/vue/-/vue-3.4.21.tgz#69ec30e267d358ee3a0ce16612ba89e00aaeb731"
   integrity sha512-5hjyV/jLEIKD/jYl4cavMcnzKwjMKohureP8ejn3hhEjwhWIhWeuzL2kJAjzl/WyVsgPY56Sy4Z40C3lVshxXA==
   dependencies:
     "@vue/compiler-dom" "3.4.21"

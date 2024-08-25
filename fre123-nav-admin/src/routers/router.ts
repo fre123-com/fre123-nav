@@ -1,11 +1,3 @@
-/*
- * @Description:
- * @Author: 叶剑鑫 yejianxin2022@dingtalk.com
- * @Date: 2024-08-14 21:59:56
- * @LastEditors: 叶剑鑫 yejianxin2022@dingtalk.com
- * @LastEditTime: 2024-08-17 16:41:30
- * 2024-08-14 21:59:56
- */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 // * 导入所有router

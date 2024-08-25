@@ -1,11 +1,3 @@
-/*
- * @Description:
- * @Author: 叶剑鑫 yejianxin2022@dingtalk.com
- * @Date: 2024-08-18 15:40:51
- * @LastEditors: 叶剑鑫 yejianxin2022@dingtalk.com
- * @LastEditTime: 2024-08-19 08:54:18
- * 2024-08-18 15:40:51
- */
 export interface ISurpriseListParams {
   title?: string;
   is_show?: number;

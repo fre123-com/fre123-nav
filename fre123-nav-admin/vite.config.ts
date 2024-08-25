@@ -17,13 +17,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd());
   const viteEnv = wrapperEnv(env);
 
-  const baseUrl = viteEnv.VITE_API_BASE_URL;
-  const wxBaseUrl = viteEnv.VITE_API_WX_BASE_URL;
-  const quarkBaseUrl = viteEnv.VITE_API_QUARK_BASE_URL;
-
+  const baseUrl = viteEnv.VITE_API_BASE_URL ?? "/api";
   const target = viteEnv.VITE_PROXY_TARGET;
-  const targetWX = viteEnv.VITE_PROXY_TARGET_WX;
-  const targetQuark = viteEnv.VITE_PROXY_TARGET_QUARK;
 
   return {
     base: viteEnv.VITE_BASE,
@@ -54,22 +49,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           changeOrigin: true, // 允许跨域
           rewrite: (path) => {
             return path.replace(baseUrl, "");
-          },
-        },
-        [wxBaseUrl]: {
-          // 本地前端代码的接口 代理到服务端口
-          target: targetWX,
-          changeOrigin: true, // 允许跨域
-          rewrite: (path) => {
-            return path.replace(wxBaseUrl, "");
-          },
-        },
-        [quarkBaseUrl]: {
-          // 本地前端代码的接口 代理到服务端口
-          target: targetQuark,
-          changeOrigin: true, // 允许跨域
-          rewrite: (path) => {
-            return path.replace(quarkBaseUrl, "");
           },
         },
       },

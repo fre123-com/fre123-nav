@@ -5,10 +5,6 @@ WORKDIR /app
 ENV NODE_OPTIONS="--max-old-space-size=16384"
 COPY . .
 
-# RUN npm install -g yrm --registry https://registry.npm.taobao.org
-# RUN yrm add local http://192.168.1.17:4873
-# RUN yrm use local
-# RUN yarn config set registry http://192.168.1.17:4873
 RUN yarn && yarn build
 
 FROM nginx

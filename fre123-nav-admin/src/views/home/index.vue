@@ -1,11 +1,3 @@
-<!--
- * @Description: 
- * @Author: 叶剑鑫 yejianxin2022@dingtalk.com
- * @Date: 2024-08-17 11:54:29
- * @LastEditors: 叶剑鑫 yejianxin2022@dingtalk.com
- * @LastEditTime: 2024-08-20 16:14:02
- * 2024-08-17 11:54:29
--->
 <template>
   <div class="home flx-center">
     <img

@@ -1,11 +1,3 @@
-/*
- * @Description:
- * @Author: 叶剑鑫 yejianxin2022@dingtalk.com
- * @Date: 2024-08-17 11:50:55
- * @LastEditors: FantasyBee FantasyBee07@outlook.com
- * @LastEditTime: 2024-08-21 15:48:12
- * 2024-08-17 11:50:55
- */
 import websiteApi from "@/api/modules/website";
 import { websiteGet } from "@/api/modules/website/interface";
 import { WEBSITE_GET } from "@/api/modules/website/urls.const";

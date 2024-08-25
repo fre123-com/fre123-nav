@@ -8,11 +8,11 @@
 
 // vue app 钩子
 export default defineNuxtPlugin((nuxtApp) => {
-	nuxtApp.hook('app:created', (vueApp) => {
-		// vue app创建时
-		inject('title', 'Custom Page Title')
-	})
-	nuxtApp.hook('app:error', (vueApp) => {
-		// 可以这里修改vue实例
-	})
-})
+  nuxtApp.hook("app:created", (vueApp) => {
+    // vue app创建时
+    inject("title", "Custom Page Title");
+  });
+  nuxtApp.hook("app:error", (vueApp) => {
+    // 可以这里修改vue实例
+  });
+});

@@ -1,10 +1,3 @@
-<!--
- * @Description: 
- * @Author: 叶剑鑫 yejianxin2022@dingtalk.com
- * @Date: 2024-08-20 14:58:45
- * @LastEditors: 叶剑鑫 yejianxin2022@dingtalk.com
- * @LastEditTime: 2024-08-23 01:26:32
--->
 <template>
   <common-wrapper>
     <div class="head-config">

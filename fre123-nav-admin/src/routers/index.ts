@@ -1,11 +1,3 @@
-/*
- * @Description:
- * @Author: 叶剑鑫 yejianxin2022@dingtalk.com
- * @Date: 2024-08-14 21:59:56
- * @LastEditors: 叶剑鑫 yejianxin2022@dingtalk.com
- * @LastEditTime: 2024-08-17 16:39:49
- * 2024-08-14 21:59:56
- */
 import { AxiosCanceler } from "@/api/helper/axiosCancel";
 import { HOME_URL } from "@/config/config";
 import NProgress from "@/config/nprogress";

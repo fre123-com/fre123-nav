@@ -1,18 +1,15 @@
-<!--
- * @Description: 
- * @Author: 叶剑鑫 yejianxin2022@dingtalk.com
- * @Date: 2024-08-20 14:44:11
- * @LastEditors: 叶剑鑫 yejianxin2022@dingtalk.com
- * @LastEditTime: 2024-08-22 02:23:18
--->
 <template>
   <div class="content-three">
     <el-tabs type="border-card" v-model="activeTabName" @tab-click="switchTab">
       <el-tab-pane label="搜索引擎" name="search_engine">
-        <SearchEngineData v-if="activeTabName === 'search_engine'"></SearchEngineData>
+        <SearchEngineData
+          v-if="activeTabName === 'search_engine'"
+        ></SearchEngineData>
       </el-tab-pane>
       <el-tab-pane label="搜索引擎分类" name="search_category">
-        <SearchEngineCategory v-if="activeTabName === 'search_category'"></SearchEngineCategory>
+        <SearchEngineCategory
+          v-if="activeTabName === 'search_category'"
+        ></SearchEngineCategory>
       </el-tab-pane>
     </el-tabs>
   </div>
