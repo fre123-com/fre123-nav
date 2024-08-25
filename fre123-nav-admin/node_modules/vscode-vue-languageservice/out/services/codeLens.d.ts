@@ -1,0 +1,16 @@
+import type * as vscode from 'vscode-languageserver';
+import type { ApiLanguageServiceContext } from '../types';
+declare type CodeLensOptions = {
+    references: boolean;
+    pugTool: boolean;
+    scriptSetupTool: boolean;
+};
+export interface TsCodeLensData {
+    lsType: 'template' | 'script';
+    uri: string;
+    offset: number;
+    tsUri: string;
+    tsOffset: number;
+}
+export declare function register({ sourceFiles }: ApiLanguageServiceContext): (uri: string, options?: CodeLensOptions) => vscode.CodeLens[] | undefined;
+export {};

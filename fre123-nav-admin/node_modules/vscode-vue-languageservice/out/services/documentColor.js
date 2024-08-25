@@ -1,0 +1,36 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.register = void 0;
+function register(context) {
+    const { getCssLs } = context;
+    return (document) => {
+        const sourceFile = context.getVueDocument(document);
+        if (!sourceFile)
+            return;
+        const cssResult = getCssResult(sourceFile);
+        return cssResult;
+        function getCssResult(sourceFile) {
+            var _a;
+            const result = [];
+            const sourceMaps = sourceFile.getCssSourceMaps();
+            for (const sourceMap of sourceMaps) {
+                const cssLs = getCssLs(sourceMap.mappedDocument.languageId);
+                if (!cssLs || !sourceMap.stylesheet)
+                    continue;
+                let colors = cssLs.findDocumentColors(sourceMap.mappedDocument, sourceMap.stylesheet);
+                for (const color of colors) {
+                    const vueRange = (_a = sourceMap.getSourceRange(color.range.start, color.range.end)) === null || _a === void 0 ? void 0 : _a[0];
+                    if (vueRange) {
+                        result.push({
+                            ...color,
+                            range: vueRange,
+                        });
+                    }
+                }
+            }
+            return result;
+        }
+    };
+}
+exports.register = register;
+//# sourceMappingURL=documentColor.js.map

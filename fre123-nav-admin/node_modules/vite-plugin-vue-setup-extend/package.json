@@ -1,0 +1,53 @@
+{
+  "name": "vite-plugin-vue-setup-extend",
+  "version": "0.4.0",
+  "description": "Extending the vue script setup syntactic sugar",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "README.md",
+    "README.zh_CN.md"
+  ],
+  "keywords": [
+    "vite",
+    "vue",
+    "stup",
+    "vite-plugin"
+  ],
+  "author": "Vben",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vbenjs/vite-plugin-vue-setup-extend",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/vbenjs/vite-plugin-vue-setup-extend/issues"
+  },
+  "homepage": "https://github.com/vbenjs/vite-plugin-vue-setup-extend/tree/master/#readme",
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.29",
+    "magic-string": "^0.25.7"
+  },
+  "peerDependencies": {
+    "vite": ">=2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "vite": "^2.7.13"
+  },
+  "scripts": {
+    "dev": "pnpm unbuild --stub",
+    "build": "pnpm unbuild"
+  }
+}

@@ -1,0 +1,137 @@
+import chokidar from "chokidar";
+import stylelint from "stylelint";
+import { translateOptions } from "./options.js";
+import path from "path";
+import { fileURLToPath } from "url";
+import { parentPort } from "worker_threads";
+import { Checker } from "../../Checker.js";
+import { FileDiagnosticManager } from "../../FileDiagnosticManager.js";
+import {
+  composeCheckerSummary,
+  consoleLog,
+  diagnosticToRuntimeError,
+  diagnosticToTerminalLog,
+  filterLogLevel,
+  normalizeStylelintDiagnostic,
+  toClientPayload
+} from "../../logger.js";
+import { ACTION_TYPES, DiagnosticLevel } from "../../types.js";
+const manager = new FileDiagnosticManager();
+let createServeAndBuild;
+const __filename = fileURLToPath(import.meta.url);
+const createDiagnostic = (pluginConfig) => {
+  let overlay = true;
+  let terminal = true;
+  return {
+    config: async ({ enableOverlay, enableTerminal }) => {
+      overlay = enableOverlay;
+      terminal = enableTerminal;
+    },
+    async configureServer({ root }) {
+      var _a;
+      if (!pluginConfig.stylelint)
+        return;
+      const translatedOptions = await translateOptions(pluginConfig.stylelint.lintCommand);
+      const baseConfig = {
+        cwd: root,
+        ...translatedOptions
+      };
+      const logLevel = (() => {
+        var _a2;
+        if (typeof pluginConfig.stylelint !== "object")
+          return void 0;
+        const userLogLevel = (_a2 = pluginConfig.stylelint.dev) == null ? void 0 : _a2.logLevel;
+        if (!userLogLevel)
+          return void 0;
+        const map = {
+          error: DiagnosticLevel.Error,
+          warning: DiagnosticLevel.Warning
+        };
+        return userLogLevel.map((l) => map[l]);
+      })();
+      const dispatchDiagnostics = () => {
+        var _a2;
+        const diagnostics2 = filterLogLevel(manager.getDiagnostics(), logLevel);
+        if (terminal) {
+          diagnostics2.forEach((d) => {
+            consoleLog(diagnosticToTerminalLog(d, "Stylelint"));
+          });
+          const errorCount = diagnostics2.filter((d) => d.level === DiagnosticLevel.Error).length;
+          const warningCount = diagnostics2.filter((d) => d.level === DiagnosticLevel.Warning).length;
+          consoleLog(composeCheckerSummary("Stylelint", errorCount, warningCount));
+        }
+        if (overlay) {
+          (_a2 = parentPort) == null ? void 0 : _a2.postMessage({
+            type: ACTION_TYPES.overlayError,
+            payload: toClientPayload(
+              "stylelint",
+              diagnostics2.map((d) => diagnosticToRuntimeError(d))
+            )
+          });
+        }
+      };
+      const handleFileChange = async (filePath, type) => {
+        const absPath = path.resolve(root, filePath);
+        if (type === "unlink") {
+          manager.updateByFileId(absPath, []);
+        } else if (type === "change") {
+          const { results: diagnosticsOfChangedFile } = await stylelint.lint({
+            ...baseConfig,
+            files: filePath
+          });
+          const newDiagnostics = diagnosticsOfChangedFile.map((d) => normalizeStylelintDiagnostic(d)).flat(1);
+          manager.updateByFileId(absPath, newDiagnostics);
+        }
+        dispatchDiagnostics();
+      };
+      const { results: diagnostics } = await stylelint.lint({
+        ...baseConfig,
+        ...(_a = pluginConfig.stylelint.dev) == null ? void 0 : _a.overrideConfig
+      });
+      manager.initWith(diagnostics.map((p) => normalizeStylelintDiagnostic(p)).flat(1));
+      dispatchDiagnostics();
+      const watcher = chokidar.watch([], {
+        cwd: root,
+        ignored: (path2) => path2.includes("node_modules")
+      });
+      watcher.add(translatedOptions.files);
+      watcher.on("change", async (filePath) => {
+        handleFileChange(filePath, "change");
+      });
+      watcher.on("unlink", async (filePath) => {
+        handleFileChange(filePath, "unlink");
+      });
+    }
+  };
+};
+class StylelintChecker extends Checker {
+  constructor() {
+    super({
+      name: "stylelint",
+      absFilePath: __filename,
+      build: {
+        buildBin: (pluginConfig) => {
+          if (pluginConfig.stylelint) {
+            const { lintCommand } = pluginConfig.stylelint;
+            return ["stylelint", lintCommand.split(" ").slice(1)];
+          }
+          return ["stylelint", [""]];
+        }
+      },
+      createDiagnostic
+    });
+  }
+  init() {
+    const _createServeAndBuild = super.initMainThread();
+    createServeAndBuild = _createServeAndBuild;
+    super.initWorkerThread();
+  }
+}
+const stylelintChecker = new StylelintChecker();
+stylelintChecker.prepare();
+stylelintChecker.init();
+export {
+  StylelintChecker,
+  createServeAndBuild
+};
+//# sourceMappingURL=main.js.map

@@ -1,0 +1,78 @@
+import * as vite from 'vite';
+import { Plugin } from 'vite';
+import { UserConfig, UnocssPluginContext, UserConfigDefaults } from '@unocss/core';
+
+interface VitePluginConfig<Theme extends object = object> extends UserConfig<Theme> {
+    /**
+     * Enable UnoCSS inspector
+     *
+     * @default true
+     */
+    inspector?: boolean;
+    /**
+     * CSS Generation mode
+     *
+     * - `global` - generate a single CSS sheet for entire App
+     * - `dist-chunk` - generate a CSS sheet for each code chunk on build, great for MPA
+     * - `per-module` - generate a CSS sheet for each module, can be scoped
+     * - `vue-scoped` - inject generated CSS to Vue SFC's `<style scoped>` for isolation
+     * - `shadow-dom` - inject generated CSS to `Shadow DOM` css style block for each web component
+     *
+     * @default 'global'
+     */
+    mode?: 'global' | 'per-module' | 'vue-scoped' | 'dist-chunk' | 'shadow-dom';
+    /**
+     * Transform CSS for `@apply` directive
+     *
+     * @experimental
+     * @default false
+     */
+    transformCSS?: boolean | 'pre' | 'post';
+    /**
+     * Make the generated css processed by postcss (https://vitejs.dev/guide/features.html#postcss)
+     *
+     * @default true
+     */
+    postcss?: boolean;
+    /**
+     * Use top level await in HMR code to avoid FOUC on dev time.
+     *
+     * You usually don't need to disable this, unless you are developing on
+     * a browser that does not support top level await.
+     *
+     * This will only affect on dev time.
+     *
+     * @default true
+     */
+    hmrTopLevelAwait?: boolean;
+    /**
+     * Fetch mode in devtools.
+     *
+     * Some server does not configure its CORS and you may want to set this to 'no-cors'.
+     * See https://github.com/unocss/unocss/issues/2822.
+     *
+     * @default 'cors'
+     */
+    fetchMode?: 'cors' | 'navigate' | 'no-cors' | 'same-origin';
+}
+
+declare function ChunkModeBuildPlugin({ uno, filter }: UnocssPluginContext): Plugin;
+
+declare function GlobalModeDevPlugin({ uno, tokens, tasks, flushTasks, affectedModules, onInvalidate, extract, filter, getConfig }: UnocssPluginContext): Plugin[];
+
+declare function GlobalModeBuildPlugin(ctx: UnocssPluginContext<VitePluginConfig>): Plugin[];
+
+declare function GlobalModePlugin(ctx: UnocssPluginContext): vite.Plugin<any>[];
+
+declare function PerModuleModePlugin({ uno, filter }: UnocssPluginContext): Plugin[];
+
+declare function VueScopedPlugin({ uno, ready }: UnocssPluginContext): Plugin;
+
+declare function defineConfig<Theme extends object>(config: VitePluginConfig<Theme>): VitePluginConfig<Theme>;
+interface UnocssVitePluginAPI {
+    getContext: () => UnocssPluginContext<VitePluginConfig>;
+    getMode: () => VitePluginConfig['mode'];
+}
+declare function UnocssPlugin<Theme extends object>(configOrPath?: VitePluginConfig<Theme> | string, defaults?: UserConfigDefaults): Plugin[];
+
+export { ChunkModeBuildPlugin, GlobalModeBuildPlugin, GlobalModeDevPlugin, GlobalModePlugin, PerModuleModePlugin, type UnocssVitePluginAPI, type VitePluginConfig, VueScopedPlugin, UnocssPlugin as default, defineConfig };

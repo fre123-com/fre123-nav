@@ -1,0 +1,1 @@
+.n-code-block-lines .shiki code{counter-increment:step calc(var(--start, 1) - 1);counter-reset:step}.n-code-block-lines .shiki code .line:before{content:counter(step);counter-increment:step;display:inline-block;margin-right:.5rem;padding-right:.5rem;text-align:right;width:2.5rem;--at-apply: text-truegray: 50}

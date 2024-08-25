@@ -1,0 +1,14 @@
+import type { MutationFunction, MutationKey, MutationOptions, QueryFunction, QueryObserverOptions, QueryKey } from "react-query/types/core";
+import { UnwrapRef } from "vue-demi";
+import { QueryFilters } from "./useIsFetching";
+import { MutationFilters } from "./useIsMutating";
+export declare const VUE_QUERY_CLIENT = "VUE_QUERY_CLIENT";
+export declare function getClientKey(key?: string): string;
+export declare function isQueryKey(value: unknown): value is QueryKey;
+export declare function parseQueryArgs<TQueryFnData = unknown, TError = unknown, TData = TQueryFnData, TQueryKey extends QueryKey = QueryKey, TOptions = QueryObserverOptions<TQueryFnData, TError, TData, TQueryFnData, TQueryKey>>(arg1: QueryKey | TOptions, arg2?: QueryFunction<TQueryFnData, TQueryKey> | TOptions, arg3?: TOptions): TOptions;
+export declare function parseFilterArgs<TFilters extends QueryFilters>(arg1?: QueryKey | TFilters, arg2?: TFilters): TFilters;
+export declare function parseMutationArgs<TOptions extends MutationOptions<any, any, any, any>>(arg1: MutationKey | MutationFunction<any, any> | TOptions, arg2?: MutationFunction<any, any> | TOptions, arg3?: TOptions): TOptions;
+export declare function parseMutationFilterArgs(arg1?: QueryKey | MutationFilters, arg2?: MutationFilters): MutationFilters | undefined;
+export declare function updateState(state: Record<string, unknown>, update: Record<string, any>): void;
+export declare function cloneDeep<T>(value: T, customizer?: (val: unknown) => unknown | void): T;
+export declare function cloneDeepUnref<T>(obj: T): UnwrapRef<T>;

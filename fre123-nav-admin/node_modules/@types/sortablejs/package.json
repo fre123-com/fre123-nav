@@ -1,0 +1,35 @@
+{
+    "name": "@types/sortablejs",
+    "version": "1.15.8",
+    "description": "TypeScript definitions for sortablejs",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/sortablejs",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Maw-Fox",
+            "githubUsername": "Maw-Fox",
+            "url": "https://github.com/Maw-Fox"
+        },
+        {
+            "name": "Maarten Staa",
+            "githubUsername": "maartenstaa",
+            "url": "https://github.com/maartenstaa"
+        },
+        {
+            "name": "Wayne Van Son",
+            "githubUsername": "waynevanson",
+            "url": "https://github.com/waynevanson"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/sortablejs"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "9f337276197ef6915450f3a537e3c8444bd9f93ed0bcb6256725d73cbfa34bbb",
+    "typeScriptVersion": "4.6"
+}

@@ -1,0 +1,199 @@
+const name = "nitropack";
+const version = "2.8.1";
+const description = "Build and Deploy Universal JavaScript Servers";
+const repository = "unjs/nitro";
+const license = "MIT";
+const type = "module";
+const exports = {
+	".": {
+		types: "./types.d.ts",
+		"import": "./dist/index.mjs"
+	},
+	"./config": {
+		types: "./dist/config.d.mts",
+		"import": "./dist/config.mjs"
+	},
+	"./cli": {
+		types: "./dist/cli/index.d.mts",
+		"import": "./dist/cli/index.mjs"
+	},
+	"./runtime/*": {
+		types: "./dist/runtime/*.d.mts",
+		"import": "./dist/runtime/*.mjs"
+	},
+	"./dist/runtime/*": {
+		types: "./dist/runtime/*.d.mts",
+		"import": "./dist/runtime/*.mjs"
+	},
+	"./package.json": "./package.json"
+};
+const main = "./dist/index.mjs";
+const types = "./types.d.ts";
+const bin = {
+	nitro: "./dist/cli/index.mjs",
+	nitropack: "./dist/cli/index.mjs"
+};
+const files = [
+	"dist",
+	"*.d.ts"
+];
+const scripts = {
+	build: "unbuild",
+	dev: "pnpm nitro dev playground",
+	"dev:build": "pnpm nitro build playground",
+	"dev:start": "node playground/.output/server/index.mjs",
+	lint: "eslint --cache --ext .ts,.mjs,.cjs . && prettier -c src test",
+	"lint:fix": "eslint --cache --fix --ext .ts,.mjs,.cjs . && prettier --write -c src test",
+	nitro: "JITI_ESM_RESOLVE=1 NODE_OPTIONS=\"--enable-source-maps\" jiti ./src/cli/index.ts",
+	prepack: "pnpm build",
+	release: "pnpm test && pnpm build && changelogen --release && pnpm publish && git push --follow-tags",
+	stub: "unbuild --stub",
+	test: "pnpm lint && pnpm vitest-es run --silent",
+	"test:fixture:types": "pnpm stub && JITI_ESM_RESOLVE=1 jiti ./test/scripts/gen-fixture-types.ts && cd test/fixture && tsc --noEmit",
+	"test:types": "tsc --noEmit && pnpm test:fixture:types",
+	"vitest-es": "NODE_OPTIONS=\"--enable-source-maps --experimental-vm-modules\" vitest"
+};
+const resolutions = {
+	nitropack: "link:.",
+	undici: "^5.28.1"
+};
+const dependencies = {
+	"@cloudflare/kv-asset-handler": "^0.3.0",
+	"@netlify/functions": "^2.4.0",
+	"@rollup/plugin-alias": "^5.1.0",
+	"@rollup/plugin-commonjs": "^25.0.7",
+	"@rollup/plugin-inject": "^5.0.5",
+	"@rollup/plugin-json": "^6.0.1",
+	"@rollup/plugin-node-resolve": "^15.2.3",
+	"@rollup/plugin-replace": "^5.0.5",
+	"@rollup/plugin-terser": "^0.4.4",
+	"@rollup/plugin-wasm": "^6.2.2",
+	"@rollup/pluginutils": "^5.0.5",
+	"@types/http-proxy": "^1.17.14",
+	"@vercel/nft": "^0.24.3",
+	archiver: "^6.0.1",
+	c12: "^1.5.1",
+	chalk: "^5.3.0",
+	chokidar: "^3.5.3",
+	citty: "^0.1.5",
+	consola: "^3.2.3",
+	"cookie-es": "^1.0.0",
+	defu: "^6.1.3",
+	destr: "^2.0.2",
+	"dot-prop": "^8.0.2",
+	esbuild: "^0.19.8",
+	"escape-string-regexp": "^5.0.0",
+	"estree-walker": "^3.0.3",
+	etag: "^1.8.1",
+	"fs-extra": "^11.2.0",
+	globby: "^14.0.0",
+	"gzip-size": "^7.0.0",
+	h3: "^1.9.0",
+	hookable: "^5.5.3",
+	httpxy: "^0.1.5",
+	"is-primitive": "^3.0.1",
+	jiti: "^1.21.0",
+	klona: "^2.0.6",
+	knitwork: "^1.0.0",
+	listhen: "^1.5.5",
+	"magic-string": "^0.30.5",
+	mime: "^3.0.0",
+	mlly: "^1.4.2",
+	mri: "^1.2.0",
+	"node-fetch-native": "^1.4.1",
+	ofetch: "^1.3.3",
+	ohash: "^1.1.3",
+	"openapi-typescript": "^6.7.1",
+	pathe: "^1.1.1",
+	"perfect-debounce": "^1.0.0",
+	"pkg-types": "^1.0.3",
+	"pretty-bytes": "^6.1.1",
+	radix3: "^1.1.0",
+	rollup: "^4.6.0",
+	"rollup-plugin-visualizer": "^5.9.3",
+	scule: "^1.1.0",
+	semver: "^7.5.4",
+	"serve-placeholder": "^2.0.1",
+	"serve-static": "^1.15.0",
+	"std-env": "^3.5.0",
+	ufo: "^1.3.2",
+	uncrypto: "^0.1.3",
+	unctx: "^2.3.1",
+	unenv: "^1.8.0",
+	unimport: "^3.6.0",
+	unstorage: "^1.10.1"
+};
+const devDependencies = {
+	"@azure/functions": "^3.5.1",
+	"@cloudflare/workers-types": "^4.20231121.0",
+	"@types/aws-lambda": "^8.10.129",
+	"@types/estree": "^1.0.5",
+	"@types/etag": "^1.8.3",
+	"@types/fs-extra": "^11.0.4",
+	"@types/node-fetch": "^2.6.9",
+	"@types/semver": "^7.5.6",
+	"@types/serve-static": "^1.15.5",
+	"@vitest/coverage-v8": "1.0.0-beta.5",
+	changelogen: "^0.5.5",
+	"edge-runtime": "^2.5.7",
+	eslint: "^8.54.0",
+	"eslint-config-unjs": "^0.2.1",
+	execa: "^8.0.1",
+	"expect-type": "^0.17.3",
+	"firebase-admin": "^11.11.1",
+	"firebase-functions": "^4.5.0",
+	"get-port-please": "^3.1.1",
+	miniflare: "^2.14.1",
+	prettier: "^3.1.0",
+	typescript: "^5.3.2",
+	unbuild: "^2.0.0",
+	undici: "^5.28.1",
+	vitest: "1.0.0-beta.5",
+	xml2js: "^0.6.2"
+};
+const peerDependencies = {
+	xml2js: "^0.6.2"
+};
+const peerDependenciesMeta = {
+	xml2js: {
+		optional: true
+	}
+};
+const packageManager = "pnpm@8.11.0";
+const engines = {
+	node: "^16.11.0 || >=17.0.0"
+};
+const pnpm = {
+	peerDependencyRules: {
+		ignoreMissing: [
+			"react",
+			"@types/react",
+			"react-dom",
+			"@algolia/client-search"
+		]
+	}
+};
+const nitroPkg = {
+	name: name,
+	version: version,
+	description: description,
+	repository: repository,
+	license: license,
+	type: type,
+	exports: exports,
+	main: main,
+	types: types,
+	bin: bin,
+	files: files,
+	scripts: scripts,
+	resolutions: resolutions,
+	dependencies: dependencies,
+	devDependencies: devDependencies,
+	peerDependencies: peerDependencies,
+	peerDependenciesMeta: peerDependenciesMeta,
+	packageManager: packageManager,
+	engines: engines,
+	pnpm: pnpm
+};
+
+export { nitroPkg as n, version as v };

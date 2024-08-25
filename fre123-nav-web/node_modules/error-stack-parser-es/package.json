@@ -1,0 +1,78 @@
+{
+  "name": "error-stack-parser-es",
+  "type": "module",
+  "version": "0.1.1",
+  "packageManager": "pnpm@8.6.12",
+  "description": "Cross-browser Error parser",
+  "maintainers": [
+    "Anthony Fu <anthonyfu117@hotmail.com> (https://antfu.me)",
+    "Eric Wendelin <me@eriwen.com> (https://www.eriwen.com)",
+    "Victor Homyakov <vkhomyackov@gmail.com> (https://github.com/victor-homyakov)",
+    "Oliver Salzburg (https://github.com/oliversalzburg)",
+    "Ben Gourley (https://github.com/bengourley)"
+  ],
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/antfu",
+  "homepage": "https://github.com/antfu/error-stack-parser-es#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antfu/error-stack-parser-es.git"
+  },
+  "bugs": "https://github.com/antfu/error-stack-parser-es/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "prepublishOnly": "nr build",
+    "release": "bumpp && npm publish",
+    "start": "esno src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.40.2",
+    "@antfu/ni": "^0.21.5",
+    "@antfu/utils": "^0.7.5",
+    "@types/node": "^20.4.10",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.47.0",
+    "esno": "^0.17.0",
+    "lint-staged": "^13.2.3",
+    "pnpm": "^8.6.12",
+    "rimraf": "^5.0.1",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.1.6",
+    "unbuild": "^1.2.1",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}

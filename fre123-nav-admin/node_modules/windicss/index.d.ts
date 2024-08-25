@@ -1,0 +1,1 @@
+export { Processor as default } from "./types/lib";

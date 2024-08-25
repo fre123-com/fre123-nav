@@ -1,0 +1,34 @@
+{
+    "name": "@types/throttle-debounce",
+    "version": "2.1.0",
+    "description": "TypeScript definitions for throttle-debounce",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Marek Buchar",
+            "url": "https://github.com/czbuchi",
+            "githubUsername": "czbuchi"
+        },
+        {
+            "name": "Frank Li",
+            "url": "https://github.com/franklixuefei",
+            "githubUsername": "franklixuefei"
+        },
+        {
+            "name": "Thomas Oddsund",
+            "url": "https://github.com/oddsund",
+            "githubUsername": "oddsund"
+        }
+    ],
+    "main": "",
+    "types": "index",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/throttle-debounce"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "8adb54836c4a82286e9e06515968293d0b9ab6b8fd6502f6bdd327704fcd741a",
+    "typeScriptVersion": "2.0"
+}

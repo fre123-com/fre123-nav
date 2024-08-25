@@ -1,0 +1,81 @@
+import { StateTree as StateTree$1, PiniaPluginContext } from 'pinia';
+import { Ref } from 'vue';
+
+interface CookieOptions<T> {
+    decode?(value: string): T;
+    encode?(value: T): string;
+    domain?: string;
+    expires?: Date;
+    httpOnly?: boolean;
+    maxAge?: number;
+    sameSite?: boolean | 'lax' | 'strict' | 'none';
+    secure?: boolean;
+    default?: () => T | Ref<T>;
+}
+declare type UseCookie<T = string> = (name: string, opts?: CookieOptions<T>) => {
+    value: T;
+};
+declare type StorageLike = Pick<Storage, 'getItem' | 'setItem'>;
+interface Serializer {
+    /**
+     * Serializes state into string before storing
+     * @default JSON.stringify
+     */
+    serialize: (value: StateTree$1) => string;
+    /**
+     * Deserializes string into state before hydrating
+     * @default JSON.parse
+     */
+    deserialize: (value: string) => StateTree$1;
+}
+interface PersistedStateOptions {
+    /**
+     * Storage key to use.
+     * @default $store.id
+     */
+    key?: string;
+    /**
+     * Where to store persisted state.
+     * @default localStorage
+     */
+    storage?: StorageLike;
+    /**
+     * Dot-notation paths to partially save state.
+     * @default undefined
+     */
+    paths?: Array<string>;
+    /**
+     * Serializer to use
+     */
+    serializer?: Serializer;
+    /**
+     * Hook called before state is hydrated from storage.
+     * @default undefined
+     */
+    beforeRestore?: (context: PiniaPluginContext) => void;
+    /**
+     * Hook called after state is hydrated from storage.
+     * @default undefined
+     */
+    afterRestore?: (context: PiniaPluginContext) => void;
+}
+declare type PersistedStateFactoryOptions = Pick<PersistedStateOptions, 'storage' | 'serializer' | 'afterRestore' | 'beforeRestore'>;
+declare type PersistedStateNuxtFactoryOptions = Omit<PersistedStateFactoryOptions, 'storage'> & {
+    cookieOptions?: CookieOptions<string>;
+};
+
+declare function createPersistedState(factoryOptions?: PersistedStateFactoryOptions): (context: PiniaPluginContext) => void;
+declare function createNuxtPersistedState(useCookie: UseCookie, factoryOptions?: PersistedStateNuxtFactoryOptions): (context: PiniaPluginContext) => void;
+declare const persistedState: (context: PiniaPluginContext) => void;
+
+declare module 'pinia' {
+    interface DefineStoreOptionsBase<S extends StateTree, Store> {
+        /**
+         * Persist store in storage.
+         * @docs https://github.com/prazdevs/pinia-plugin-persistedstate.
+         */
+        persist?: boolean | PersistedStateOptions;
+    }
+}
+
+export { PersistedStateFactoryOptions, PersistedStateNuxtFactoryOptions, PersistedStateOptions, Serializer, StorageLike, createNuxtPersistedState, createPersistedState, persistedState as default };

@@ -1,0 +1,32 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var vue = require('vue');
+var pluginVue_exportHelper = require('./_virtual/plugin-vue_export-helper.js');
+
+const _sfc_main = vue.defineComponent({
+  name: "Message"
+});
+const _hoisted_1 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2 = /* @__PURE__ */ vue.createElementVNode("path", {
+  fill: "currentColor",
+  d: "M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224H128zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64z"
+}, null, -1);
+const _hoisted_3 = /* @__PURE__ */ vue.createElementVNode("path", {
+  fill: "currentColor",
+  d: "M904 224 656.512 506.88a192 192 0 0 1-289.024 0L120 224h784zm-698.944 0 210.56 240.704a128 128 0 0 0 192.704 0L818.944 224H205.056z"
+}, null, -1);
+const _hoisted_4 = [
+  _hoisted_2,
+  _hoisted_3
+];
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1, _hoisted_4);
+}
+var message = /* @__PURE__ */ pluginVue_exportHelper["default"](_sfc_main, [["render", _sfc_render]]);
+
+exports["default"] = message;
