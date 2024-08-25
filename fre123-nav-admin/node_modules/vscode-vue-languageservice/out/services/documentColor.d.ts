@@ -1,4 +1,0 @@
-import * as vscode from 'vscode-languageserver';
-import { TextDocument } from 'vscode-languageserver-textdocument';
-import type { HtmlLanguageServiceContext } from '../types';
-export declare function register(context: HtmlLanguageServiceContext): (document: TextDocument) => vscode.ColorInformation[] | undefined;

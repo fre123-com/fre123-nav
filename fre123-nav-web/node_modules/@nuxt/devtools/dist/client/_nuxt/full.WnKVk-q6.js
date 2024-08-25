@@ -1,1 +1,0 @@
-import{q as o,l as t,aa as s,o as a}from"./entry.Li7bMdxw.js";const r={},c={"h-full":"","of-auto":""};function l(e,n){return a(),t("div",c,[s(e.$slots,"default")])}const _=o(r,[["render",l]]);export{_ as default};

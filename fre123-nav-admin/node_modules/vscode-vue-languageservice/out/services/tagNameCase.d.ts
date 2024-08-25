@@ -1,5 +1,0 @@
-import type { ApiLanguageServiceContext } from '../types';
-export declare function register({ sourceFiles }: ApiLanguageServiceContext): (uri: string) => {
-    tag: 'both' | 'kebabCase' | 'pascalCase' | 'unsure';
-    attr: 'kebabCase' | 'camelCase' | 'unsure';
-};

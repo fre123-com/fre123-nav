@@ -1,1 +1,0 @@
-import{q as o,l as s,p as t,aa as a,o as n}from"./entry.Li7bMdxw.js";const r={},c={"h-full":"","of-auto":"","n-panel-grids":""},l={"h-full":"","bg-base":""};function d(e,_){return n(),s("div",c,[t("div",l,[a(e.$slots,"default")])])}const i=o(r,[["render",d]]);export{i as default};

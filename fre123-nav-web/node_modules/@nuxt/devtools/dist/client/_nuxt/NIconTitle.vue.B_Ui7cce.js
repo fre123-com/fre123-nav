@@ -1,1 +1,0 @@
-import{d as t,o,l as s,G as a,n,aa as r,p as l,t as i}from"./entry.Li7bMdxw.js";const c={flex:"~ gap-3","items-center":""},u=t({__name:"NIconTitle",props:{icon:{},text:{}},setup(p){return(e,d)=>(o(),s("div",c,[e.icon?(o(),s("div",{key:0,class:a(e.icon)},null,2)):n("",!0),r(e.$slots,"default",{},()=>[l("div",null,i(e.text),1)])]))}});export{u as _};

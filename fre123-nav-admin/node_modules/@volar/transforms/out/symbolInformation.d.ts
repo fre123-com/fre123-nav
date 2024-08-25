@@ -1,2 +1,0 @@
-import type * as vscode from 'vscode-languageserver';
-export declare function transform(symbol: vscode.SymbolInformation, getOtherLocation: (location: vscode.Location) => vscode.Location | undefined): vscode.SymbolInformation | undefined;

@@ -1,7 +1,0 @@
-/// <reference types="node" />
-import type fs from "node:fs";
-export declare const F_OK = 0;
-export declare const R_OK = 4;
-export declare const W_OK = 2;
-export declare const X_OK = 1;
-export declare const constants: typeof fs.constants;
