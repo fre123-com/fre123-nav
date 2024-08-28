@@ -6,9 +6,6 @@ export const getUserNameEncode = () => {
   const encodedText = encodeURIComponent(userName);
   return encodedText;
 };
-// export const getToken = () => JSON.parse(localStorage.getItem('public-store') || '{}').token || ''
 export const getToken = () => {
   return GlobalStore().token;
-  // const token = localStorage.getItem('app-token') ?? ''
-  // return token
 };
