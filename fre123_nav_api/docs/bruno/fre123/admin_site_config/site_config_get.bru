@@ -1,0 +1,119 @@
+meta {
+  name: site_config_get
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{api}}/v1/admin_site_config/get
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdvdXppYSIsInBhc3N3b3JkIjoiMTIzNDU2IiwiZXhwIjoxNzIzOTA4OTYyfQ.ru5MdD8UUxLTfnrxJwFRXqeZFbJzyTVXwSMcVGex3ng
+}
+
+body:json {
+  {
+          "type":"baseasdas"
+      }
+}
+
+docs {
+  ### 网站配置查询接口文档
+  
+  #### 描述
+  通过 `type` 获取对应网站的基本配置信息。
+  
+  #### 数据库
+  d_site_config
+  
+  #### 请求方法
+  `POST`
+  
+  #### 请求路径
+  `/api/admin_site_config_get`
+  
+  #### 请求头
+  - `Content-Type: application/json`
+  - `Authorization: Bearer <token>`
+  
+  #### 请求参数
+  请求体为 JSON 格式，包含以下字段：
+  
+  | 参数名 | 类型   | 必填 | 描述      |   
+  | ------ | ------ | ---- | -------------- |
+  | type   | string | 否   | 获取的 type 名称 |
+  
+  #### 请求示例
+  ```json
+  {
+      "type": "base"
+  }
+  ```
+  
+  ##### 成功响应示例
+  ```json
+  {
+    "data": {
+      "app_name": "FRE123",
+      "web_host": "https://www.fre123.com",
+      "logo": "https://img.fre123.com/i/2023/11/25/65619e8022505.png",
+      "icon": "https://img.fre123.com/i/2023/11/25/65619e791f166.ico"
+    },
+    "info": "ok",
+    "status": 0
+  }
+  ```
+  
+  ##### 失败响应示例
+  - 没有找到对应的 type
+  ```json
+  {
+    "data": {
+      "err_msg": "没有找到对应的type"
+    },
+    "info": "参数错误",
+    "status": 100
+  }
+  ```
+  
+  
+  #### 注意事项
+  - 该接口需要 JWT 认证，需在请求头中包含有效的 `Authorization` token。
+  - `type` 参数为可选项，如果不传递该参数，则返回所有类型的网站基本配置信息。
+  
+    #### 异常
+  > 参数错误
+  
+  ```
+  {
+    "data": {},
+    "info": "参数错误",
+    "status": 100
+  }
+  ```
+  
+  > 验证未通过
+  
+  ```
+  {
+    "data": {},
+    "info": "验证未通过",
+    "status": 101
+  }
+  ```
+  
+  > 数据库错误
+  
+  ```
+  {
+    "data": {
+      "err_msg": {}
+    },
+    "info": "数据库错误",
+    "status": 106
+  }
+  ```  
+}

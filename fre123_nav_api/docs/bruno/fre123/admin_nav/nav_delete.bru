@@ -1,0 +1,84 @@
+meta {
+  name: nav_delete
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{api}}/v1/admin_nav/delete
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "ids": [
+      "66bb2f224d6d79125890ab32"
+    ]
+  }
+}
+
+docs {
+   ## 删除导航接口（后台）
+  
+  描述：
+  
+  - 请求方式：POST
+  - 请求路径：/v1/admin_nav/delete
+  ### 请求参数
+  
+  | 参数名 | 类型 | 必选 | 描述 | 示例 |
+  | ------ | ---- | ---- | ---- | ---- |
+  | ids     | list | 必选   | 导航id   |  "["66bb9a1dfb5f21b8820d40e3","66bc126da402f719895aac77"]"   |
+  
+  通过ids删除对应导航信息
+  {
+      "ids":["66bb9a1dfb5f21b8820d40e3","66bc126da402f719895aac77"]
+  }
+  ids:必须,删除的ids名称列表，可以进行多个删除
+  
+  请求示例：
+  {
+      "ids":["66bb9a1dfb5f21b8820d40e3","66bc126da402f719895aac77"]
+  }
+  
+  响应示例：
+  {
+    "data": {},
+    "info": "成功删除ids ['66bb9a1dfb5f21b8820d40e3', '66bc126da402f719895aac77'] 的导航信息",
+    "status": 0
+  }
+  ```
+  
+  > 参数错误
+  
+  ```
+  {
+    "data": {},
+    "info": "参数错误",
+    "status": 100
+  }
+  ```
+  
+  > 验证未通过
+  
+  ```
+  {
+    "data": {},
+    "info": "验证未通过",
+    "status": 101
+  }
+  ```
+  
+  > 数据库错误
+  
+  ```
+  {
+    "data": {
+      "err_msg": {}
+    },
+    "info": "数据库错误",
+    "status": 106
+  }
+  ```
+}

@@ -1,0 +1,96 @@
+meta {
+  name: nav_insert
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{api}}/v1/admin_nav/insert
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "group_name": "测试3",
+    "style": 哥特风,
+    "style_des": "书籍资源2",
+    "tab_list": [],
+    "group_name_url": ""
+  }
+}
+
+docs {
+  ## 新增导航接口（后台）
+  
+  描述：
+  
+  - 请求方式：POST
+  - 请求路径：/v1/admin_nav/insert
+  ### 请求参数
+  
+  | 参数名 | 类型 | 必选 | 描述 | 示例 |
+  | ------ | ---- | ---- | ---- | ---- |
+  | group_name | string | 必选   |  导航分组名称  |  测试333   |
+  
+  新增导航信息
+  请求体应包含:
+  {
+      "group_name" : "测试3",
+      "style" : 哥特风,
+      "style_des" : "书籍资源2",
+      "tab_list" : [],
+      "group_name_url" : "",
+  }
+  group_name: 导航名称，必须且唯一
+        
+        请求示例：
+        {
+      "group_name" : "测试333",
+      "style" : 哥特风,
+      "style_des" : "书籍资源2",
+      "tab_list" : [],
+      "group_name_url" : "",
+  }
+      
+  响应示例：
+  {
+    "data": {},
+    "info": "成功新增测试333导航配置信息",
+    "status": 0
+  }
+          
+   ```
+  
+  > 参数错误
+  
+  ```
+  {
+    "data": {},
+    "info": "参数错误",
+    "status": 100
+  }
+  ```
+  
+  > 验证未通过
+  
+  ```
+  {
+    "data": {},
+    "info": "验证未通过",
+    "status": 101
+  }
+  ```
+  
+  > 数据库错误
+  
+  ```
+  {
+    "data": {
+      "err_msg": {}
+    },
+    "info": "数据库错误",
+    "status": 106
+  }
+  ```         
+}
