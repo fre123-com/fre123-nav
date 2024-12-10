@@ -36,11 +36,11 @@ useHead({
   meta: [
     {
       name: 'keywords',
-      content: seoInfo?.keywords,
+      content: seoInfo?.keywords ?? '',
     },
     {
       name: 'description',
-      content: seoInfo?.description,
+      content: seoInfo?.description ?? '',
     },
   ],
   script: scripts,
