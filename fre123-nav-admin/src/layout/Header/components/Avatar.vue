@@ -2,14 +2,7 @@
   <div class="font-bold text-lg">{{ userName }}</div>
   <el-dropdown trigger="hover" class="ml-1">
     <div class="avatar">
-      <img
-        :src="
-          userInfo?.logo
-            ? userInfo?.logo
-            : 'https://img.fre123.com/i/2023/11/25/65619e8022505.png'
-        "
-        alt="avatar"
-      />
+      <img :src="userInfo?.logo ? userInfo?.logo : logoNowImg" alt="avatar" />
     </div>
     <template #dropdown>
       <el-dropdown-menu>
@@ -25,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import logoNowImg from '@/assets/images/logo-now.png'
 import { GlobalStore } from '@/store'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ref } from 'vue'

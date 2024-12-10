@@ -1,188 +1,186 @@
 <template>
-   <el-table
-      v-loading="!tableData || loading"
-      :data="tableData"
-      style="width: 100%"
-      :row-key="(row: any) => row._id"
-      :expand-row-keys="expandedRowKeys"
-      @expand-change="expandOpen"
-      :row-class-name="getRowClass"
-    >
-      <el-table-column  type="expand" >
-        <template #default="props">
-          <div>
-            <el-table
-              :data="props.row.tab_list"
-              :show-header="false"
-              class="table-left"
+  <el-table
+    v-loading="!tableData || loading"
+    :data="tableData"
+    style="width: 100%"
+    :row-key="(row: any) => row._id"
+    :expand-row-keys="expandedRowKeys"
+    @expand-change="expandOpen"
+    :row-class-name="getRowClass"
+  >
+    <el-table-column type="expand">
+      <template #default="props">
+        <div>
+          <el-table
+            :data="props.row.tab_list"
+            :show-header="false"
+            class="table-left"
+            style="width: 90%"
+          >
+            <el-table-column label="类别" prop="tab_name" />
+            <el-table-column label="跳转链接" prop="tab_name_url">
+              <template v-slot="{ row }">
+                <span v-if="row.tab_name_url">{{ row.tab_name_url }}</span>
+                <span v-else>暂无数据</span>
+              </template>
+            </el-table-column>
 
-              style="width: 90%"
-            >
-              <el-table-column label="类别" prop="tab_name" />
-              <el-table-column label="跳转链接" prop="tab_name_url">
-                <template v-slot="{ row }">
-                  <span v-if="row.tab_name_url">{{ row.tab_name_url }}</span>
-                  <span v-else>暂无数据</span>
-                </template>
-              </el-table-column>
+            <el-table-column align="right">
+              <template #default="scope">
+                <ElTooltip :enterable="false" content="编辑" effect="light">
+                  <el-button
+                    circle
+                    :color="META_PRIMARY"
+                    style="margin-left: -10px"
+                    @click="
+                      showDialogSed(props.$index, scope.$index, scope.row)
+                    "
+                  >
+                    <template #icon>
+                      <el-icon color="#fff">
+                        <edit />
+                      </el-icon>
+                    </template>
+                  </el-button>
+                </ElTooltip>
 
-              <el-table-column align="right">
-                <template #default="scope">
-                  <ElTooltip :enterable="false" content="编辑" effect="light">
-                    <el-button
-                      circle
-                      :color="META_PRIMARY"
-                      style="margin-left: -10px"
-                      @click="
-                        showDialogSed(props.$index, scope.$index, scope.row)
-                      "
-                    >
+                <el-popconfirm
+                  :title="`这下面有 ${
+                    tableData[props.$index].tab_list[scope.$index].details
+                      .length
+                  } 个子内容，确定要删除吗？`"
+                  @confirm="deleteRowSed(props.$index, scope.$index, scope.row)"
+                >
+                  <template #reference>
+                    <el-button :color="META_DANGER" circle>
                       <template #icon>
                         <el-icon color="#fff">
-                          <edit />
+                          <delete />
                         </el-icon>
                       </template>
                     </el-button>
-                  </ElTooltip>
+                  </template>
+                </el-popconfirm>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </template>
+    </el-table-column>
+    <el-table-column label="类别" prop="group_name" />
+    <el-table-column label="风格样式" prop="style_des" />
+    <el-table-column label="跳转链接" prop="group_name_url">
+      <template v-slot="{ row }">
+        <span v-if="row.group_name_url">{{ row.group_name_url }}</span>
+        <span v-else>暂无数据</span>
+      </template>
+    </el-table-column>
+    <el-table-column label="操作" align="right">
+      <template #header>
+        <span>操作</span>
+        <el-button
+          circle
+          :color="META_PRIMARY"
+          style="margin-left: 200px"
+          @click="newDialog"
+        >
+          <template #icon>
+            <el-icon color="#fff">
+              <plus />
+            </el-icon>
+          </template>
+        </el-button>
+      </template>
 
-                  <el-popconfirm
-                    :title="`这下面有 ${
-                      tableData[props.$index].tab_list[scope.$index].details
-                        .length
-                    } 个子内容，确定要删除吗？`"
-                    @confirm="deleteRowSed(props.$index, scope.$index, scope.row)"
-                  >
-                    <template #reference>
-                      <el-button :color="META_DANGER" circle>
-                        <template #icon>
-                          <el-icon color="#fff">
-                            <delete />
-                          </el-icon>
-                        </template>
-                      </el-button>
-                    </template>
-                  </el-popconfirm>
-                </template>
-              </el-table-column>
-            </el-table>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="类别" prop="group_name" />
-      <el-table-column label="风格样式" prop="style_des" />
-      <el-table-column label="跳转链接" prop="group_name_url">
-        <template v-slot="{ row }">
-          <span v-if="row.group_name_url">{{ row.group_name_url }}</span>
-          <span v-else>暂无数据</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" align="right">
-        <template #header>
-          <span>操作</span>
+      <template #default="scope" class="left">
+        <ElTooltip :enterable="false" content="编辑" effect="light">
           <el-button
             circle
             :color="META_PRIMARY"
-            style="margin-left: 200px"
-            @click="newDialog"
+            style="margin-left: -10px"
+            @click="showDialog(scope.$index, scope.row)"
           >
             <template #icon>
               <el-icon color="#fff">
-                <plus />
+                <edit />
               </el-icon>
             </template>
           </el-button>
-        </template>
+        </ElTooltip>
 
-        <template #default="scope" class="left">
-          <ElTooltip :enterable="false" content="编辑" effect="light">
-            <el-button
-              circle
-              :color="META_PRIMARY"
-              style="margin-left: -10px"
-              @click="showDialog(scope.$index, scope.row)"
-            >
-              <template #icon>
-                <el-icon color="#fff">
-                  <edit />
-                </el-icon>
-              </template>
-            </el-button>
-          </ElTooltip>
-
-          <ElTooltip :enterable="false" content="查看" effect="light">
-            <el-button
-              circle
-              :color="META_SUCCESS"
-              style="margin-left: 10px"
-              @click="dialogPreview(scope.$index, scope.row)"
-            >
-              <template #icon>
-                <el-icon color="#fff">
-                  <View />
-                </el-icon>
-              </template>
-            </el-button>
-          </ElTooltip>
-
+        <ElTooltip :enterable="false" content="查看" effect="light">
           <el-button
             circle
             :color="META_SUCCESS"
-            style=""
-            @click="newDialogSed(scope.$index)"
+            style="margin-left: 10px"
+            @click="dialogPreview(scope.$index, scope.row)"
           >
             <template #icon>
               <el-icon color="#fff">
-                <plus />
+                <View />
               </el-icon>
             </template>
           </el-button>
+        </ElTooltip>
 
-          <el-popconfirm
-            @confirm="deleteRow(scope.$index, scope.row)"
-            :title="`这下面有 ${
-              tableData[scope.$index].tab_list.length
-            } 个子内容，确定要删除吗？`"
-          >
-            <template #reference>
-              <el-button :color="META_DANGER" circle>
-                <template #icon>
-                  <el-icon color="#fff">
-                    <delete />
-                  </el-icon>
-                </template>
-              </el-button>
-            </template>
-          </el-popconfirm>
-        </template>
-      </el-table-column>
-    </el-table>
-  </template>
+        <el-button
+          circle
+          :color="META_SUCCESS"
+          style=""
+          @click="newDialogSed(scope.$index)"
+        >
+          <template #icon>
+            <el-icon color="#fff">
+              <plus />
+            </el-icon>
+          </template>
+        </el-button>
+
+        <el-popconfirm
+          @confirm="deleteRow(scope.$index, scope.row)"
+          :title="`这下面有 ${
+            tableData[scope.$index].tab_list.length
+          } 个子内容，确定要删除吗？`"
+        >
+          <template #reference>
+            <el-button :color="META_DANGER" circle>
+              <template #icon>
+                <el-icon color="#fff">
+                  <delete />
+                </el-icon>
+              </template>
+            </el-button>
+          </template>
+        </el-popconfirm>
+      </template>
+    </el-table-column>
+  </el-table>
+</template>
 <script lang="ts" setup>
 import { META_DANGER, META_PRIMARY, META_SUCCESS } from '@/config/const'
-import { computed, ref } from 'vue';
+import { computed, ref } from 'vue'
 const expandedRowKeys = ref<string[]>([])
 const props = withDefaults(
- defineProps<{
- tableData: any;
- loading: boolean;
- }>(),
- {
- },
+  defineProps<{
+    tableData: any
+    loading: boolean
+  }>(),
+  {}
 )
 const emit = defineEmits<{
- (e: 'showDialog',groupIndex: any, row: any): void
- (e: 'showDialogSed', groupIndex: any, tabIndex: number, row: any): void
- (e: 'deleteRowSed', groupIndex: any, tabIndex: number, row: any): void
- (e: 'newDialog'): void
- (e: 'newDialogSed', value: any): void
- (e: 'dialogPreview', groupIndex: any, row: any): void
- (e: 'deleteRow', groupIndex: any, row: any): void
+  (e: 'showDialog', groupIndex: any, row: any): void
+  (e: 'showDialogSed', groupIndex: any, tabIndex: number, row: any): void
+  (e: 'deleteRowSed', groupIndex: any, tabIndex: number, row: any): void
+  (e: 'newDialog'): void
+  (e: 'newDialogSed', value: any): void
+  (e: 'dialogPreview', groupIndex: any, row: any): void
+  (e: 'deleteRow', groupIndex: any, row: any): void
 }>()
 
 const showDialog = (groupIndex: number, row: any) => {
   emit('showDialog', groupIndex, row)
 }
-const showDialogSed= (groupIndex: number, tabIndex: number, row: any) => {
+const showDialogSed = (groupIndex: number, tabIndex: number, row: any) => {
   emit('showDialogSed', groupIndex, tabIndex, row)
 }
 const deleteRowSed = async (groupIndex: number, tabIndex: number, row: any) => {
@@ -202,13 +200,13 @@ const deleteRow = async (groupIndex: number, row: any) => {
 }
 //展开行固定的函数
 const remove = (array: string[], item: string): boolean => {
-  const index = array.indexOf(item);
+  const index = array.indexOf(item)
   if (index > -1) {
-    array.splice(index, 1); // 从数组中移除指定的项
-    return true;
+    array.splice(index, 1) // 从数组中移除指定的项
+    return true
   }
-  return false;
-};
+  return false
+}
 const expandOpen = async (row: any, expand: boolean) => {
   // 如果行已经存在于 expandedRowKeys 中，则移除它
   if (remove(expandedRowKeys.value, row._id)) {
@@ -219,18 +217,17 @@ const expandOpen = async (row: any, expand: boolean) => {
   }
 }
 // @ts-ignore
-const getRowClass = (row)=> {
-      let data = row.row;
-      let res = []as any;
-      if (data.tab_list && data.tab_list.length > 0) {
-        res.push('row-expand-has')
-        return res;
-      } else {
-        res.push('row-expand-unhas')
-        return res;
-      }
-    }
-
+const getRowClass = (row) => {
+  let data = row.row
+  let res = [] as any
+  if (data.tab_list && data.tab_list.length > 0) {
+    res.push('row-expand-has')
+    return res
+  } else {
+    res.push('row-expand-unhas')
+    return res
+  }
+}
 </script>
 <style>
 a.navbar {
@@ -314,10 +311,10 @@ a.navbar {
   display: none; /* Hide the expand icon */
 }
 
-.row-expand-unhas .el-table__expand-column{
+.row-expand-unhas .el-table__expand-column {
   pointer-events: none;
 }
-.row-expand-unhas .el-table__expand-column .el-icon{
-  visibility:hidden;
+.row-expand-unhas .el-table__expand-column .el-icon {
+  visibility: hidden;
 }
 </style>
