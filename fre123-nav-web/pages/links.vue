@@ -3,7 +3,11 @@
     <div
       class="w-full md:w-[800px] mx-auto bg-primary-bg md:shadow-common-box shadow-common-box-mobile py-5 px-6 flex-grow rounded-lg"
     >
-      <div v-for="group in linksData" class="link-container-category-item">
+      <div
+        v-for="(group, index) in linksData"
+        :key="index"
+        class="link-container-category-item"
+      >
         <h2
           class="text-primary-text leading-[25px] font-semibold text-[18px] mb-4"
         >
@@ -11,14 +15,16 @@
         </h2>
         <div class="link-container-links">
           <a
-            v-for="link in group.rows"
+            v-for="(link, num) in group?.list"
+            :key="num"
             class="link-container-links-item"
             :href="link.url"
             target="_blank"
             :title="link.name"
             rel="nofollow"
           >
-            <p class="truncate">{{ link.title }}</p>
+            <img class="w-[20px]" :src="link.logo_url" />
+            <p class="truncate">{{ link.name }}</p>
           </a>
         </div>
       </div>
@@ -30,9 +36,8 @@
 import {
   CONFIG_BUSINESS_KEY_FRIENDSHIP_LINK,
   getBusinessConfig,
-} from "~/stores/config";
-const linksData = await getBusinessConfig(CONFIG_BUSINESS_KEY_FRIENDSHIP_LINK);
-console.log("linksData", linksData);
+} from '~/stores/config'
+const linksData = await getBusinessConfig(CONFIG_BUSINESS_KEY_FRIENDSHIP_LINK)
 </script>
 
 <style scoped lang="scss">
@@ -71,7 +76,7 @@ console.log("linksData", linksData);
 }
 
 .link-container-links-item {
-  @apply py-3 px-4 rounded-md truncate   text-[14px] leading-5 flex items-center justify-between overflow-hidden;
+  @apply py-3 px-4 rounded-md truncate  text-[14px] leading-5 flex items-center gap-x-[4px]   overflow-hidden;
 
   .link-container-links-item-icon {
     @apply w-7 h-4 flex items-center justify-center rounded-xl flex-none overflow-hidden transition-all;

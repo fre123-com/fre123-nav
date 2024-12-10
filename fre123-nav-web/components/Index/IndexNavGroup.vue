@@ -33,8 +33,9 @@
             <li
               v-for="(tab, i) in groupData.tab_list"
               :data-index="i"
+              :key="i"
               :id="`${classNamePrefixGroupTab}${groupData.group_name}_${tab?.tab_name}`"
-              class="z-10 hover:text-[#007bff] hover:cursor-pointer active:text-[#007bff] active:font-bold px-3 text-[14px]"
+              class="index-nav-group-tab-item"
               :class="`${currTab == i ? 'active' : 'font-wei'}`"
               @mouseenter="slideTo(i, `${tab?.tab_name}`)"
               @mouseleave="slideBack(`${tab?.tab_name}`)"
@@ -64,6 +65,7 @@
         v-for="(item, t) in groupData.tab_list[currTab].details?.filter(
           (i) => i.is_show
         )"
+        :key="t"
         :content="item.description"
         :nowrap="true"
         :element-id="`desc-${idx}-${t}`"
@@ -111,131 +113,150 @@
 </template>
 
 <script setup lang="ts">
-import type { IGroup } from "~/interface/nav";
+import type { IGroup } from '~/interface/nav'
 const props = defineProps<{
-  groupData: IGroup;
-  idx: number;
-}>();
+  groupData: IGroup
+  idx: number
+}>()
 
-const classNamePrefixGroup = "nav_group_";
-const classNamePrefixGroupTab = "nav_group_tab_";
+const classNamePrefixGroup = 'nav_group_'
+const classNamePrefixGroupTab = 'nav_group_tab_'
 
-const currTab = ref(0);
-const isHovering = ref(false);
-const tabName = ref(props.groupData.tab_list[0]?.tab_name ?? "");
+const currTab = ref(0)
+const isHovering = ref(false)
+const tabName = ref(props.groupData.tab_list[0]?.tab_name ?? '')
+const showNumber = ref(100)
 
-const showNumber = ref(100);
-
+const tabWidths: any = ref([])
 // 切换数据
-let rewrite = false;
+let rewrite = false
 const switchTab = (val: number) => {
-  currTab.value = val;
+  currTab.value = val
   if (rewrite) {
-    history.pushState(null, "", " ");
+    history.pushState(null, '', ' ')
   }
-};
+}
 
-const padding = 12; // 左侧padding
+const padding = 12 // 左侧padding
 
-const fontSize = 14; //字体大小
-const scale = 0.6;
+const fontSize = 14 //字体大小
+const scale = 0.6
 
-const initWidth = Math.round(tabName.value.length * fontSize * scale);
-const initLeft = ref(0);
+const initWidth = ref(0)
+const initLeft = ref(0)
 
 // 初始化移动条位置
 const getTranslateX = () => {
-  let left = 0;
+  let left = 0
   for (let i = 0; i < currTab.value; i++) {
-    left += padding * 2 + tabName.value.length * fontSize;
+    left += tabWidths[i]
   }
-  left += Math.round(
-    padding + (tabName.value.length * fontSize * (1 - scale)) / 2
-  );
-  initLeft.value = left;
-};
-getTranslateX();
+  initWidth.value = tabWidths.value[currTab.value] * scale
+  left += (tabWidths.value[currTab.value] * (1 - scale)) / 2
+  console.log('left', left, initWidth.value)
+
+  initLeft.value = left
+}
 
 // 移动条移动
 const slideTo = (tabIndex: number, name: string) => {
-  isHovering.value = true;
-  let left = 0;
-  initLeft.value = 0;
+  isHovering.value = true
+  let left = 0
+  initLeft.value = 0
   for (let i = 0; i < tabIndex; i++) {
-    left += padding * 2 + name.length * fontSize;
+    left += tabWidths.value[i]
   }
-  left += Math.round(padding + (name.length * fontSize * (1 - scale)) / 2);
+  initWidth.value = tabWidths.value[tabIndex] * scale
+  left += (tabWidths.value[tabIndex] * (1 - scale)) / 2
+
   const anchor = document.getElementById(
     `${classNamePrefixGroup}${props.idx}_anchor`
-  );
+  )
   if (anchor != null) {
-    anchor.style.transitionDuration = "0.3s";
-    anchor.style.transform = `translateX(${left}px)`;
+    anchor.style.transitionDuration = '0.3s'
+    anchor.style.transform = `translateX(${left}px)`
   }
-};
+}
 
 // 返回原位置
 const slideBack = (name: string) => {
-  slideTo(currTab.value, name);
-  isHovering.value = false;
-};
+  slideTo(currTab.value, name)
+  isHovering.value = false
+}
 
 // 展示源网站跳转按钮
 const showToSourceIcon = (type: string, idx: number, t: number) => {
-  const element = document.getElementById(`to-source-icon-${idx}-${t}`);
-  if (type == "show") {
-    element?.classList.remove("hidden");
-    element?.classList.add("flex");
+  const element = document.getElementById(`to-source-icon-${idx}-${t}`)
+  if (type == 'show') {
+    element?.classList.remove('hidden')
+    element?.classList.add('flex')
   } else {
-    element?.classList.remove("flex");
-    element?.classList.add("hidden");
+    element?.classList.remove('flex')
+    element?.classList.add('hidden')
   }
-};
+}
 
 const jumpOut = (url: string) => {
-  window.open(url + "?ref=https://www.fre123.com", "_blank");
-};
+  window.open(url, '_blank')
+}
 
 const stop = ($event) => {
-  $event.stopPropagation();
-  $event.preventDefault();
-};
+  $event.stopPropagation()
+  $event.preventDefault()
+}
 
 //自动定位
 const located = () => {
-  const route = useRoute();
-  const hash = route.hash;
-  const routeGroupName = hash.replace("#", "").split("_")[0] ?? "";
-  const routeTabName = hash.replace("#", "").split("_")[1] ?? "";
+  const route = useRoute()
+  const hash = route.hash
+  const routeGroupName = hash.replace('#', '').split('_')[0] ?? ''
+  const routeTabName = hash.replace('#', '').split('_')[1] ?? ''
 
   if (routeTabName) {
     // 定位到分组
     const groupElement = document.getElementById(
       classNamePrefixGroup + routeGroupName
-    );
+    )
     if (groupElement) {
-      console.log("clientHeight", groupElement.offsetHeight);
+      console.log('clientHeight', groupElement.offsetHeight)
       window.scrollTo({
-        behavior: "smooth",
+        behavior: 'smooth',
         top: groupElement.offsetTop - 128,
-      });
+      })
     }
 
     // 定位到子分类
     const tabElement = document.getElementById(
-      classNamePrefixGroupTab + routeGroupName + "_" + routeTabName
-    );
+      classNamePrefixGroupTab + routeGroupName + '_' + routeTabName
+    )
     if (tabElement) {
-      tabElement.click();
-      getTranslateX();
+      tabElement.click()
+      getTranslateX()
     }
   }
-};
+}
+
+const getAllWidth = () => {
+  const wrapper = document.getElementById(
+    `${classNamePrefixGroup}${props.groupData?.group_name}`
+  )
+
+  if (wrapper) {
+    const list = wrapper.querySelectorAll('.index-nav-group-tab-item')
+    if (list) {
+      Array.from(list).forEach((item: any) => {
+        tabWidths.value.push(item.getBoundingClientRect().width)
+      })
+    }
+  }
+}
 
 onMounted(async () => {
-  await located();
-  rewrite = true;
-});
+  getAllWidth()
+  getTranslateX()
+  await located()
+  rewrite = true
+})
 </script>
 
 <style scoped>
@@ -354,5 +375,9 @@ onMounted(async () => {
   white-space: normal;
   overflow: visible;
   -webkit-line-clamp: initial;
+}
+
+.index-nav-group-tab-item {
+  @apply z-10 hover:text-[#007bff] hover:cursor-pointer active:text-[#007bff] active:font-bold px-3 text-[14px];
 }
 </style>

@@ -7,7 +7,7 @@
           :class="imgCss"
           @mouseenter="imgCss = 'header-icon-rotate-right'"
           @mouseleave="imgCss = 'header-icon-rotate-left'"
-          src="https://img.fre123.com/i/2023/11/25/65619e8022505.png"
+          src="@/assets/images/logo-now.png"
         />
         <div>FRE123</div>
       </div>
@@ -58,117 +58,117 @@
 </template>
 
 <script setup lang="ts">
-import loginApi from "@/api/modules/login/index";
-import router from "@/routers";
-import { GlobalStore } from "@/store";
-import { onMounted, onUnmounted, ref } from "vue";
+import loginApi from '@/api/modules/login/index'
+import router from '@/routers'
+import { GlobalStore } from '@/store'
+import { onMounted, onUnmounted, ref } from 'vue'
 
-const globalStore = GlobalStore();
+const globalStore = GlobalStore()
 
 const ifUserExit = () => {
   try {
-    const data = globalStore.token;
+    const data = globalStore.token
     if (data) {
-      router.push("/home/index");
+      router.push('/home/index')
     }
   } catch {
-    console.log("JSON解析错误");
+    console.log('JSON解析错误')
   }
-};
+}
 // 已经登录了，那用户再次访问login页面得跳到首页
-ifUserExit();
+ifUserExit()
 
 const userParams = ref({
-  username: "",
-  password: "",
-});
+  username: '',
+  password: '',
+})
 
 // 点击登录按钮
 const finishLogin = async () => {
   if (ruleCheck()) {
     // 调用接口
     try {
-      const { data }: any = await loginApi.getLoginList(userParams.value);
-      console.log("data", data);
+      const { data }: any = await loginApi.getLoginList(userParams.value)
+      console.log('data', data)
       if (data.jwt_token) {
-        router.push("/home/index");
-        globalStore.setToken(data.jwt_token);
-        return;
+        router.push('/home/index')
+        globalStore.setToken(data.jwt_token)
+        return
       }
     } catch {
-      usersWrong.value = true;
-      userWrongText.value = "账号或密码错误";
-      passwordWrongText.value = "";
-      passwordWrong.value = true;
+      usersWrong.value = true
+      userWrongText.value = '账号或密码错误'
+      passwordWrongText.value = ''
+      passwordWrong.value = true
     }
   }
-};
-const imgCss = ref("");
+}
+const imgCss = ref('')
 // 密码input变化
-const usersFocus = ref(false);
-const password_type = ref("password");
-const password_img = ref("/img/open_eye.svg");
+const usersFocus = ref(false)
+const password_type = ref('password')
+const password_img = ref('/img/open_eye.svg')
 // 错误提示判断
-const usersWrong = ref(false);
-const passwordWrong = ref(false);
-const userWrongText = ref("");
-const passwordWrongText = ref("");
-const ipt = ref();
+const usersWrong = ref(false)
+const passwordWrong = ref(false)
+const userWrongText = ref('')
+const passwordWrongText = ref('')
+const ipt = ref()
 // 清空input的聚焦判断
 // 判断input里面的清空按钮
 onMounted(() => {
-  document.addEventListener("click", clickTarget);
-});
+  document.addEventListener('click', clickTarget)
+})
 onUnmounted(() => {
-  document.removeEventListener("click", clickTarget);
-});
+  document.removeEventListener('click', clickTarget)
+})
 
 const clickTarget = (event: { target: any }) => {
   // 使用 event 而不是 item
   if (ipt.value && ipt.value.contains(event.target)) {
     // 使用 contains 方法检查 ipt 是否包含被点击的元素
-    usersFocus.value = true;
+    usersFocus.value = true
   } else {
-    usersFocus.value = false;
+    usersFocus.value = false
   }
-};
+}
 // 眼睛显示密码
 const togglePasswordVisibility = () => {
-  if (password_type.value === "password") {
-    password_type.value = "text";
-    password_img.value = "/img/close_eye.svg";
+  if (password_type.value === 'password') {
+    password_type.value = 'text'
+    password_img.value = '/img/close_eye.svg'
   } else {
-    password_type.value = "password";
-    password_img.value = "/img/open_eye.svg";
+    password_type.value = 'password'
+    password_img.value = '/img/open_eye.svg'
   }
-};
+}
 /**
  * @name 表单校验函数
  */
 const ruleCheck = () => {
   if (
-    userParams.value.username.trim() === "" &&
-    userParams.value.password.trim() === ""
+    userParams.value.username.trim() === '' &&
+    userParams.value.password.trim() === ''
   ) {
-    usersWrong.value = true;
-    userWrongText.value = "请输入账号和密码";
-    passwordWrongText.value = "";
-    passwordWrong.value = true;
-    return false;
+    usersWrong.value = true
+    userWrongText.value = '请输入账号和密码'
+    passwordWrongText.value = ''
+    passwordWrong.value = true
+    return false
   }
-  if (userParams.value.username.trim() === "") {
-    usersWrong.value = true;
-    userWrongText.value = "请输入账号";
-    return false;
+  if (userParams.value.username.trim() === '') {
+    usersWrong.value = true
+    userWrongText.value = '请输入账号'
+    return false
   }
-  if (userParams.value.password.trim() === "") {
-    passwordWrong.value = true;
-    passwordWrongText.value = "请输入密码";
-    return false;
+  if (userParams.value.password.trim() === '') {
+    passwordWrong.value = true
+    passwordWrongText.value = '请输入密码'
+    return false
   }
 
-  return true;
-};
+  return true
+}
 </script>
 
 <style scoped>

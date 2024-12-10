@@ -1,17 +1,17 @@
 <template>
   <div>
     <MainTable
-    :loading="loading"
-    :table-data="tableData"
-    @show-dialog="showDialog"
-    @show-dialog-sed="showDialogSed"
-    @new-dialog="newDialog"
-    @new-dialog-sed="newDialogSed"
-    @delete-row="deleteRow"
-    @delete-row-sed="deleteRowSed"
-    @dialog-preview="dialogPreview"
-    >  
-   </MainTable>
+      :loading="loading"
+      :table-data="tableData"
+      @show-dialog="showDialog"
+      @show-dialog-sed="showDialogSed"
+      @new-dialog="newDialog"
+      @new-dialog-sed="newDialogSed"
+      @delete-row="deleteRow"
+      @delete-row-sed="deleteRowSed"
+      @dialog-preview="dialogPreview"
+    >
+    </MainTable>
     <!-- 分割线---------下面是抽屉等等一系列东西-------------------------上面是表格的代码----------------------------------------------- -->
     <FirstDialog
       :visible="currentRow.drawerVisible"
@@ -29,7 +29,7 @@
       :form-data="formData"
       :dialog-header="tShow"
       :edit-mode="bShowSed"
-      @on-submit="onSubmitSecond" 
+      @on-submit="onSubmitSecond"
       @on-submit-new="newSubmitSecond"
       @closed="currentRowSecond.drawerVisible = false"
     >
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref,onMounted, watch } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import MainTable from './components/MainTable.vue'
 import FirstDialog from './components/FirstDialog.vue'
 import SecondeDialog from './components/SecondeDialog.vue'
@@ -66,7 +66,12 @@ import {
 
 import { navStore } from '@/store/modules/nav'
 import { deleteNav, updateNav } from './index'
-import { IRequestBody, navDelate, navInsert, TabItem } from '@/api/modules/nav/interface'
+import {
+  IRequestBody,
+  navDelate,
+  navInsert,
+  TabItem,
+} from '@/api/modules/nav/interface'
 
 const tableData = ref('') as any
 //获取数据
@@ -83,14 +88,14 @@ const requestBody = ref<IRequestBody>({
   style: '',
   style_des: '',
   tab_list: storedData.value,
-  group_name_url:'',
+  group_name_url: '',
 })
 const insertBody = ref<navInsert>({
   group_name: '',
   style: '',
   style_des: '',
   tab_list: storedData.value,
-  group_name_url:'',
+  group_name_url: '',
 })
 //删除数据
 const deleteBody = ref<navDelate>({
@@ -104,6 +109,7 @@ const formData = ref({
   group_name_url: '',
   tab_name: '',
   tab_name_url: '',
+  upper_right_corner: { url: '', title: '' },
 })
 const index = ref('') as any
 //预览的索引
@@ -134,7 +140,7 @@ watch(
       } else {
         // 如果navData.data不包含rows属性，设置一个默认值或采取其他处理方式
         tableData.value = []
-        console.error('这里有bug')  
+        console.error('这里有bug')
       }
     }
   },
@@ -148,11 +154,10 @@ const updateHeader = async () => {
   try {
     loading.value = true
 
-      await update('update') // 更新数据
-      await updateNav(requestBody.value) // 更新导航数据
-      await reloadHeader() // 重新加载头部信息
-            loading.value = false
-
+    await update('update') // 更新数据
+    await updateNav(requestBody.value) // 更新导航数据
+    await reloadHeader() // 重新加载头部信息
+    loading.value = false
   } catch (error) {
     await reloadHeader() // 在更新失败时重新加载头部信息
   }
@@ -160,37 +165,36 @@ const updateHeader = async () => {
 //更新数据的获取,
 const update = async (type: 'update' | 'insert') => {
   if (!editingIndex.value) {
-    return;
+    return
   }
-  
-  const { groupIndex } = editingIndex.value;
-  const { group_name, style, style_des, group_name_url, tab_list } = tableData.value[groupIndex];
+
+  const { groupIndex } = editingIndex.value
+  const { group_name, style, style_des, group_name_url, tab_list } =
+    tableData.value[groupIndex]
   const body = {
     group_name,
     style,
     style_des,
     group_name_url,
     tab_list: deepClone(tab_list),
-  };
-
+  }
   if (type === 'update') {
     requestBody.value = {
       _id: tableData.value[groupIndex]._id, // 添加 _id
       ...body,
-    };
+    }
   } else if (type === 'insert') {
-    insertBody.value = body;
+    insertBody.value = body
   }
-};
+}
 const insertHeader = async () => {
   try {
     loading.value = true
 
-      await update('insert') // 更新数据
-      await insertNav(insertBody.value) // 更新导航数据
-      await reloadHeader() // 重新加载头部信息
-            loading.value = false
-
+    await update('insert') // 更新数据
+    await insertNav(insertBody.value) // 更新导航数据
+    await reloadHeader() // 重新加载头部信息
+    loading.value = false
   } catch (error) {
     await reloadHeader() // 在更新失败时重新加载头部信息
   }
@@ -208,9 +212,9 @@ const DeleteData = async () => {
 
 const deleteHeader = async () => {
   try {
-      await DeleteData()
-      await deleteNav(deleteBody.value)
-      await reloadHeader()
+    await DeleteData()
+    await deleteNav(deleteBody.value)
+    await reloadHeader()
   } catch (error) {
     reloadHeader()
   }
@@ -225,7 +229,9 @@ const newDialog = () => {
 }
 const newDialogSed = (groupIndex: number) => {
   editingIndex.value = { groupIndex } //储存索引editingIndex.value = { groupIndex}; //储存索引
+
   resetData()
+
   bShowSed.value = false
   tShow.value = '新建分类'
   currentRowSecond.value.drawerVisible = true
@@ -242,32 +248,36 @@ const showDialog = (groupIndex: number, row: any) => {
     _id: row._id,
     group_name: row.group_name,
     style_des: row.style_des,
-    group_name_url: row.group_name_url || formData.value.group_name_url // 保持现有 URL，如果 row 中没有 URL
-  };
+    group_name_url: row.group_name_url || formData.value.group_name_url, // 保持现有 URL，如果 row 中没有 URL
+  }
   currentRow.value.drawerVisible = true
 }
 //第二类的展开
 const showDialogSed = (groupIndex: number, tabIndex: number, row: any) => {
-  bShowSed.value = true;
-  tShow.value = '修改分类';
-  editingIndex.value = { groupIndex, tabIndex };
-  currentRowSecond.value = { ...row };
+  bShowSed.value = true
+  tShow.value = '修改分类'
+  editingIndex.value = { groupIndex, tabIndex }
+  currentRowSecond.value = { ...row }
   formData.value = {
     ...formData.value,
     tab_name: row.tab_name,
-    tab_name_url: row.tab_name_url
-  };
-  currentRowSecond.value.drawerVisible = true;
-}
-const dialogPreview = (groupIndex: number,row: any) => {
-  if(tableData.value[groupIndex].tab_list.length === 0){
-    previewWaring()
-    return  
+    tab_name_url: row.tab_name_url,
+    upper_right_corner: {
+      url: row.upper_right_corner.url,
+      title: row.upper_right_corner.title,
+    },
   }
-  currentPreview.value.drawerVisible =true;
-  index.value=groupIndex;
-  selectedTabDetails.value = row.tab_list[0];
-};
+  currentRowSecond.value.drawerVisible = true
+}
+const dialogPreview = (groupIndex: number, row: any) => {
+  if (tableData.value[groupIndex].tab_list.length === 0) {
+    previewWaring()
+    return
+  }
+  currentPreview.value.drawerVisible = true
+  index.value = groupIndex
+  selectedTabDetails.value = row.tab_list[0]
+}
 //这是预览的展开
 const newSubmit = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
@@ -281,12 +291,12 @@ const newSubmit = async (formEl: FormInstance | undefined) => {
       }
       Object.assign(newItem, {
         group_name: formData.value.group_name,
-       style_des: formData.value.style_des,
-      });
+        style_des: formData.value.style_des,
+      })
       await tableData.value.push(newItem)
       editingIndex.value = { groupIndex: tableData.value.length - 1 } // 储存索引
       openSuccessNew()
-      currentRow.value.drawerVisible = false      
+      currentRow.value.drawerVisible = false
       await insertHeader()
     } else {
       openWaring()
@@ -295,82 +305,87 @@ const newSubmit = async (formEl: FormInstance | undefined) => {
 }
 //新建的提交
 const newSubmitSecond = async (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
+  if (!formEl) return
 
   await formEl.validate(async (valid) => {
     if (valid) {
-      const { groupIndex } = editingIndex.value || {};
+      const { groupIndex } = editingIndex.value || {}
       if (groupIndex !== undefined) {
         const newItem = {
           tab_name: formData.value.tab_name,
           tab_name_url: formData.value.tab_name_url,
-          upper_right_corner: { title: '', url: '' },
+          upper_right_corner: formData.value.upper_right_corner,
           details: [],
-        };
-        tableData.value[groupIndex].tab_list.push(newItem);
-        currentRowSecond.value.drawerVisible = false;
-        await updateHeader();
-        openSuccessNew();
+        }
+        tableData.value[groupIndex].tab_list.push(newItem)
+        currentRowSecond.value.drawerVisible = false
+        await updateHeader()
+        openSuccessNew()
       }
     } else {
-      openWaring();
+      openWaring()
     }
-  });
-};
+  })
+}
 //编辑提交的代码
 const onSubmit = async (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
+  if (!formEl) return
   const validateForm = async () => {
-    return formEl.validate();
-  };
+    return formEl.validate()
+  }
   try {
-    const valid = await validateForm();
+    const valid = await validateForm()
     if (valid && editingIndex.value) {
-      const { groupIndex } = editingIndex.value;
-      const { group_name, style_des, group_name_url } = formData.value;
+      const { groupIndex } = editingIndex.value
+      const { group_name, style_des, group_name_url } = formData.value
       if (tableData.value) {
         tableData.value[groupIndex] = {
           ...tableData.value[groupIndex],
           group_name,
           style_des,
           group_name_url,
-        };
+        }
       }
-      currentRow.value.drawerVisible = false;
-      await updateHeader();
-      openSuccessEdit();
+      currentRow.value.drawerVisible = false
+      await updateHeader()
+      openSuccessEdit()
     } else {
-      openWaring();
+      openWaring()
     }
   } catch (error) {
-    openWaring();
+    openWaring()
   }
-};
+}
 //
 const onSubmitSecond = async (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
+  if (!formEl) return
   try {
-    const valid = await formEl.validate();
+    const valid = await formEl.validate()
     if (valid && editingIndex.value) {
-      const { groupIndex, tabIndex } = editingIndex.value;
-      if (tableData.value && groupIndex !== undefined && tabIndex !== undefined) {
-        const { tab_name, tab_name_url } = formData.value;
+      const { groupIndex, tabIndex } = editingIndex.value
+      if (
+        tableData.value &&
+        groupIndex !== undefined &&
+        tabIndex !== undefined
+      ) {
+        const { tab_name, tab_name_url, upper_right_corner } = formData.value
         tableData.value[groupIndex].tab_list[tabIndex] = {
           ...tableData.value[groupIndex].tab_list[tabIndex],
           tab_name,
           tab_name_url,
-        };
-        currentRowSecond.value.drawerVisible = false; // 关闭弹窗
-        await updateHeader();
-        openSuccessEdit();
+          upper_right_corner,
+        }
+        currentRowSecond.value.drawerVisible = false // 关闭弹窗
+        await updateHeader()
+        openSuccessEdit()
       }
     } else {
-      openWaring();
+      openWaring()
     }
   } catch (error) {
-    openWaring();
+    openWaring()
   }
-};
+}
 //删除代码
 const deleteRow = async (groupIndex: number, row: any) => {
   tableData.value.splice(groupIndex, 1)
@@ -390,6 +405,8 @@ const resetData = () => {
   formData.value.group_name_url = ''
   formData.value.tab_name = ''
   formData.value.tab_name_url = ''
+  formData.value.upper_right_corner.title = ''
+  formData.value.upper_right_corner.url = ''
 }
 //清空的代码
 //刷新的代码

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full bg-white sticky top-0 z-[110]">
     <div
-      id="fre123-header"
+      id="website-header"
       class="header-transition"
       :class="`${
         !isIndex || isMobileScreen ? 'custom-size sticky' : 'py-[15px]'
@@ -92,80 +92,80 @@ import {
   CONFIG_KEY_BASE,
   CONFIG_KEY_HERDER,
   getSiteConfigItem,
-} from "~/stores/config";
+} from '~/stores/config'
 
 withDefaults(
   defineProps<{
-    isIndex: boolean;
-    showSearch?: boolean;
-    headerText?: string;
+    isIndex: boolean
+    showSearch?: boolean
+    headerText?: string
   }>(),
   {
-    headerText: "",
+    headerText: '',
     showSearch: false,
   }
-);
+)
 
 // 控制头部变化
 const headerAnimation = (action: string) => {
   if (isMobileScreen.value) {
-    return false;
+    return false
   }
 
-  const headerDom = document.getElementById("fre123-header");
-  const searchDom = document.getElementById("resource-menu");
+  const headerDom = document.getElementById('website-header')
+  const searchDom = document.getElementById('resource-menu')
 
   if (headerDom) {
-    if (action == "smaller") {
-      headerDom.classList.add("custom-size");
-      searchDom?.classList.add("hidden");
+    if (action == 'smaller') {
+      headerDom.classList.add('custom-size')
+      searchDom?.classList.add('hidden')
     } else {
-      headerDom.classList.remove("custom-size");
-      searchDom?.classList.remove("hidden");
+      headerDom.classList.remove('custom-size')
+      searchDom?.classList.remove('hidden')
     }
   }
-};
+}
 
-const baseInfo = ref();
-const headerConfig = ref();
+const baseInfo = ref()
+const headerConfig = ref()
 
-const isShow = ref(false);
+const isShow = ref(false)
 const showCategory = (show: boolean, i: number) => {
-  isShow.value = show;
-  const dom = document.getElementById("config-category-" + i);
+  isShow.value = show
+  const dom = document.getElementById('config-category-' + i)
   if (dom) {
     if (isShow.value) {
-      dom.classList.remove("opacity-0");
-      dom.classList.remove("h-0");
-      dom.classList.add("opacity-100");
+      dom.classList.remove('opacity-0')
+      dom.classList.remove('h-0')
+      dom.classList.add('opacity-100')
     } else {
-      dom.classList.remove("opacity-100");
-      dom.classList.add("opacity-0");
-      dom.classList.add("h-0");
+      dom.classList.remove('opacity-100')
+      dom.classList.add('opacity-0')
+      dom.classList.add('h-0')
     }
   }
-};
-defineExpose({ headerAnimation });
+}
+defineExpose({ headerAnimation })
 
-const isShowMobileDialog = ref(false);
-const configList = ref();
+const isShowMobileDialog = ref(false)
+const configList = ref()
 const showMobileDialog = (list: any) => {
-  console.log("list.value", list);
+  console.log('list.value', list)
 
-  configList.value = list;
-  isShowMobileDialog.value = true;
-};
+  configList.value = list
+  isShowMobileDialog.value = true
+}
 
-const isMobileScreen = ref(false);
+const isMobileScreen = ref(false)
+baseInfo.value = await getSiteConfigItem(CONFIG_KEY_BASE)
+headerConfig.value = await getSiteConfigItem(CONFIG_KEY_HERDER)
 onMounted(async () => {
-  isMobileScreen.value = isMobile();
-  baseInfo.value = await getSiteConfigItem(CONFIG_KEY_BASE);
-  headerConfig.value = await getSiteConfigItem(CONFIG_KEY_HERDER);
-});
+  isMobileScreen.value = isMobile()
+})
 </script>
 
 <style scoped>
-#fre123-header {
+#website-header {
   @apply shadow-[0_1px_2px_rgba(0,0,0,0.07)] m-auto flex border-b-2 border-b-gray-50 md:px-[20px];
 }
 .header-transition {

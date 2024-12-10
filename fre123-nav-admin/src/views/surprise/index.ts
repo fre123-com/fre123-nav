@@ -1,19 +1,17 @@
-
 const surpriseTypeMap: Record<number, string> = {
   1: '纯图',
   2: '纯文字',
-  3: '图文',
 }
 
 const surprisePositionMap: Record<number, string> = {
-  1: '居中弹窗',
+  //1: '居中弹窗',
   2: '右下角',
   // 3: '右上角',
   // 4: '底部贴片',
 }
 
 const surpriseWebPathMap: Record<string, string> = {
-  'global': '所有页面',
+  global: '所有页面',
   '/': '首页',
   '/s': '搜索结果页',
   '/d': '详情页',
@@ -64,7 +62,6 @@ export const getSurpriseWebPathOptions = () => {
   return list
 }
 
-
 export const exportJsonData = (dataToExport: any, fileName: string) => {
   // 将数据转换为JSON字符串
   const jsonData = JSON.stringify(dataToExport, null, 2)
@@ -84,7 +81,6 @@ export const exportJsonData = (dataToExport: any, fileName: string) => {
   // 然后移除链接，清理DOM
   document.body.removeChild(link)
 }
-
 
 import { ISurpriseListItem } from '@/api/modules/surprise/interface'
 // 检查单个搜索条件的辅助函数，适用于字符串搜索
@@ -116,13 +112,14 @@ export const matchesAdvancedCriteria = (
   return itemValue === searchValue || isUnspecifiedFilter
 }
 
-
 /**
  * @name 广告规则校验
  */
 export const surpriseRules = {
   title: [{ required: true, trigger: 'blur', message: '广告标题不能为空' }],
-  description: [{ required: true, trigger: 'blur', message: '广告描述不能为空' }],
+  description: [
+    { required: true, trigger: 'blur', message: '广告描述不能为空' },
+  ],
   type: [{ required: true, trigger: 'change', message: '广告类型不能为空' }],
   position: [{ required: true, trigger: 'blur', message: '广告位置不能为空' }],
   img_url: [
