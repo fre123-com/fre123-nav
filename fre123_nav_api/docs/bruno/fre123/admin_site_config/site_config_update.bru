@@ -1,0 +1,159 @@
+meta {
+  name: site_config_update
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{api}}/v1/admin_site_config/update
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdvdXppYSIsInBhc3N3b3JkIjoiMTIzNDU2IiwiZXhwIjoxNzIzOTA4OTYyfQ.ru5MdD8UUxLTfnrxJwFRXqeZFbJzyTVXwSMcVGex3ng
+}
+
+body:json {
+  {
+          "type": "888",
+          "data": {
+              "is_show": 1,
+              "list": [
+                  {
+                      "icon_class": "fab",
+                      "icon_size": 20,
+                      "icon_color": "#001b140",
+                      "icon_hover_color": "#00811733",
+                      "text": "程序员鱼皮",
+                      "img": "不要",
+                      "url": ""
+                  },
+                  {
+                      "icon_class": "fabane",
+                      "icon_size": 20,
+                      "icon_color": "#0088cc",
+                      "icon_hover_color": "#085b85",
+                      "text": "关注老胡TG,纸飞机",
+                      "img": "",
+                      "url": "https://t.me/howie_weekly111"
+                  }
+              ]
+           }
+      }
+}
+
+docs {
+  ### 网站配置更新接口文档
+  
+  #### 描述
+  更新指定 `type` 网站的基本配置信息。
+  
+  #### 数据库
+  d_site_config
+  
+  #### 请求方法
+  `POST`
+  
+  #### 请求路径
+  `/api/admin_site_config_update`
+  
+  #### 请求头
+  - `Content-Type: application/json`
+  - `Authorization: Bearer <token>`
+  
+  #### 请求参数
+  请求体为 JSON 格式，包含以下字段：
+  
+  | 参数名 | 类型   | 必填 | 描述      |   
+  | ------ | ------ | ---- | -------------- |
+  | type   | string | 是   | 指定的 type 名称 |
+  
+  #### 请求示例
+  ```json
+  {
+          "type": "test12138",
+          "data": {
+              "is_show": 1,
+              "list": [
+                  {
+                      "icon_class": "fab",
+                      "icon_size": 20,
+                      "icon_color": "#001b140",
+                      "icon_hover_color": "#00811733",
+                      "text": "程序员鱼皮",
+                      "img": "不要",
+                      "url": ""
+                  },
+                  {
+                      "icon_class": "fabane",
+                      "icon_size": 20,
+                      "icon_color": "#0088cc",
+                      "icon_hover_color": "#085b85",
+                      "text": "关注老胡TG,纸飞机",
+                      "img": "",
+                      "url": "https://t.me/howie_weekly111"
+                  }
+              ]
+           }
+      }
+  ```
+  
+  ##### 成功响应示例
+  ```json
+  {
+    "data": {},
+    "info": "成功更新test12138 的网站基本配置信息",
+    "status": 0
+  }
+  ```
+  
+  ##### 失败响应示例
+  - 没有找到对应的 type
+  ```json
+  {
+    "data": {
+      "err_msg": "没有找到type: 888 的网站基本配置信息，无法更新"
+    },
+    "info": "参数错误",
+    "status": 100
+  }
+  ```
+  
+  
+  #### 注意事项
+  - 该接口需要 JWT 认证，需在请求头中包含有效的 `Authorization` token。
+  
+    #### 异常
+  > 参数错误
+  
+  ```
+  {
+    "data": {},
+    "info": "参数错误",
+    "status": 100
+  }
+  ```
+  
+  > 验证未通过
+  
+  ```
+  {
+    "data": {},
+    "info": "验证未通过",
+    "status": 101
+  }
+  ```
+  
+  > 数据库错误
+  
+  ```
+  {
+    "data": {
+      "err_msg": {}
+    },
+    "info": "数据库错误",
+    "status": 106
+  }
+  ```  
+}

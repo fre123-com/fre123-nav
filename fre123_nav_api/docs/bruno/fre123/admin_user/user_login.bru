@@ -1,0 +1,81 @@
+### 用户登录接口文档
+
+#### 描述
+用户登录接口，验证用户名和密码，成功后返回 JWT Token。Token 有效期为 1 天。
+
+#### 请求 URL
+`POST /admin_user/login`
+
+#### 请求头
+- `Content-Type: application/json`
+
+#### 请求体
+```json
+{
+    "username": "string",  // 用户名
+    "password": "string"   // 密码
+}
+```
+
+#### 响应
+
+##### 成功响应
+- 状态码: 200
+- 响应体:
+```json
+{
+    "status": "success",
+    "data": {
+        "jwt_token": "string"  // JWT Token
+    }
+}
+```
+
+##### 失败响应
+- 状态码: 401
+- 响应体:
+```json
+{
+    "status": "error",
+    "data": {
+        "err_msg": "用户名或密码错误"
+    },
+    "info": "登录验证信息错误",
+    "code": 401
+}
+```
+
+#### 注意事项
+- Token 有效期为 1 天。
+- 确保请求体中的 `username` 和 `password` 字段不为空。
+
+#### 示例
+
+##### 请求示例
+{
+    "username": "gouzia",
+    "password": "123456"
+}
+```
+
+##### 成功响应示例
+```json
+{
+    "status": "success",
+    "data": {
+        "jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
+}
+```
+
+##### 失败响应示例
+```json
+{
+    "status": "error",
+    "data": {
+        "err_msg": "用户名或密码错误"
+    },
+    "info": "登录验证信息错误",
+    "code": 401
+}
+```
