@@ -15,36 +15,35 @@
 </template>
 
 <script setup lang="ts">
-import type { CommonHeader } from "#build/components";
+import type { CommonHeader } from '#build/components'
 
-const headerRef = ref<InstanceType<typeof CommonHeader>>(null);
+const headerRef = ref<InstanceType<typeof CommonHeader>>(null)
 
 const handleHeaderAnimation = (type: string) => {
-  console.log("headerRef is ", headerRef.value);
-  headerRef.value?.headerAnimation(type);
-};
+  headerRef.value?.headerAnimation(type)
+}
 
 const scrollListenerHandler = () => {
   nextTick(() => {
     const wrapTop =
-      document.getElementById("wrap")?.getBoundingClientRect().top || 0;
+      document.getElementById('wrap')?.getBoundingClientRect().top || 0
     if (wrapTop < 75) {
-      handleHeaderAnimation("smaller");
+      handleHeaderAnimation('smaller')
     } else {
-      handleHeaderAnimation("larger");
+      handleHeaderAnimation('larger')
     }
-  });
-};
+  })
+}
 
 onMounted(() => {
   nextTick(() => {
-    document.addEventListener("scroll", scrollListenerHandler);
-  });
-});
+    document.addEventListener('scroll', scrollListenerHandler)
+  })
+})
 
 onUnmounted(() => {
-  document.removeEventListener("scroll", scrollListenerHandler);
-});
+  document.removeEventListener('scroll', scrollListenerHandler)
+})
 </script>
 <style>
 #wrap {

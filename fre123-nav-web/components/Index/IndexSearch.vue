@@ -11,6 +11,7 @@
         class="flex px-2 div-center hover:text-[#007bff] truncate"
         :class="`${currTab == i ? 'text-[#007bff]' : ''}`"
         v-for="(item, i) in resourceList"
+        :key="i"
         @mouseover="slideTo(i)"
         @mouseleave="slideBack()"
         @click="switchResource(i, item.name)"
@@ -75,128 +76,132 @@
 </template>
 
 <script setup lang="ts">
-import type { IResource, IResourceType } from "~/interface/resource";
-import useResourceStore from "~/stores/resource";
+import type { IResource, IResourceType } from '~/interface/resource'
+import useResourceStore from '~/stores/resource'
 
 definePageMeta({
   layout: false,
-});
+})
 
-const route = useRoute();
-const keyword = ref(route.query.q as string);
+const route = useRoute()
+const keyword = ref(route.query.q as string)
 
 // 获取资源类型列表
-const searchStore = useResourceStore();
-await searchStore.getResourceConfig();
-const resourceTypeList = searchStore.getResourceTypeList();
+const searchStore = useResourceStore()
+await searchStore.getResourceConfig()
+const resourceTypeList = searchStore.getResourceTypeList()
 
-const showResourceList = ref(false);
-const selectedResourceType = ref(searchStore.selectedResourceType);
+const showResourceList = ref(false)
+const selectedResourceType = ref(searchStore.selectedResourceType)
 
-const selectedResource = ref<IResource>();
-const currResourceType = ref<IResourceType>();
+const selectedResource = ref<IResource>()
+const currResourceType = ref<IResourceType>()
 const getResourceType = async (type: string) => {
   currResourceType.value = resourceTypeList.find((element) => {
-    return element.key == type;
-  });
+    return element.key == type
+  })
   if (!currResourceType.value) {
-    currResourceType.value = resourceTypeList[0] ?? "";
-    selectedResourceType.value = currResourceType.value?.key as string;
-    searchStore.setSelectedResource(selectedResourceType.value);
+    currResourceType.value =
+      resourceTypeList?.length > 0 ? resourceTypeList[0] : ''
+    selectedResourceType.value = currResourceType.value?.key as string
+    searchStore.setSelectedResource(selectedResourceType.value)
   }
-};
-await getResourceType(selectedResourceType.value);
+}
+await getResourceType(selectedResourceType.value)
 
-const currTab = ref(0);
+const currTab = ref(0)
 
-const resourceList = ref<IResource[]>([]);
+const resourceList = ref<IResource[]>([])
 // 获取资源列表
 const getResourceList = async (resourceType: string) => {
-  const list = await searchStore.getResourceList(resourceType, false, false);
-  resourceList.value = list;
+  const list = await searchStore.getResourceList(resourceType, false, false)
+  resourceList.value = list ?? []
 
   const matchResource = resourceList.value?.findLast((element, i) => {
     if (element.name == searchStore.selectedResource) {
-      currTab.value = i;
-      return element;
+      currTab.value = i
+      return element
     }
-    return;
-  });
-  console.log("resourceType is ", resourceType);
-  console.log("list is ", list);
-  console.log("selectedResourceType.value", selectedResourceType.value);
-  selectedResource.value = matchResource ? matchResource : list[0] ?? "";
-};
-await getResourceList(selectedResourceType.value);
+    return
+  })
+  console.log('resourceType is ', resourceType)
+  console.log('list is ', list)
+  console.log('selectedResourceType.value', selectedResourceType.value)
+  selectedResource.value = matchResource
+    ? matchResource
+    : list?.length > 0
+    ? list[0]
+    : ''
+}
+await getResourceList(selectedResourceType.value)
 
 // 搜索事件
 const handleSearch = () => {
   const url = `${selectedResource.value?.url}`.replaceAll(
-    "{keyword}",
+    '{keyword}',
     keyword.value
-  );
+  )
   navigateTo(url, {
     open: {
-      target: "_blank",
+      target: '_blank',
     },
-  });
-};
+  })
+}
 
 const generatePlaceholder = () => {
-  return selectedResource.value?.name == "全部"
-    ? "请输入您要搜索的内容..."
-    : `在 ${selectedResource.value?.name} 中搜索`;
-};
+  return selectedResource.value?.name == '全部'
+    ? '请输入您要搜索的内容...'
+    : `在 ${selectedResource.value?.name} 中搜索`
+}
 
 const switchResource = (idx: number, name: string) => {
   selectedResource.value = resourceList.value?.findLast((element) => {
-    return element.name == name;
-  });
-  currTab.value = idx;
-  searchStore.setSelectedResource(name);
-  slideTo(idx);
-};
+    return element.name == name
+  })
+  currTab.value = idx
+  searchStore.setSelectedResource(name)
+  slideTo(idx)
+}
 
 // 初始化移动条位置
 const slideTo = (idx: number) => {
-  const dom = document.getElementById(`search_tab_${idx}`);
+  const dom = document.getElementById(`search_tab_${idx}`)
   if (dom) {
-    const w = dom.offsetWidth as number;
-    const offsetLeft = dom.offsetLeft;
+    const w = dom.offsetWidth as number
+    const offsetLeft = dom.offsetLeft
 
-    console.log("w is", w, "offsetLeft is ", offsetLeft);
-    const anchor = document.getElementById("search_tab_anchor");
+    console.log('w is', w, 'offsetLeft is ', offsetLeft)
+    const anchor = document.getElementById('search_tab_anchor')
     if (anchor != null) {
-      anchor.style.width = 20 + "px";
-      anchor.style.transitionDuration = "0.3s";
-      anchor.style.transform = `translateX(${
-        (w - 20) / 2 + offsetLeft - 64
-      }px)`;
+      anchor.style.width = 20 + 'px'
+      anchor.style.transitionDuration = '0.3s'
+      anchor.style.transform = `translateX(${(w - 20) / 2 + offsetLeft - 64}px)`
     }
   }
-};
+}
 
 const slideBack = () => {
-  slideTo(currTab.value);
-};
+  slideTo(currTab.value)
+}
 
 // 切换资源类型
 const switchResourceType = async (val: string) => {
-  selectedResourceType.value = val;
-  await getResourceType(val);
-  await getResourceList(val);
-  selectedResource.value = resourceList.value[0] ?? "";
-  showResourceList.value = false;
+  selectedResourceType.value = val
+  await getResourceType(val)
+  await getResourceList(val)
+  selectedResource.value =
+    resourceList.value?.length > 0 ? resourceList.value[0] : ''
+  showResourceList.value = false
   setTimeout(() => {
-    slideTo(0);
-  }, 200);
-  currTab.value = 0;
-  searchStore.setSelectedResourceType(val);
-};
+    slideTo(0)
+  }, 200)
+  currTab.value = 0
+  searchStore.setSelectedResourceType(val)
+}
 
 onMounted(() => {
-  slideTo(currTab.value);
-});
+  slideTo(currTab.value)
+})
 </script>
 
 <style scoped>

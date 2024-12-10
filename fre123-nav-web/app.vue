@@ -6,45 +6,46 @@
 </template>
 
 <script setup lang="ts">
-import { CONFIG_KEY_SEO, getSiteConfigItem } from "./stores/config";
+import { CONFIG_KEY_SEO, getSiteConfigItem } from './stores/config'
+import logo from '~~/assets/img/logo.ico'
 
-const seoInfo = await getSiteConfigItem(CONFIG_KEY_SEO);
+const seoInfo = await getSiteConfigItem(CONFIG_KEY_SEO)
 // 初始化 SEO_TITLE 模板和主题
 
-const scripts: any[] = [];
-console.log("seoinfo ", seoInfo);
+const scripts: any[] = []
+console.log('seoinfo ', seoInfo)
 if (seoInfo?.statistics_baidu) {
   scripts.push({
     src: `https://hm.baidu.com/hm.js?${seoInfo?.statistics_baidu}`,
     defer: true,
-    mode: "client",
-  });
+    mode: 'client',
+  })
 }
 
 useHead({
   titleTemplate: (s) => {
-    return s ? `${s} - ${seoInfo?.title}` : `${seoInfo?.title}`;
+    return s ? `${s} - ${seoInfo?.title}` : `${seoInfo?.title}`
   },
   link: [
     {
-      rel: "icon",
-      type: "image/x-icon",
-      href: seoInfo?.icon,
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: seoInfo?.icon || logo,
     },
   ],
   meta: [
     {
-      name: "keywords",
+      name: 'keywords',
       content: seoInfo?.keywords,
     },
     {
-      name: "description",
+      name: 'description',
       content: seoInfo?.description,
     },
   ],
   script: scripts,
   bodyAttrs: {
-    class: "bg-base",
+    class: 'bg-base',
   },
-});
+})
 </script>
