@@ -9,10 +9,9 @@
     <div class="typeTable-top-refresh">
       <el-button
         circle
-        size="large"
         type="info"
-        plain
         :icon="Refresh"
+        :color="META_NORMAL"
         @click="friendshipLinkApi.refresh('刷新成功')"
       ></el-button>
     </div>
@@ -73,6 +72,7 @@
 </template>
 
 <script lang="ts" setup>
+import { META_NORMAL } from '@/config/const'
 import TypeDialog from '@/views/friendship_link/components/TypeDialog.vue'
 import {
   friendshipLinkApi,
