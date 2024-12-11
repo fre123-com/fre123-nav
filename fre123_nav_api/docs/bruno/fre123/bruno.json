@@ -1,9 +1,0 @@
-{
-  "version": "1",
-  "name": "fre123",
-  "type": "collection",
-  "ignore": [
-    "node_modules",
-    ".git"
-  ]
-}

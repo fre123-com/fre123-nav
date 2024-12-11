@@ -1,14 +1,13 @@
-FROM node:18.16 as builder
+FROM hub.zftycdn.top/library/node:16.17 as builder
 
 WORKDIR /app
 
 ENV NODE_OPTIONS="--max-old-space-size=16384"
 COPY . .
 
-RUN npm install -g yrm --registry https://registry.npmmirror.com
 RUN yarn && yarn build
 
-FROM nginx
+FROM hub.zftycdn.top/library/nginx
 
 ENV APP_ROOT=/data/code
 ENV TIME_ZONE=Asia/Shanghai
