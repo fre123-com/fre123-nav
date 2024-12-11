@@ -24,7 +24,7 @@
           :is="field.type"
           v-model="formData[field.model]"
           v-bind="field.props"
-          :placeholder="field.placeholder"
+          :placeholder="field?.placeholder ?? ''"
         ></component>
       </el-form-item>
     </el-form>
