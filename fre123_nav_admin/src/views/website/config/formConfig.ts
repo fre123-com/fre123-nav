@@ -53,6 +53,7 @@ export const SectionChildFields = [
     label: '链接地址',
     model: 'url',
     type: 'el-input',
+    placeholder: '请填写格式例如如下：https://www.baidu.com/s?wd={keyword}',
     props: { rules: fieldRules.url },
   },
   {
