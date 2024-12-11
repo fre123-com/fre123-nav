@@ -33,29 +33,25 @@ def admin_site_config_get():
 
     # 获取对应type的网站基本信息
     find_dict = {"type": {"$regex": _type, "$options": "i"}}
-    return_dict = {"_id": 0, "type": 0}
+
     group_doc = mongodb_find(
         coll_conn=coll,
         filter_dict=find_dict,
-        return_dict=return_dict,
+        return_dict={"_id": 0, "type": 0},
         limit=1,
     )
-    if group_doc["status"] and group_doc["info"]:
+    group_doc_info = group_doc["info"]
+    if group_doc["status"]:
+        group_doc_data = group_doc_info[0] if group_doc_info else {}
         result = {
             **UniResponse.SUCCESS,
-            ResponseField.DATA: group_doc["info"][0]["config"],
+            ResponseField.DATA: group_doc_data.get("config", {}),
         }
-    elif group_doc["status"] is False:
+    else:
         result = {
             **UniResponse.DB_ERR,
             ResponseField.ERR_MSG: "数据库出错",
         }
         app_logger.error(f"API{request.path}数据库出错")
-    else:
-        result = {
-            **UniResponse.PARAM_ERR,
-            **{ResponseField.DATA: {ResponseField.ERR_MSG: "没有找到对应的type"}},
-        }
-        app_logger.error(f"API{request.path}获取网站基本信息失败，type: {_type}")
 
     return response_handle(request=request, dict_value=result)

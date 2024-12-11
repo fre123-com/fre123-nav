@@ -15,6 +15,7 @@ requests = "*"
 redis = "*"
 pyjwt = "*"
 pytz = "*"
+cachetools = "*"
 
 [dev-packages]
 pytest = "*"
