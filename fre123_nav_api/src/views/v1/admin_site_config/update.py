@@ -14,7 +14,7 @@ from src.common import (
     response_handle,
 )
 from src.config import Config
-from src.databases import MongodbBase, mongodb_find, mongodb_update_data
+from src.databases import MongodbBase, mongodb_update_data
 
 
 @jwt_required()
@@ -63,46 +63,26 @@ def admin_site_config_update():
 
     coll = mongodb_base.get_collection(collection="d_site_config")
 
-    # 检查type是否存在
-    find_dict = {"type": _type}
-    find_result = mongodb_find(coll_conn=coll, filter_dict=find_dict)
-    if find_result["info"]:
-        # 执行更新操作
-        filter_dict = {"type": _type}
-        update_data = {"$set": {"config": data}}
-        update_result = mongodb_update_data(
-            coll_conn=coll,
-            filter_dict=filter_dict,
-            update_data=update_data,
-        )
-
-        if update_result["status"]:
-            # 成功更新
-            result = {
-                **UniResponse.SUCCESS,
-                ResponseField.INFO: f"成功更新{_type} 的网站基本配置信息",
-            }
-        else:
-            result = {
-                **UniResponse.PARAM_ERR,
-                **{
-                    ResponseField.DATA: {
-                        ResponseField.ERR_MSG: f"尝试添加或更新 type: {_type},失败"
-                    }
-                },
-            }
-            app_logger.error(f"API{request.path}尝试添加或更新 type: {_type},失败")
+    # 执行更新操作
+    filter_dict = {"type": _type}
+    update_data = {"$set": {"config": data}}
+    update_result = mongodb_update_data(
+        coll_conn=coll, filter_dict=filter_dict, update_data=update_data, upsert=True
+    )
+    update_res_info = update_result["info"]
+    if update_result["status"]:
+        # 成功更新
+        result = {
+            **UniResponse.SUCCESS,
+            ResponseField.INFO: f"成功更新{_type} 的网站基本配置信息",
+        }
     else:
         result = {
-            **UniResponse.PARAM_ERR,
-            **{
-                ResponseField.DATA: {
-                    ResponseField.ERR_MSG: f"没有找到type: {_type} 的网站基本配置信息，无法更新"
-                }
-            },
+            **UniResponse.DB_ERR,
+            **{ResponseField.DATA: {ResponseField.ERR_MSG: update_res_info}},
         }
         app_logger.error(
-            f"API{request.path}没有找到type: {_type} 的网站基本配置信息，无法更新"
+            f"API{request.path} 尝试添加或更新失败 type({_type}),err:{update_res_info}"
         )
 
     return response_handle(request=request, dict_value=result)
