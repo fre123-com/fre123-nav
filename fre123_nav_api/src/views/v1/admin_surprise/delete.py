@@ -16,6 +16,7 @@ from src.common import (
 )
 from src.config import Config
 from src.databases import MongodbBase, mongodb_delete_many_data
+from src.helper.refresh_cache import web_config_refresh_cache
 
 
 @jwt_required()
@@ -32,6 +33,7 @@ def admin_surprise_delete():
     app_logger = current_app.config["app_logger"]
     mongodb_base: MongodbBase = current_app.config["mongodb_base"]
     _: Config = current_app.config["app_config"]
+    cache = current_app.config["cache"]
 
     # 获取参数
     post_data = request.json
@@ -44,6 +46,7 @@ def admin_surprise_delete():
     delete_dict = {"_id": {"$in": b_ids}}
     group_doc = mongodb_delete_many_data(coll_conn=coll, filter_dict=delete_dict)
     if group_doc["status"]:
+        web_config_refresh_cache(cache)
         result = {
             **UniResponse.SUCCESS,
             ResponseField.INFO: f"成功删除ids {ids} 的广告信息",
