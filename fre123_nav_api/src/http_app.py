@@ -12,6 +12,8 @@ from flask import Flask
 from src.config import LOGGER, Config
 from src.views import bp_api
 
+from cachetools import TTLCache
+
 
 def create_app():
     """
@@ -21,18 +23,20 @@ def create_app():
     flask_app = Flask(__name__)
 
     with flask_app.app_context():
-        from src.databases import MongodbBase, MongodbManager, RedisBase
+        from src.databases import MongodbBase, MongodbManager
 
         # 初始化 MongoDB
         mongodb_base: MongodbBase = MongodbManager.get_mongo_base(
             mongodb_config=Config.MONGODB_CONFIG
         )
-        # 初始化 Redis
-        redis_base = RedisBase(Config.REDIS_CONFIG)
+
+        # 初始化 TTLCache 缓存，最大容量为 1 ，过期时间为一小时
+        cache = TTLCache(maxsize=1, ttl=3600)
+
         # 项目内部配置
         flask_app.config["app_config"] = Config
         flask_app.config["mongodb_base"] = mongodb_base
-        flask_app.config["redis_base"] = redis_base
+        flask_app.config["cache"] = cache
         flask_app.config["app_logger"] = LOGGER
         flask_app.config["MAX_CONTENT_LENGTH"] = 32 * 1024 * 1024
         # 全局请求 session
