@@ -17,16 +17,10 @@ export const getGlobalConfig = async () => {
     ? process.env.NUXT_BACKEND_API
     : runtimeConfig.public.B_API
 
-  if (backendHost) {
-    console.log('backendHost is ', backendHost)
-    if (process.server && !backendHost) {
-      throw new Error('NUXT_BACKEND_API is not defined')
-    }
-    const { data } = await postApi<IGlobalConfig>('/v1/config/get', {
-      body: {},
-    })
-    return data.value
-  }
+  const { data } = await postApi<IGlobalConfig>('/v1/config/get', {
+    body: {},
+  })
+  return data.value
 }
 
 export const getBusinessConfig = async (key: string) => {

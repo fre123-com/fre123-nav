@@ -75,10 +75,4 @@ export default defineNuxtConfig({
   },
 
   devtools: { enabled: process.env.NODE_ENV === 'development' ? true : false },
-
-  runtimeConfig: {
-    public: {
-      B_API: process.env.NUXT_BACKEND_API,
-    },
-  },
 })
