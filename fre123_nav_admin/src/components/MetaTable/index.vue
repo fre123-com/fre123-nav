@@ -272,6 +272,9 @@ watch(
   () => props.tableData,
   (newVal) => {
     tempList.value = JSON.parse(JSON.stringify(newVal))
+  },
+  {
+    deep: true,
   }
 )
 

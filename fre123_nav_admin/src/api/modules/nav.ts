@@ -75,7 +75,7 @@ export const rules = {
       { required: true, message: '请输入图片地址', trigger: 'blur' },
       { validator: validateHttpsLink, trigger: 'blur' },
     ],
-    description: [{ required: true, message: '请输入描述1', trigger: 'blur' }],
+    description: [{ required: true, message: '请输入描述', trigger: 'blur' }],
   },
   changeRules: {
     group_name: [
@@ -100,7 +100,7 @@ export const rules = {
       { required: true, message: '请输入图片地址', trigger: 'blur' },
       { validator: validateHttpsLink, trigger: 'blur' },
     ],
-    description: [{ required: true, message: '请输入描述1', trigger: 'blur' }],
+    description: [{ required: true, message: '请输入描述', trigger: 'blur' }],
   },
   newRules: {
     group_name: [
@@ -125,7 +125,7 @@ export const rules = {
       { required: true, message: '请输入图片地址', trigger: 'blur' },
       { validator: validateHttpsLink, trigger: 'blur' },
     ],
-    description: [{ required: true, message: '请输入描述1', trigger: 'blur' }],
+    description: [{ required: true, message: '请输入描述', trigger: 'blur' }],
   },
 }
 //-------------------------------------------

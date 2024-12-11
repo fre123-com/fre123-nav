@@ -145,111 +145,108 @@
 </template>
 
 <script setup lang="ts">
-import surpriseApi from "@/api/modules/surprise/index";
-import { ISurpriseListItem } from "@/api/modules/surprise/interface";
-import MetaPagination from "@/components/MetaPagination/index.vue";
-import MetaSearchBar from "@/components/MetaSearchBar/index.vue";
-import MetaTable from "@/components/MetaTable/index.vue";
-import { META_SUCCESS } from "@/config/const";
-import { useSurpriseListStore } from "@/store/modules/surprise";
+import surpriseApi from '@/api/modules/surprise/index'
+import { ISurpriseListItem } from '@/api/modules/surprise/interface'
+import MetaPagination from '@/components/MetaPagination/index.vue'
+import MetaSearchBar from '@/components/MetaSearchBar/index.vue'
+import MetaTable from '@/components/MetaTable/index.vue'
+import { META_SUCCESS } from '@/config/const'
+import { useSurpriseListStore } from '@/store/modules/surprise'
 import {
   convertToTimestamp,
   formatDate,
   timestampToDate,
-} from "@/utils/formateTime";
-import { errorMessage, successMessage } from "@/utils/notifications";
-import AdDetailsDialog from "@/views/surprise/components/AdDetailDialog.vue";
-import AdEditDialog from "@/views/surprise/components/AdEditDialog.vue";
-import { searchFormItems } from "@/views/surprise/config/formConfig";
-import { PendantPropList } from "@/views/surprise/config/tableConfig";
+} from '@/utils/formateTime'
+import { errorMessage, successMessage } from '@/utils/notifications'
+import AdDetailsDialog from '@/views/surprise/components/AdDetailDialog.vue'
+import AdEditDialog from '@/views/surprise/components/AdEditDialog.vue'
+import { searchFormItems } from '@/views/surprise/config/formConfig'
+import { PendantPropList } from '@/views/surprise/config/tableConfig'
 import {
   formatSurprisePosition,
   formatSurpriseType,
   formatSurpriseWebPath,
-} from "@/views/surprise/index";
-import { defineEmits, onMounted, reactive, ref, Ref, watch } from "vue";
+} from '@/views/surprise/index'
+import { defineEmits, onMounted, reactive, ref, Ref, watch } from 'vue'
 const {
   surpriseParams,
   refetchSurpriseList,
   surpriseListData,
   isSurpriseLoading,
-} = useSurpriseListStore();
+} = useSurpriseListStore()
 
-console.log("surpriseParams", surpriseParams.value);
-
-const surpriseData: Ref<ISurpriseListItem[]> = ref([]);
-const dataLength = ref(0); // 存储数据总长度
+const surpriseData: Ref<ISurpriseListItem[]> = ref([])
+const dataLength = ref(0) // 存储数据总长度
 
 // 初始化查询参数
 const initSurpriseParams = () => {
   surpriseParams.value = {
-    title: "",
+    title: '',
     is_show: -1,
     type: -1,
     position: -1,
-    web_path: "all",
+    web_path: 'all',
     start_ts_range: [] as number[],
     page: 1,
     page_size: 10,
-  };
-};
+  }
+}
 
-const startTsRange = ref();
+const startTsRange = ref()
 
 // 获取广告数据
 const getSurpriseData = async () => {
   // TODO 这里可以初始化你想要的数据
-  await refetchSurpriseList.value();
-  surpriseData.value = surpriseListData.value?.data
-    ?.rows as ISurpriseListItem[];
-  dataLength.value = surpriseListData.value?.data?.total as number;
-};
+  await refetchSurpriseList.value()
+  surpriseData.value = surpriseListData.value?.data?.rows as ISurpriseListItem[]
+  dataLength.value = surpriseListData.value?.data?.total as number
+}
 
 // 表格数据
 //传送的事件
 const emit = defineEmits({
   adData: null,
   submit: null,
-  "refresh:data": null,
-});
+  'refresh:data': null,
+})
 
 // 控制编辑/添加对话框的显示状态
-const showAddDialog = ref(false); // 控制添加广告对话框显示
-const currentAdData = ref({} as ISurpriseListItem); // 当前编辑的广告数据
-const isEditMode = ref(false); // 是否处于编辑模式
+const showAddDialog = ref(false) // 控制添加广告对话框显示
+const currentAdData = ref({} as ISurpriseListItem) // 当前编辑的广告数据
+const isEditMode = ref(false) // 是否处于编辑模式
 
 const openAddAdDialog = () => {
-  showAddDialog.value = true;
-  isEditMode.value = false;
-};
+  showAddDialog.value = true
+  isEditMode.value = false
+}
 
 const openEditAdDialog = (row: ISurpriseListItem) => {
-  showAddDialog.value = true;
-  isEditMode.value = true;
+  showAddDialog.value = true
+  isEditMode.value = true
   currentAdData.value = reactive({
     ...row,
     start_ts: timestampToDate(row.start_ts),
     end_ts: timestampToDate(row.end_ts),
-  });
-};
+  })
+}
 
 const updateShowAddDialog = (value: boolean) => {
-  showAddDialog.value = value;
-};
+  showAddDialog.value = value
+}
 
 // 查看详情对话框状态
-const detailsDialogVisible = ref(false);
-const currentAd = ref({});
+const detailsDialogVisible = ref(false)
+const currentAd = ref({})
 const viewDetails = (row: ISurpriseListItem) => {
   if (row) {
-    currentAd.value = { ...row };
-    detailsDialogVisible.value = true;
+    currentAd.value = { ...row }
+    detailsDialogVisible.value = true
   }
-};
+}
 //处理详情页的关闭
 const handleDetailsDialogVisibility = (visible: boolean) => {
-  detailsDialogVisible.value = visible;
-};
+  detailsDialogVisible.value = visible
+}
 
 // 处理内容的开关
 const handleChangeContent = async (
@@ -257,65 +254,65 @@ const handleChangeContent = async (
   propertyName: keyof ISurpriseListItem
 ) => {
   if (!row._id) {
-    return false;
+    return false
   }
-  const propertyValue = ref(row[propertyName]);
+  const propertyValue = ref(row[propertyName])
   if (propertyValue.value === 1) {
-    propertyValue.value = 0;
+    propertyValue.value = 0
   } else {
-    propertyValue.value = 1;
+    propertyValue.value = 1
   }
 
   const newRow = {
     ...row,
     [propertyName]: propertyValue.value,
-  };
-  if (newRow) {
-    await surpriseApi.updateSurprise(newRow);
-    getSurpriseData();
-    successMessage("修改成功");
   }
-};
+  if (newRow) {
+    await surpriseApi.updateSurprise(newRow)
+    getSurpriseData()
+    successMessage('修改成功')
+  }
+}
 
-const selectedRowIds = ref<string[]>([]); // 存储被选中的广告项的 id
+const selectedRowIds = ref<string[]>([]) // 存储被选中的广告项的 id
 // 选中变更处理器
 const handleSelectionChange = (val: Array<{ _id: string }>) => {
-  selectedRowIds.value = val.map((item) => item._id);
-};
+  selectedRowIds.value = val.map((item) => item._id)
+}
 
 // 批量删除函数
 const batchDeleteAds = async () => {
   if (selectedRowIds.value.length === 0) {
-    errorMessage("请选择至少一个广告进行删除");
-    return;
+    errorMessage('请选择至少一个广告进行删除')
+    return
   }
   try {
-    await surpriseApi.delSurprise({ ids: selectedRowIds.value as any });
-    await handleRefreshData();
-    successMessage("批量删除成功");
+    await surpriseApi.delSurprise({ ids: selectedRowIds.value as any })
+    await handleRefreshData()
+    successMessage('批量删除成功')
   } catch (error) {
-    errorMessage("批量删除失败");
+    errorMessage('批量删除失败')
   } finally {
     // 清空选中的ID
-    selectedRowIds.value = [];
+    selectedRowIds.value = []
   }
-};
+}
 
 // 删除单个广告
 const deleteSingleAds = async (row: any) => {
   try {
-    await surpriseApi.delSurprise({ ids: [row._id] as any }); // 使用类型转换
-    successMessage("删除成功");
-    handleRefreshData();
+    await surpriseApi.delSurprise({ ids: [row._id] as any }) // 使用类型转换
+    successMessage('删除成功')
+    handleRefreshData()
   } catch (error) {
-    errorMessage("删除失败");
+    errorMessage('删除失败')
   }
-};
+}
 //刷新
 const handleRefreshData = async () => {
-  initSurpriseParams();
-  getSurpriseData();
-};
+  initSurpriseParams()
+  getSurpriseData()
+}
 
 watch(
   () => [
@@ -325,57 +322,59 @@ watch(
     startTsRange.value,
   ],
   async () => {
-    if (startTsRange.value.length) {
+    if (startTsRange.value?.length) {
       surpriseParams.value.start_ts_range = [
         convertToTimestamp(startTsRange.value[0]),
         convertToTimestamp(startTsRange.value[1]),
-      ];
+      ]
+    } else {
+      surpriseParams.value.start_ts_range = []
     }
 
-    await getSurpriseData();
+    await getSurpriseData()
   }
-);
+)
 
 // 翻页时更新当前页码
 const handleCurrentChange = async (newPage: number) => {
-  surpriseParams.value.page = newPage;
-  await getSurpriseData();
-};
+  surpriseParams.value.page = newPage
+  await getSurpriseData()
+}
 
 // 改变每页显示条数时更新每页大小
 const handleSizeChange = async (newSize: number) => {
-  surpriseParams.value.page_size = newSize;
-  surpriseParams.value.page = 1;
-  await getSurpriseData();
-};
+  surpriseParams.value.page_size = newSize
+  surpriseParams.value.page = 1
+  await getSurpriseData()
+}
 
 //
 // 图片预览激活状态
-const imageViewerActive = ref(false);
+const imageViewerActive = ref(false)
 // 预览图片的数组
-const previewSrcList = ref<string[]>([]);
+const previewSrcList = ref<string[]>([])
 // 当前预览的图片索引
-const currentImageIndex = ref(0);
+const currentImageIndex = ref(0)
 
 // 打开图片预览
 const openImageViewer = (url: any) => {
-  imageViewerActive.value = true;
-  previewSrcList.value = [url]; // 仅包含点击的图片
-  currentImageIndex.value = 0; // 索引指向第一张图片
-};
+  imageViewerActive.value = true
+  previewSrcList.value = [url] // 仅包含点击的图片
+  currentImageIndex.value = 0 // 索引指向第一张图片
+}
 
 // 关闭图片预览
 const handleImageViewerClose = () => {
-  imageViewerActive.value = false;
-  previewSrcList.value = [];
-  currentImageIndex.value = 0;
-};
+  imageViewerActive.value = false
+  previewSrcList.value = []
+  currentImageIndex.value = 0
+}
 
 onMounted(async () => {
   // 初始化查询参数
   // await initSurpriseParams();
-  await getSurpriseData();
-});
+  await getSurpriseData()
+})
 </script>
 
 <style scoped>
