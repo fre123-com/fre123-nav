@@ -26,7 +26,7 @@ def config_get():
     cache_key = "web_config"
 
     if cache_key in cache:
-        return cache["web_config"]
+        result = cache["web_config"]
 
     else:
         site_coll = mongodb_base.get_collection(collection="d_site_config")
