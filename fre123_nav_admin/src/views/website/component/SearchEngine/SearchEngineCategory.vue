@@ -156,7 +156,7 @@ const newCategoryFieldName = ref('')
 const newCategory = ref<IHeaderSection>({ name: '', is_show: 0, list: [] })
 
 /**
- * @name 新增搜素引擎和搜素引擎分类
+ * @name 新增搜索引擎和搜索引擎分类
  */
 
 //打开新增搜索引擎分类
@@ -185,12 +185,13 @@ watch([newCategoryFieldName, newCategory], () => {
 //新增搜索引擎分类方法实现
 const addNewCategory = async () => {
   const formData = newCategoryForm.value
-  const fieldName = formData.newCategoryFieldName.trim()
+  const fieldName = formData.name.trim()
   filteredHeader[fieldName] = {
     name: formData.name,
     is_show: formData.is_show,
     list: [],
   }
+
   const storedHeader = storedData.value as IHeaderTotal
   const rightSection = storedHeader.right
   if (storedHeader) {
@@ -222,7 +223,7 @@ const editGroup = (row: { key: string } & IHeaderSection) => {
 }
 
 /**
- * @name 保存搜素引擎分类以及搜索引擎更改
+ * @name 保存搜索引擎分类以及搜索引擎更改
  */
 
 //确认保存分类数据修改
@@ -257,7 +258,7 @@ const saveCategoryData = async (row: {
 }
 
 /**
- * @name 删除搜素引擎分类以及搜索引擎
+ * @name 删除搜索引擎分类以及搜索引擎
  */
 
 // 删除搜索引擎分类

@@ -18,12 +18,6 @@
             style="width: 90%"
           >
             <el-table-column label="类别" prop="tab_name" />
-            <el-table-column label="跳转链接" prop="tab_name_url">
-              <template v-slot="{ row }">
-                <span v-if="row.tab_name_url">{{ row.tab_name_url }}</span>
-                <span v-else>暂无数据</span>
-              </template>
-            </el-table-column>
 
             <el-table-column align="right">
               <template #default="scope">
@@ -69,12 +63,6 @@
     </el-table-column>
     <el-table-column label="类别" prop="group_name" />
     <el-table-column label="风格样式" prop="style_des" />
-    <el-table-column label="跳转链接" prop="group_name_url">
-      <template v-slot="{ row }">
-        <span v-if="row.group_name_url">{{ row.group_name_url }}</span>
-        <span v-else>暂无数据</span>
-      </template>
-    </el-table-column>
     <el-table-column label="操作" align="right">
       <template #header>
         <span>操作</span>

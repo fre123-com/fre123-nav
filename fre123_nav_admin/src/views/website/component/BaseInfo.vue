@@ -29,47 +29,47 @@
 </template>
 
 <script lang="ts" setup>
-import { IBaseForm, IRequestBody } from "@/api/modules/website/interface";
-import { WebsiteStore } from "@/store/modules/website";
-import { successMessage } from "@/utils/notifications";
-import { showSaveNotice, updateWebsite } from "@/views/website/index";
-import { onMounted, ref, Ref } from "vue";
-import { TabType } from "../interface";
+import { IBaseForm, IRequestBody } from '@/api/modules/website/interface'
+import { WebsiteStore } from '@/store/modules/website'
+import { successMessage } from '@/utils/notifications'
+import { showSaveNotice, updateWebsite } from '@/views/website/index'
+import { onMounted, ref, Ref } from 'vue'
+import { TabType } from '../interface'
 
 const baseForm = ref<IBaseForm>({
-  app_name: "",
-  web_host: "",
-  logo: "",
-  icon: "",
-});
-const baseFormRef: Ref<any> = ref(null);
+  app_name: '',
+  web_host: '',
+  logo: '',
+  icon: '',
+})
+const baseFormRef: Ref<any> = ref(null)
 
 const fetchData = async () => {
   baseForm.value = await WebsiteStore().getWebsiteConfig<IBaseForm>(
     TabType.Base
-  );
-};
+  )
+}
 
 const saveBaseForm = async () => {
   const requestBody = ref<IRequestBody>({
     type: TabType.Base,
     data: baseForm.value,
-  });
-  await updateWebsite(requestBody.value);
-  successMessage("数据成功保存");
-};
+  })
+  await updateWebsite(requestBody.value)
+  successMessage('数据成功保存')
+}
 
 const refresh = async () => {
-  await fetchData();
-  successMessage("刷新成功");
-};
-defineExpose({ refresh });
+  await fetchData()
+  successMessage('刷新成功')
+}
+defineExpose({ refresh })
 
 const resetBase = async () => {
-  await fetchData();
-};
+  await fetchData()
+}
 
 onMounted(async () => {
-  await fetchData();
-});
+  await fetchData()
+})
 </script>

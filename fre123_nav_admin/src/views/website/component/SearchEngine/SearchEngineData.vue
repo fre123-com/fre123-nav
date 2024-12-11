@@ -265,7 +265,7 @@ const initTabChangeDragGroup = async () => {
 }
 
 /**
- * @name 搜素引擎
+ * @name 搜索引擎
  */
 
 const newList = ref<IListItem>({

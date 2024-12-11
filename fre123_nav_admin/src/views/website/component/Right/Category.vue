@@ -221,7 +221,7 @@ const openAddAdvertDialog = () => {
     errorMessage('最多只能有3个广告分组')
     return
   }
-  dialogTitle.value = '新增广告分组'
+  dialogTitle.value = '新增'
   currentFormData.value = newAdvert.value.group
   currentSaveHandler.value = addNewAdvert
   currentFormFields.value = AdvertAddGroupFields
@@ -306,7 +306,7 @@ const openEditDialog = (row: any) => {
 }
 
 const copyAdvertGroup = () => {
-  dialogTitle.value = '编辑广告分组'
+  dialogTitle.value = '编辑'
   currentFormData.value = editAdvert.value.group
   currentSaveHandler.value = saveAdvert
   currentFormFields.value = AdvertEditGroupFields

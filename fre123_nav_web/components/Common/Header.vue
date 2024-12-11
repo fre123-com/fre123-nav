@@ -58,6 +58,7 @@
             >
               <ul>
                 <li
+                  v-show="item?.is_show"
                   v-for="item in rightItem?.group?.children"
                   class="w-[6rem] text-center transition-bg-hover-200 py-0 cursor-pointer"
                 >

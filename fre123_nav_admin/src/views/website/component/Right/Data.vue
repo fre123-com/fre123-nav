@@ -232,7 +232,7 @@ const openAddChildDialog = () => {
       return
     }
     newChild.value = { name: '', url: '', is_show: 0 }
-    dialogTitle.value = '新增广告位更多链接'
+    dialogTitle.value = '新增'
     currentFormData.value = newChild.value
     currentSaveHandler.value = addNewAdvertChild
     currentFormFields.value = advertChildFields
@@ -300,7 +300,7 @@ const openEditChildDialog = (row: IChildItem) => {
 }
 
 const copyAdvertChild = () => {
-  dialogTitle.value = '编辑广告'
+  dialogTitle.value = '编辑'
   currentFormData.value = editAdvertChild.value
   currentSaveHandler.value = saveAdvertChild
   currentFormFields.value = advertChildFields

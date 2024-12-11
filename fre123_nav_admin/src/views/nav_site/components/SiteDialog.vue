@@ -43,50 +43,50 @@
 </template>
 
 <script setup lang="ts">
-import { rules } from "@/views/nav_site/index";
-import { defineProps, ref } from "vue";
-const newCategoryForm = ref();
+import { rules } from '@/views/nav_site/index'
+import { defineProps, ref } from 'vue'
+const newCategoryForm = ref()
 interface FormData {
-  title: string;
-  url: string;
-  icon: string;
-  description: string;
+  title: string
+  url: string
+  icon: string
+  description: string
 }
 
 const props = withDefaults(
   defineProps<{
-    visible?: boolean;
-    dialogHeader?: string;
-    formData: FormData;
-    editMode?: boolean;
+    visible?: boolean
+    dialogHeader?: string
+    formData: FormData
+    editMode?: boolean
   }>(),
   {
     visible: false,
   }
-);
+)
 
 const emit = defineEmits<{
-  (e: "onSubmit", value: any): void;
-  (e: "onSubmitNew", value: any): void;
-}>();
+  (e: 'onSubmit', value: any): void
+  (e: 'onSubmitNew', value: any): void
+}>()
 
 const resetForm = () => {
   if (newCategoryForm.value) {
-    newCategoryForm.value.resetFields();
+    newCategoryForm.value.resetFields()
   }
-};
+}
 
 const handleClose = () => {
-  resetForm();
-};
+  resetForm()
+}
 
 const onSubmit = (value: any) => {
-  emit("onSubmit", value);
-};
+  emit('onSubmit', value)
+}
 
 const onSubmitNew = (value: any) => {
-  emit("onSubmitNew", value);
-};
+  emit('onSubmitNew', value)
+}
 </script>
 
 <style scoped>

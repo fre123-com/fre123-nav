@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div v-if="!tableData?.length">当前没有数据,请返回分类管理添加</div>
     <el-tabs
       type="card"
       v-loading="!tableData || loading"

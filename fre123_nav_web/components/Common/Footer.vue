@@ -27,6 +27,7 @@
       >
         <a
           v-for="item in footerConfig?.right?.list"
+          v-show="item?.is_show"
           :href="item.url"
           target="_blank"
           class="pr-6"
