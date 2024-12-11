@@ -1,19 +1,17 @@
 <template>
   <el-dialog
     @close="props.cleanDialog()"
-    title="操作弹窗"
+    :title="props.title"
     width="500"
     align-center
   >
-    <template #header>
-      <h2 style="display: flex; align-items: center">
-        <el-icon size="large" color="#409EFF" style="margin-right: 10px">
-          <component :is="props.iconType"></component> </el-icon
-        >{{ props.title }}
-      </h2>
-    </template>
     <template #default>
-      <el-form :model="props.typeOp" ref="opForm" :rules="props.rules">
+      <el-form
+        :model="props.typeOp"
+        ref="opForm"
+        :rules="props.rules"
+        label-width="auto"
+      >
         <div class="dialog-box">
           <el-form-item class="dialog-box-son" prop="name" label="类别：">
             <el-input
@@ -51,15 +49,15 @@
 </template>
 
 <script lang="ts" setup>
-import { opForm } from "@/views/friendship_link";
+import { opForm } from '@/views/friendship_link'
 
 const props = defineProps<{
-  id: string;
-  title: String;
-  iconType: String;
-  rules: any;
-  typeOp: any;
-  kindFinishDialog: Function;
-  cleanDialog: Function;
-}>();
+  id: string
+  title: String
+  iconType: String
+  rules: any
+  typeOp: any
+  kindFinishDialog: Function
+  cleanDialog: Function
+}>()
 </script>
