@@ -1,0 +1,51 @@
+version: "3"
+services:
+  fre123-nav-web:
+    image: fre123dev/fre123-nav-web:v0.1.0
+    restart: always
+    container_name: fre123-nav-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NUXT_BACKEND_API=http://fre123-nav-api:8765/
+      - B_API=http://fre123-nav-api:8765/
+    networks:
+      - fre123-network
+  fre123-nav-admin:
+    image: fre123dev/fre123-nav-admin:v0.1.0
+    restart: always
+    container_name: fre123-nav-admin
+    ports:
+      - "3001:80"
+    environment:
+      - B_API=http://fre123-nav-api:8765/
+    networks:
+      - fre123-network
+  fre123-nav-api:
+    image: fre123dev/fre123-nav-api:v0.1.0
+    restart: always
+    container_name: fre123-nav-api
+    depends_on:
+      - fre123-mongo
+    ports:
+      - "8765:8765"
+    environment:
+      - USERNAME=admin
+      - PASSWORD=12345678
+      - MONGODB_URI=mongodb://root:12345678@fre123-mongo:27017/admin
+    networks:
+      - fre123-network
+  fre123-mongo:
+    image: mongo:3.6
+    restart: always
+    container_name: fre123-mongo
+    ports:
+      - 27077:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=12345678
+    networks:
+      - fre123-network
+networks:
+  fre123-network:
+    driver: bridge
