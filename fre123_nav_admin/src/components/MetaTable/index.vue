@@ -185,23 +185,23 @@
   </el-table>
 </template>
 <script setup lang="ts">
-import { META_DANGER, META_INDIVIDUATION, META_PRIMARY } from "@/config/const";
-import Sortable from "sortablejs";
-import { onMounted, ref } from "vue";
+import { META_DANGER, META_INDIVIDUATION, META_PRIMARY } from '@/config/const'
+import Sortable from 'sortablejs'
+import { onMounted, ref, watch } from 'vue'
 
 const props = withDefaults(
   defineProps<{
-    tableData: any[];
-    propList: any;
-    showSelection?: boolean;
-    isLoading?: boolean;
-    operateWidth?: number;
-    showBatchDelete?: boolean;
-    operatedMargin?: object;
-    isDraggable?: boolean;
-    isSetTop?: boolean;
-    ref?: any;
-    rowKey?: string; //用于排序作为标识
+    tableData: any[]
+    propList: any
+    showSelection?: boolean
+    isLoading?: boolean
+    operateWidth?: number
+    showBatchDelete?: boolean
+    operatedMargin?: object
+    isDraggable?: boolean
+    isSetTop?: boolean
+    ref?: any
+    rowKey?: string //用于排序作为标识
   }>(),
   {
     showSelection: false,
@@ -210,121 +210,130 @@ const props = withDefaults(
     isSetTop: false, // 是否支持置顶
     showBatchDelete: false, // 是否展示批量删除
     operateWidth: 100,
-    rowKey: "id",
+    rowKey: 'id',
   }
-);
+)
 
-console.log("props is ", props);
+console.log('props is ', props)
 
-const batchDeleteIds = ref<string[]>([]);
-const isBatchDelete = ref(false);
+const batchDeleteIds = ref<string[]>([])
+const isBatchDelete = ref(false)
 const unlockBatchDelete = () => {
-  isBatchDelete.value = true;
-};
+  isBatchDelete.value = true
+}
 
 // 事件定义，调用方只需要实现对应的事件即可
 const emit = defineEmits<{
-  (e: "selectionChange", value: any): void; // 选择项改变
-  (e: "addData"): void; // 新增
-  (e: "deleteData", value: any): void; // 删除
-  (e: "editData", value: any): void; // 编辑
-  (e: "setTop", value: any): void; // 置顶
-  (e: "batchDelete", value: any): void; // 批量删除
-  (e: "confirmDrag", tempList: any): void; //  拖拽结束
-  (e: "cancelDrag"): void; //  拖拽结束
+  (e: 'selectionChange', value: any): void // 选择项改变
+  (e: 'addData'): void // 新增
+  (e: 'deleteData', value: any): void // 删除
+  (e: 'editData', value: any): void // 编辑
+  (e: 'setTop', value: any): void // 置顶
+  (e: 'batchDelete', value: any): void // 批量删除
+  (e: 'confirmDrag', tempList: any): void //  拖拽结束
+  (e: 'cancelDrag'): void //  拖拽结束
   // (e: "endDrag", newINdex: number, oldIndex: number): void; //  拖拽结束
-  (e: "selectionClear"): void; //清除筛选项
-}>();
+  (e: 'selectionClear'): void //清除筛选项
+}>()
 
 // 批量删除
 const handleBatchDelete = () => {
-  emit("batchDelete", batchDeleteIds.value);
-};
+  emit('batchDelete', batchDeleteIds.value)
+}
 
 // 批量操作
 const handleSelectionChange = (val: any) => {
-  batchDeleteIds.value = [];
+  batchDeleteIds.value = []
   val.forEach((item: any) => {
-    batchDeleteIds.value.push(item.id);
-  });
-  emit("selectionChange", val);
-};
-const tableRef = ref();
+    batchDeleteIds.value.push(item.id)
+  })
+  emit('selectionChange', val)
+}
+const tableRef = ref()
 const handleSelectionClear = () => {
-  tableRef.value!.clearSelection();
-};
+  tableRef.value!.clearSelection()
+}
 
 const addData = () => {
-  emit("addData");
-};
+  emit('addData')
+}
 
 const deleteData = (id: any) => {
-  console.log("id is ", id);
-  emit("deleteData", id);
-};
+  console.log('id is ', id)
+  emit('deleteData', id)
+}
 
 const editData = (row: any) => {
-  emit("editData", row);
-};
+  emit('editData', row)
+}
 
-const isLock = ref(true);
-let tempList: any[] = [];
+const tempList: any = ref([])
+watch(
+  () => props.tableData,
+  (newVal) => {
+    tempList.value = JSON.parse(JSON.stringify(newVal))
+  }
+)
+
+const isLock = ref(true)
+
 const sort = async (newIndex: number, oldIndex: number) => {
-  if (newIndex === oldIndex) return;
-  const currRow = tempList.splice(oldIndex, 1)[0];
-  tempList.splice(newIndex, 0, currRow);
-  console.log("data is", tempList);
-};
+  if (newIndex === oldIndex) return
+  const currRow = tempList.value.splice(oldIndex, 1)[0]
+
+  tempList.value.splice(newIndex, 0, currRow)
+  console.log('data is', tempList.value)
+}
 const handleLock = async (lockStatus: boolean) => {
   if (lockStatus) {
-    emit("confirmDrag", tempList);
+    emit('confirmDrag', tempList.value)
   }
-  isLock.value = lockStatus;
-};
+  isLock.value = lockStatus
+}
 
 // 置顶
 const setTop = (row: any) => {
-  emit("setTop", row);
-};
+  emit('setTop', row)
+}
 
 //拖拽
 const rowDropInit = (className: string) => {
   const wrapperRow = document.querySelector(
-    className + " .el-table__body-wrapper tbody"
-  );
-  console.log("wrapperRow", wrapperRow);
+    className + ' .el-table__body-wrapper tbody'
+  )
+  console.log('wrapperRow', wrapperRow)
 
   Sortable.create(wrapperRow as HTMLElement, {
     animation: 150,
-    handle: ".dragIcon",
+    handle: '.dragIcon',
     //@ts-ignore
     async onEnd({
       newIndex,
       oldIndex,
     }: {
-      newIndex: number;
-      oldIndex: number;
+      newIndex: number
+      oldIndex: number
     }) {
-      console.log(newIndex, oldIndex);
+      console.log(newIndex, oldIndex)
       // emit("endDrag", newIndex, oldIndex);
-      sort(newIndex, oldIndex);
+      sort(newIndex, oldIndex)
     },
-  });
-};
+  })
+}
 
 defineExpose({
   handleSelectionClear,
-});
+})
 
 onMounted(() => {
   // 初始化拖拽事件
-  const a = JSON.parse(JSON.stringify(props));
-  console.log("props.tableData", a);
+  const a = JSON.parse(JSON.stringify(props))
+  console.log('props.tableData', a)
   if (props.isDraggable) {
-    tempList = JSON.parse(JSON.stringify(props.tableData));
-    rowDropInit(".dragTable");
+    tempList.value = JSON.parse(JSON.stringify(props.tableData))
+    rowDropInit('.dragTable')
   }
-});
+})
 </script>
 <style scoped>
 .operate-button {

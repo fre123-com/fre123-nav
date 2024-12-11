@@ -15,6 +15,7 @@
         </h2>
         <div class="link-container-links">
           <a
+            v-show="link?.status"
             v-for="(link, num) in group?.list"
             :key="num"
             class="link-container-links-item"

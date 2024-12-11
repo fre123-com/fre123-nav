@@ -45,7 +45,7 @@ const useResourceStore = defineStore(
       isOriginal: boolean = false
     ) => {
       // console.log('resourceConfig.value is', resourceConfig.value)
-      let resourceList = resourceConfig.value?.[resourceType].list ?? []
+      let resourceList = resourceConfig.value?.[resourceType]?.list ?? []
       // 无效资源类型，返回 404
       if (!resourceList) {
         navigateTo('/404')

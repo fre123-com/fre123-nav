@@ -21,12 +21,12 @@
       <!-- Right -->
       <div
         v-if="
-          footerConfig?.right?.is_show && footerConfig?.right.list.length > 0
+          footerConfig?.right?.is_show && footerConfig?.right?.list.length > 0
         "
         class="flex text-[20px] text-black"
       >
         <a
-          v-for="item in footerConfig?.right.list"
+          v-for="item in footerConfig?.right?.list"
           :href="item.url"
           target="_blank"
           class="pr-6"
@@ -50,9 +50,9 @@
 </template>
 
 <script setup lang="ts">
-import { CONFIG_KEY_FOOTER, getSiteConfigItem } from "~/stores/config";
+import { CONFIG_KEY_FOOTER, getSiteConfigItem } from '~/stores/config'
 
-const footerConfig = await getSiteConfigItem(CONFIG_KEY_FOOTER);
+const footerConfig = await getSiteConfigItem(CONFIG_KEY_FOOTER)
 </script>
 
 <style scoped></style>
