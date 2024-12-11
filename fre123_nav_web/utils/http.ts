@@ -51,11 +51,10 @@ export const postApi = <T>(
     if (options?.forceUpdate === true) {
       refreshNuxtData(options?.key ?? url)
     }
-    const runtimeConfig = useRuntimeConfig()
 
     return fetchInstance<T>(url, {
       method: 'POST',
-      baseURL: process.server ? backendHost : runtimeConfig.public.B_API,
+      baseURL: process.server ? backendHost : '/api',
       ...options,
       // @ts-ignore
       body: isRef(options?.body) ? options.body.value : options.body,
