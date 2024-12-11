@@ -15,6 +15,7 @@ from src.common import (
 )
 from src.config import Config
 from src.databases import MongodbBase, mongodb_update_data
+from src.helper.refresh_cache import web_config_refresh_cache
 
 
 @jwt_required()
@@ -55,7 +56,7 @@ def admin_site_config_update():
     app_logger = current_app.config["app_logger"]
     mongodb_base: MongodbBase = current_app.config["mongodb_base"]
     _: Config = current_app.config["app_config"]
-
+    cache = current_app.config["cache"]
     # 获取参数
     post_data = request.json
     _type = post_data.get("type", "")
@@ -72,6 +73,7 @@ def admin_site_config_update():
     update_res_info = update_result["info"]
     if update_result["status"]:
         # 成功更新
+        web_config_refresh_cache(cache)
         result = {
             **UniResponse.SUCCESS,
             ResponseField.INFO: f"成功更新{_type} 的网站基本配置信息",

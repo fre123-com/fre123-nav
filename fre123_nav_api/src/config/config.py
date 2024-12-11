@@ -31,7 +31,7 @@ class Config:
         "mongodb_uri": os.getenv(
             "MONGODB_URI", "mongodb://root:heloSDHjk3jh@106.53.29.159:27066/admin"
         ),
-        "operate_db": os.getenv("MONGODB_DB", "fre123"),
+        "operate_db": os.getenv("MONGODB_DB", "fre123_test"),
     }
 
     REDIS_CONFIG = {

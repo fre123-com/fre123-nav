@@ -17,6 +17,7 @@ from src.common import (
 )
 from src.config import Config
 from src.databases import MongodbBase, mongodb_find, mongodb_insert_many_data
+from src.helper.refresh_cache import web_config_refresh_cache
 
 
 @jwt_required()
@@ -47,6 +48,7 @@ def admin_friendship_links_insert():
     app_logger = current_app.config["app_logger"]
     mongodb_base: MongodbBase = current_app.config["mongodb_base"]
     _: Config = current_app.config["app_config"]
+    cache = current_app.config["cache"]
 
     # 获取参数
     post_data = request.json
@@ -94,6 +96,7 @@ def admin_friendship_links_insert():
 
         if insert_result["status"]:
             # 成功插入
+            web_config_refresh_cache(cache)
             result = {
                 **UniResponse.SUCCESS,
                 ResponseField.INFO: f"成功新增{name}友链配置信息",
@@ -101,11 +104,7 @@ def admin_friendship_links_insert():
         else:
             result = {
                 **UniResponse.PARAM_ERR,
-                **{
-                    ResponseField.DATA: {
-                        ResponseField.ERR_MSG: f"尝试新增{name}友链配置信息失败"
-                    }
-                },
+                **{ResponseField.DATA: {ResponseField.ERR_MSG: f"尝试新增{name}友链配置信息失败"}},
             }
             app_logger.error(f"API{request.path}尝试新增{name}友链配置信息失败")
 

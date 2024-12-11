@@ -17,6 +17,7 @@ from src.common import (
 )
 from src.config import Config
 from src.databases import MongodbBase, mongodb_find, mongodb_insert_many_data
+from src.helper.refresh_cache import web_config_refresh_cache
 
 
 @jwt_required()
@@ -46,6 +47,7 @@ def admin_surprise_insert():
     # 获取基本配置
     app_logger = current_app.config["app_logger"]
     mongodb_base: MongodbBase = current_app.config["mongodb_base"]
+    cache = current_app.config["cache"]
     _: Config = current_app.config["app_config"]
 
     # 获取参数
@@ -59,11 +61,7 @@ def admin_surprise_insert():
     if start_ts > end_ts:
         result = {
             **UniResponse.PARAM_ERR,
-            **{
-                ResponseField.DATA: {
-                    ResponseField.ERR_MSG: "时间不合法,请检查开始时间和结束时间"
-                }
-            },
+            **{ResponseField.DATA: {ResponseField.ERR_MSG: "时间不合法,请检查开始时间和结束时间"}},
         }
         app_logger.error(f"API{request.path} 时间不合法")
     else:
@@ -92,6 +90,7 @@ def admin_surprise_insert():
 
             if insert_result["status"]:
                 # 成功插入
+                web_config_refresh_cache(cache)
                 result = {
                     **UniResponse.SUCCESS,
                     ResponseField.INFO: f"成功新增{title}广告信息",
@@ -99,11 +98,7 @@ def admin_surprise_insert():
             else:
                 result = {
                     **UniResponse.PARAM_ERR,
-                    **{
-                        ResponseField.DATA: {
-                            ResponseField.ERR_MSG: "尝试新增广告信息失败"
-                        }
-                    },
+                    **{ResponseField.DATA: {ResponseField.ERR_MSG: "尝试新增广告信息失败"}},
                 }
                 app_logger.error(f"API{request.path}尝试新增广告信息失败")
 
