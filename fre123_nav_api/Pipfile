@@ -1,0 +1,30 @@
+[[source]]
+name = "pypi"
+verify_ssl = true
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+
+[packages]
+gunicorn = "==21.2.0"
+gevent = "==23.9.1"
+flask = "==3.0.0"
+Werkzeug = "==3.0.0"
+pymongo = "==4.1.1"
+MarkupSafe = "==2.1.1"
+Jinja2 = "==3.1.2"
+requests = "*"
+redis = "*"
+pyjwt = "*"
+pytz = "*"
+cachetools = "*"
+
+[dev-packages]
+pytest = "*"
+black = "*"
+isort = "*"
+pylint = "*"
+
+[scripts]
+api = "bash ./start.sh api"
+
+[requires]
+python_version = "3.11"
