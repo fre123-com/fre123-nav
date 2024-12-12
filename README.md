@@ -56,11 +56,15 @@ docker-compose ps
 docker-compose down
 ```
 
-## TODO List
+## 功能清单
 
 以下是项目的待办事项和未来计划：
 
-- [ ] 完成用户认证功能
+- [x] 网站配置
+- [x] 导航管理
+- [x] 广告管理
+- [x] 友链管理
+- [ ] 支持多风格部署
 
 ## QA
 
