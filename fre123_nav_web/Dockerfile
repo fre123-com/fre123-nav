@@ -1,4 +1,4 @@
-FROM hub.zftycdn.top/library/node:18.16-alpine as builder
+FROM hub.zftycdn.top/library/node:18.17-alpine as builder
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ COPY . .
 
 RUN yarn && export VITE_BACKEND_API=http://localhost && yarn build
 
-FROM hub.zftycdn.top/library/node:18.16-alpine
+FROM hub.zftycdn.top/library/node:18.17-alpine
 
 ENV APP_ROOT=/data/code
 ENV TIME_ZONE=Asia/Shanghai
