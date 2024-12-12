@@ -65,16 +65,9 @@
         :rules="fieldRules"
         ref="formRef"
         label-width="auto"
-        class="form-style"
+        class="mt-[15px]"
       >
-        <el-form-item
-          label="图标类名"
-          prop="icon_class"
-          style="margin-top: 15px"
-        >
-          <el-input v-model="currentFormData.icon_class"></el-input>
-        </el-form-item>
-        <el-form-item label="Base64图标" prop="base64">
+        <el-form-item label="图标地址" prop="base64">
           <el-input v-model="currentFormData.base64"></el-input>
         </el-form-item>
         <el-form-item label="Hover类型">

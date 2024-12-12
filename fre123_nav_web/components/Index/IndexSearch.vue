@@ -151,6 +151,8 @@ const handleSearch = () => {
 const generatePlaceholder = () => {
   return selectedResource.value?.name == '全部'
     ? '请输入您要搜索的内容...'
+    : selectedResource.value?.placeholder
+    ? selectedResource.value?.placeholder
     : `在 ${selectedResource.value?.name} 中搜索`
 }
 

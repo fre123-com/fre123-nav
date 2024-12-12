@@ -10,7 +10,7 @@
       label-width="auto"
       ref="newCategoryForm"
     >
-      <el-form-item label="类别名称" prop="title" class="form-top">
+      <el-form-item label="站点名称" prop="title" class="form-top">
         <el-input v-model="formData.title" clearable />
       </el-form-item>
       <el-form-item label="跳转链接" prop="url">

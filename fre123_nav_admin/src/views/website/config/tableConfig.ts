@@ -1,13 +1,7 @@
 export const PendantPropList = [
   {
-    prop: 'icon_class',
-    label: '图标类名',
-    align: 'center',
-    slotName: 'icon_class',
-  },
-  {
     prop: 'base64',
-    label: 'Base64图标',
+    label: '图片地址',
     align: 'center',
     slotName: 'base64',
   },
