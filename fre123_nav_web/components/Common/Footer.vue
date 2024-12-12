@@ -46,6 +46,9 @@
           />
         </a>
       </div>
+      <a href="https://github.com/fre123-com/fre123-nav" target="_blank">
+        <img class="w-[20px] h-[20px]" src="~/assets/img/github.svg" />
+      </a>
     </section>
   </footer>
 </template>
