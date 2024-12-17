@@ -1,8 +1,1 @@
-fre123-nav-web/node_modules/
-fre123-nav-web/.nuxt
-fre123-nav-web/yarn.lock
-
-fre123-nav-admin/node_modules/
-fre123-nav-admin/dist
-fre123-nav-admin/components.d.ts
-fre123-nav-admin/yarn.lock
+.DS_Store

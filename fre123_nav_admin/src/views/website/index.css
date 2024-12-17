@@ -1,0 +1,307 @@
+.head-config {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.head-config-text {
+    margin: auto 0;
+    font-weight: 600;
+    font-size: larger;
+}
+
+.head-config-text {
+    margin: auto 0;
+}
+
+.head-nav {
+    margin: 0 0 -30px 515px;
+}
+
+.content {
+    padding: 30px;
+    background-color: #f5f5f5;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.content-one {
+    margin-top: 20px;
+    padding: 50px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding-bottom: 70px;
+}
+
+.content-three {
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.content-five {
+    margin-top: 20px;
+    padding: 10px 30px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding-bottom: 70px;
+    height: auto;
+}
+
+.table-box {
+    height: 240px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-box .table-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
+.table-box .action-button {
+    display: flex;
+    align-items: center;
+}
+
+.table-box .table-head .table-head-config {
+    display: flex;
+    flex-direction: row;
+}
+
+.table-box .table-head .table-head-config .table-head-config-button {
+    margin-left: -5px;
+}
+
+.table-box .table-head .table-head-button {
+    display: flex;
+    flex-direction: row;
+    margin-right: -5px;
+}
+
+.table-box .table-head .table-head-button .table-head-button-addCategory {
+    margin-right: -5px;
+}
+
+
+.table-box .table-middle {
+    height: auto;
+    overflow-y: auto;
+    border-top: 1px solid #ebeef5;
+}
+
+.table-box-children {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.demo-tabs {
+    width: 150px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: auto;
+}
+
+
+.el-table-box {
+    width: 100%;
+    overflow: auto;
+    height: 500px;
+}
+
+.limited-text {
+    display: inline-block;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.box-config {
+    padding-bottom: 10px;
+}
+
+.box-card {
+    margin: 0 0 20px 0;
+    height: 330px;
+}
+
+.clearfix {
+    margin: -15px 0 5px 0;
+}
+
+.el-table {
+    width: 100%;
+}
+
+.el-table .el-table-column {
+    text-align: center;
+}
+
+.el-table .el-table-column--name {
+    width: 33.33%;
+}
+
+.pendant-editor {
+    margin: 0 auto;
+    width: 1200px;
+    padding: -20px;
+    height: auto;
+    margin-bottom: -50px;
+}
+
+.pendant-config {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.pendant-button {
+    margin: 0 auto -15px auto;
+    display: flex;
+    width: 1000px;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.pendant-item {
+    margin-bottom: 20px;
+}
+
+.el-card {
+    padding: 10px;
+}
+
+.pendant-item .el-form-item {
+    margin: 0 auto;
+    width: 1000px;
+    margin-bottom: 15px;
+}
+
+.el-input {
+    width: 100%;
+}
+
+.table-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.action-button {
+    margin-right: 10px;
+}
+
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.dialog-footer .el-button {
+    margin-left: 10px;
+}
+
+.footer-editor {
+    padding: -20px;
+    height: auto;
+    margin: 0 auto;
+    width: 1200px;
+    margin-bottom: -50px;
+}
+
+.footer-config {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.footer-button {
+    display: flex;
+    margin: 0 auto -15px auto;
+    flex-direction: row;
+    width: 1000px;
+    justify-content: flex-end;
+}
+
+.footer-item {
+    margin-bottom: 20px;
+}
+
+.footer-item .el-form-item {
+    margin: 0 auto;
+    width: 1000px;
+    margin-bottom: 15px;
+}
+
+.elseControl {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.centered-input {
+    width: 400px;
+    padding: 0 10px 0 30px;
+    margin-left: -10px;
+}
+
+
+.centered-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.switch-item span {
+    margin: 0 -50px 0 50px;
+}
+
+.selection-controls {
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.selection-controls .el-row {
+    margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-category-box {
+    margin: auto;
+    width: 95%;
+}
+
+.dragIcon {
+    cursor: move;
+}
+
+.operation-label {
+    margin-right: 15px;
+}
+
+.DragStyle {
+    flex: 1;
+}
+
+.CategoryDragStyle {
+    float: right;
+    margin-right: 18px;
+}
