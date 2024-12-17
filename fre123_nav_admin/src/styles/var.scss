@@ -1,0 +1,11 @@
+/* 全局 css 变量 */
+$primary-color: var(--el-color-primary);
+
+$primary-font: 14px;
+
+@mixin MetaFont($fontSize: 14px, $fontWeight: 500, $lineHeight: 16px) {
+  font-family: Microsoft YaHei;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+}

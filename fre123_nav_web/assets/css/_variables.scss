@@ -1,0 +1,28 @@
+// 全局变量
+// ---------------------------------------------------- 主配色 ------------------------------------------------------
+$MAIN_BG_COLOR:#f3f5fb;
+$MAIN_TEXT_COLOR:#262626;
+
+:root{
+
+  // 日常模式
+  --color-bg-base : #f3f5fb
+  --color-text-base : #262626
+  --color-bg-card-base : ""
+  --color-bg-card-hover : ""
+  --color-border-card:""
+  --color-border-card-hover:""
+  // 夜间模式
+}
+
+.theme-dark{
+    // 日常模式
+    --color-bg-base : #343a40
+    --color-text-base : #262626
+    --color-bg-card-base : ""
+    --color-bg-card-hover : ""
+    --color-border-card:""
+    --color-border-card-hover:""
+}
+
+

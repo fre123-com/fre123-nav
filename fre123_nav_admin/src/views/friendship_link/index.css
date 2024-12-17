@@ -1,0 +1,47 @@
+.dialog-box {
+    width: 100%;
+    margin-top: 40px;
+    display: grid;
+    grid: 50px / auto;
+    grid-gap: 10px
+}
+
+.dialog-box-son {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center
+}
+
+.dialog-footer {
+    float: right;
+}
+
+.typeTable-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /*允许flex项目换行*/
+    margin: 10px 0;
+}
+.typeTable-top span{
+    font-size: 18px;
+    margin: 13px;
+    color: #606062;
+}
+.WebTable-export-button {
+    color: white !important;
+}
+.data-show-number {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: flex-start;
+    color: #606062 ;
+    font-size: 18px;
+}
+
+.typeTable-top-refresh {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

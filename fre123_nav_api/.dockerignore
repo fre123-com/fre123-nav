@@ -1,0 +1,12 @@
+.idea/
+.git/
+.vscode/
+.files/
+docs/
+scripts/
+deploy/
+dev.env
+.env
+thunder-tests/
+tests/
+*.json

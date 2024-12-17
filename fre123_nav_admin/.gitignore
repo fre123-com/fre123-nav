@@ -1,0 +1,5 @@
+components.d.ts
+node_modules
+auto-imports.d.ts
+.vscode/
+.DS_Store

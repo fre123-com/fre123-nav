@@ -1,0 +1,32 @@
+body {
+  // background-color : $MAIN_BG_COLOR;
+  color: $MAIN_TEXT_COLOR;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+}
+
+:root {
+  --el-dialog-padding-header: 16px;
+  --pagination-item-bg: #eeeeee;
+  --pagination-item-bg--active: #646463;
+  --pagination-item-color: black;
+  --pagination-item-color--active: white;
+  --pagination-item-border: transparent;
+  --pagination-item-border--active: transparent;
+  --pagination-icon-color--hover: #fa8f1d；
+}
+
+
+
+/* 隐藏滑动条开始*/
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
