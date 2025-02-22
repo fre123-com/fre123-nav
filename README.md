@@ -15,7 +15,7 @@
 
 ## 特性
 
-![Fre123 Nav](https://cdn.jsdelivr.net/gh/fre123-com/fre123-nav@main/.files/images/index.jpg)
+![Fre123 Nav](./fre123_nav_web/.files/images/Index_page.png)
 
 项目特点：
 
@@ -92,7 +92,7 @@ docker-compose down
 技术交流群 🤖：
 
 <p align="center">
-  <img src=".files/images/w_group.jpg" width="50%">
+  <img src="https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg" width="50%">
 </p>
 
 PS：目前开源版本仅为基本的功能，如果想体验更丰富的功能，请关注公众号：[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg) 了解更多。
