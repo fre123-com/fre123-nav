@@ -3,6 +3,8 @@
 </p>
 <h1 align="center">Fre123 Nav</h1>
 
+[English] | [中文](./README.md)
+
 > 👀 一键搭建自定义导航网站，简洁优雅，你值得拥有
 
 在线体验：

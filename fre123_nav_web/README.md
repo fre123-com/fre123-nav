@@ -3,6 +3,8 @@
 </p>
 <h1 align="center">Fre123 Nav</h1>
 
+[English](./README.EN.md) | 中文
+
 > 👀 一键搭建自定义导航网站，简洁优雅，你值得拥有
 
 在线体验：
@@ -15,7 +17,7 @@
 
 ## 特性
 
-![Fre123 Nav](https://cdn.jsdelivr.net/gh/fre123-com/fre123-nav@main/.files/images/index.jpg)
+![Fre123 Nav](./.files/images/Index_page.png)
 
 项目特点：
 
@@ -73,5 +75,5 @@ yarn dev
 技术交流群 🤖：
 
 <p align="center">
-  <img src=".files/images/w_group.jpg" width="50%">
+  <img src="./.files/images/w_group.png" width="50%">
 </p>
