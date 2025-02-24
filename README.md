@@ -115,7 +115,7 @@ PS：目前开源版本仅为基本的功能，如果想体验更丰富的功能
 | linsk27    | [linsk27](https://github.com/linsk27)       | 负责后台友链管理模块开发 |
 | FantasyBee | [FantasyBee](https://github.com/FantasyBee) | 负责后台网站配置功能开发 |
 | KlayPeter  | [KlayPeter](https://github.com/KlayPeter)   | 负责后台广告管理         |
-| sansanyi   | [sansanyi](https://github.com/sansanyi)     | 负责后台导航管理         |
+| sansanyi   | [sansanyih](https://github.com/sansanyih)   | 负责后台导航管理         |
 | a-b-ab     | [a-b-ab](https://github.com/a-b-ab)         | 后台管理相关接口开发支持 |
 | hoiii13    | [hoiii13](https://github.com/hoiii13)       | 前台导航核心功能开发     |
 | shenpormax | [shenpormax](https://github.com/shenpormax) | 后端核心功能开发+优化    |
