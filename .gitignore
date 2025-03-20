@@ -1,1 +1,11 @@
 .DS_Store
+.history
+node_modules
+dist
+coverage
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
