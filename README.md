@@ -54,6 +54,12 @@ docker-compose ps
 docker-compose down
 ```
 
+技术交流群 🤖：
+
+<p align="center">
+  <img src=".files/images/w_group.png" width="50%">
+</p>
+
 ## QA
 
 > 为什么要做这个项目？
@@ -106,11 +112,5 @@ docker-compose down
 - 回复 `加群` 即可加入我们的交流群
 
 该项目由 `FRE123` 团队维护，如果您在使用该项目时遇到任何问题，请随时提交 `issue` 或联系我们。
-
-技术交流群 🤖：
-
-<p align="center">
-  <img src=".files/images/w_group.jpg" width="50%">
-</p>
 
 PS：目前开源版本仅为基本的功能，如果想体验更丰富的功能，请关注公众号：[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg) 了解更多。
