@@ -57,7 +57,7 @@ docker-compose down
 技术交流群 🤖：
 
 <p align="center">
-  <img src=".files/images/w_group.png" width="50%">
+  <img src=".files/images/w_group.png" width="30%">
 </p>
 
 ## QA
@@ -113,4 +113,6 @@ docker-compose down
 
 该项目由 `FRE123` 团队维护，如果您在使用该项目时遇到任何问题，请随时提交 `issue` 或联系我们。
 
-PS：目前开源版本仅为基本的功能，如果想体验更丰富的功能，请关注公众号：[老胡的储物柜](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg) 了解更多。
+PS：目前开源版本仅为基本的功能，如果想体验更丰富的功能，请关注公众号：
+
+!老胡的储物柜](![./.files/images/fre123-nav.png](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg))
