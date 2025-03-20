@@ -54,7 +54,7 @@ docker-compose ps
 docker-compose down
 ```
 
-技术交流群 🤖：
+导航站长交流群 🤖：
 
 <p align="center">
   <img src=".files/images/w_group.png" width="30%">
@@ -115,4 +115,4 @@ docker-compose down
 
 PS：目前开源版本仅为基本的功能，如果想体验更丰富的功能，请关注公众号：
 
-!老胡的储物柜](![./.files/images/fre123-nav.png](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg))
+!老胡的储物柜](![./.files/images/fre123-nav.png](https://cdn.jsdelivr.net/gh/fre123-com/fre123-info-flow@main/.files/wechat.jpeg)
